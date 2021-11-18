@@ -1,4 +1,4 @@
-import "normalize.css"
+import "normalize.css";
 
 import App from "./App";
 import { Provider } from "react-redux";
