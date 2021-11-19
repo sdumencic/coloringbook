@@ -63,12 +63,36 @@ const Canvas = () => {
     }
   };
 
-  const startDrawing = ({ nativeEvent }: MouseEvent) => {
-    const { offsetX, offsetY } = nativeEvent;
+  interface MousePosition {
+    x?: number;
+    y?: number;
+  }
 
-    contextRef.current?.beginPath();
-    contextRef.current?.moveTo(offsetX, offsetY);
-    setIsDrawing(true);
+  const getMousePos = ({ nativeEvent }: MouseEvent): MousePosition => {
+    const canvas = canvasRef.current;
+
+    if (canvas) {
+      const rect = canvas.getBoundingClientRect(); // Abs. size of element
+      const scaleX = canvas.width / rect.width; // Relationship bitmap vs. element for X
+      const scaleY = canvas.height / rect.height; // Relationship bitmap vs. element for Y
+
+      return {
+        x: (nativeEvent.clientX - rect!.left) * scaleX, // Scale mouse coordinates after they have
+        y: (nativeEvent.clientY - rect!.top) * scaleY, // been adjusted to be relative to element
+      };
+    }
+
+    return {};
+  };
+
+  const startDrawing = (event: MouseEvent) => {
+    const { x, y } = getMousePos(event);
+
+    if (x && y) {
+      contextRef.current?.beginPath();
+      contextRef.current?.moveTo(x, y);
+      setIsDrawing(true);
+    }
   };
 
   const finishDrawing = () => {
@@ -87,13 +111,17 @@ const Canvas = () => {
     );
   };
 
-  const drawMove = ({ nativeEvent }: MouseEvent) => {
+  const drawMove = (event: MouseEvent) => {
     if (!isDrawing) {
       return;
     }
-    const { offsetX, offsetY } = nativeEvent;
-    contextRef.current?.lineTo(offsetX, offsetY);
-    contextRef.current?.stroke();
+
+    const { x, y } = getMousePos(event);
+
+    if (x && y) {
+      contextRef.current?.lineTo(x, y);
+      contextRef.current?.stroke();
+    }
   };
 
   const draw = () => {
