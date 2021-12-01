@@ -1,0 +1,116 @@
+$color: rgb(247, 243, 235);
+$turqoise: rgb(23, 131, 133);
+$turqoise-light: rgba(34, 193, 195, 1);
+$gradient: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%);
+$yellow: rgb(255, 212, 120);
+
+/* rgb(23, 131, 133) rgba(34, 193, 195, 1)*/
+
+body {
+    background-color: $color;
+}
+
+.loginform {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 20px;
+    width: 500px;
+    height: 500px;
+    right: 12%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.loginformheader {
+    padding: 0rem 4rem;
+    padding-bottom: 0rem;
+    margin-bottom: 20px;
+}
+
+.loginformbody {
+    flex: 1 1 auto;
+    padding: 0rem 4rem;
+    padding-bottom: 0rem;
+}
+
+.loginlabel {
+    margin: 10px 0 5px 0;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.logininput {
+    margin: 20px 0 40px 0;
+    padding: 10px;
+    border: 1px solid #bfbfbf;
+    border-radius: 20px;
+    box-sizing: border-box;
+    width: 100%
+}
+
+.loginsubmit {
+    margin: 10px 0 0 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #3085d6;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    position: initial;
+    /* background: radial-gradient(circle, rgba(252, 70, 107, 1) 0%, rgba(63, 94, 251, 1) 100%); */
+    /* radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%) */
+    background: $gradient;
+    border: 2px solid currentColor;
+    border-radius: 3rem;
+    font-size: 20px;
+    transition: .2s;
+    transform: ease-in;
+}
+
+.loginsubmit:hover {
+    transform: scale(1.05);
+    background-color: $turqoise-light;
+}
+
+.loginformfooter {
+    flex: 1 1 auto;
+    padding: 0rem 4rem;
+}
+
+.materialui {
+    display: flex;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    padding: 14px 14px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.active {
+    background: $turqoise-light;
+    color: white;
+}
