@@ -108,6 +108,9 @@ body {
     padding: 14px 14px;
     text-align: center;
     flex-grow: 1;
+    transition: background-position 1s;
+    display: inline-block;
+    background-size: 200% 200%;
 }
 
 .active {

@@ -1,7 +1,54 @@
+$color: rgb(247, 243, 235);
+$turqoise: rgb(23, 131, 133);
+$turqoise-light: rgba(34, 193, 195, 1);
+$gradient: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%);
+$yellow: rgb(255, 212, 120);
 .loginBackground {
     height: 100vh;
     background-size: contain;
     /* ili repeat i contain ili samo cover */
+}
+
+.login-to-left {
+    transition: background-position 1s;
+    background-image: linear-gradient(to right, #eeeeee 50%, $turqoise-light 0);
+    background-position: right;
+}
+
+.login-to-left:focus {
+    background-position: left;
+}
+
+.login-to-right {
+    transition: background-position 1s;
+    background-image: linear-gradient(to left, $turqoise-light 50%, #eeeeee 0);
+    background-position: left;
+}
+
+.login-to-right:focus {
+    transition: background-position 1s;
+    background-position: right;
+}
+
+.register-to-left {
+    transition: background-position 1s;
+    background-image: linear-gradient(to right, $turqoise-light 50%, #eeeeee 0);
+    background-position: right;
+}
+
+.register-to-left:focus {
+    background-position: left;
+}
+
+.register-to-right {
+    transition: background-position 1s;
+    background-image: linear-gradient(to left, #eeeeee 50%, $turqoise-light 0);
+    background-position: left;
+}
+
+.register-to-right:focus {
+    transition: background-position 1s;
+    background-position: right;
 }
 
 
@@ -10,5 +57,6 @@ radial-gradient(circle, #22c1c3 0%, #c5f9ca 100%)
 
 radial-gradient(circle, #5cd2b9 0%, #c5ffe4 100%)
 
+https://stackoverflow.com/questions/20751937/transition-background-color-via-slide-animation
 
 */

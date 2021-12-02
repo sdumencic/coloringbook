@@ -31,10 +31,10 @@ const HomePage = () => {
             <form className="loginform">
                 <div className="loginformheader">
                     <div className="materialui">
-                        <div className={`button ${active ? "" : "active"}`} onClick={changeLogin}>
+                        <div className={`button ${active ? "login-to-right" : "login-to-left"}`} onClick={changeLogin}>
                             Log in
                         </div>
-                        <div className={`button ${active ? "active" : ""}`} onClick={changeRegister}>
+                        <div className={`button ${active ? "register-to-right" : "register-to-left"}`} onClick={changeRegister}>
                             Register
                         </div>
                     </div>
