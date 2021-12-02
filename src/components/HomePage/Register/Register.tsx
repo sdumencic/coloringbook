@@ -5,14 +5,20 @@ const Register = () => {
 
     return (
         <div>
-            <div className="loginformbody">
-                <label className="loginlabel">Username:</label>
-                <input className="logininput" type="text" />
-                <label className="loginlabel">Password:</label>
-                <input className="logininput" type="password" />
-                <label className="loginlabel">Password:</label>
-                <input className="logininput" type="password" />
-                
+            <div className="registerformbody">
+                <div>
+                    <label className="loginlabel">Username:</label>
+                    <input className="logininput" type="text" />
+                </div>
+                <div>
+                    <label className="loginlabel">Password:</label>
+                    <input className="logininput" type="password" />
+                </div>
+                <div className="register-item-2">
+                    <label className="loginlabel">Email:</label>
+                    <input className="logininput" type="email" />
+                </div>
+
             </div>
             <div className="loginformfooter">
                 <Button />
