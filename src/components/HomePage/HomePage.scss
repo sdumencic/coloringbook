@@ -10,9 +10,10 @@ $yellow: rgb(255, 212, 120);
 }
 
 .login-to-left {
-    transition: background-position 1s;
+    transition: background-position 1s, color 1s;
     background-image: linear-gradient(to right, #eeeeee 50%, $turqoise-light 0);
     background-position: right;
+    color: white;
 }
 
 .login-to-left:focus {
@@ -20,9 +21,10 @@ $yellow: rgb(255, 212, 120);
 }
 
 .login-to-right {
-    transition: background-position 1s;
+    transition: background-position 1s, color 0.4s;
     background-image: linear-gradient(to left, $turqoise-light 50%, #eeeeee 0);
     background-position: left;
+    color: rgb(0, 0, 0);
 }
 
 .login-to-right:focus {
@@ -31,9 +33,10 @@ $yellow: rgb(255, 212, 120);
 }
 
 .register-to-left {
-    transition: background-position 1s;
+    transition: background-position 1s, color 0.4s;
     background-image: linear-gradient(to right, $turqoise-light 50%, #eeeeee 0);
     background-position: right;
+    color: rgb(0, 0, 0);
 }
 
 .register-to-left:focus {
@@ -41,9 +44,10 @@ $yellow: rgb(255, 212, 120);
 }
 
 .register-to-right {
-    transition: background-position 1s;
+    transition: background-position 1s, color 1s;
     background-image: linear-gradient(to left, #eeeeee 50%, $turqoise-light 0);
     background-position: left;
+    color: white;
 }
 
 .register-to-right:focus {
