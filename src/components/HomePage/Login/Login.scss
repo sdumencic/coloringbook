@@ -31,17 +31,17 @@ body {
 .loginformheader {
     padding: 0rem 4rem;
     padding-bottom: 0rem;
-    margin-bottom: 20px;
 }
 
 .loginformbody {
-    flex: 1 1 auto;
+    display: grid;
     padding: 0rem 4rem;
     padding-bottom: 0rem;
+    grid-gap: 10px;
 }
 
 .loginlabel {
-    margin: 10px 0 5px 0;
+    /* margin: 10px 0 5px 0; */
     font-family: Arial;
     font-size: 20px;
 }
@@ -50,7 +50,7 @@ body {
     margin: 20px 0 40px 0;
     padding: 10px;
     border: 1px solid #bfbfbf;
-    border-radius: 20px;
+    border-radius: 10px;
     box-sizing: border-box;
     width: 100%
 }
@@ -59,7 +59,7 @@ body {
     margin: 10px 0 0 0;
     padding: 10px 20px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     background: #3085d6;
     font-size: 20px;
     color: white;
@@ -69,7 +69,6 @@ body {
     /* radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%) */
     background: $gradient;
     border: 2px solid currentColor;
-    border-radius: 3rem;
     font-size: 20px;
     transition: .2s;
     transform: ease-in;

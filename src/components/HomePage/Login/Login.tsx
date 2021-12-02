@@ -1,16 +1,19 @@
 import Button from "../../Shared/Button/Button";
 import "./Login.scss";
 
-const Login = () => {    
+const Login = () => {
 
     return (
         <div>
             <div className="loginformbody">
-                <label className="loginlabel">Username:</label>
-                <input className="logininput" type="text" />
-                <label className="loginlabel">Password:</label>
-                <input className="logininput" type="password" />
-                
+                <div>
+                    <label className="loginlabel">Username:</label>
+                    <input className="logininput" type="text" />
+                </div>
+                <div>
+                    <label className="loginlabel">Password:</label>
+                    <input className="logininput" type="password" />
+                </div>
             </div>
             <div className="loginformfooter">
                 <Button />
@@ -18,11 +21,5 @@ const Login = () => {
         </div>
     )
 }
-
-const Test = () => (
-    <div id="results" className="search-results">
-        Some Results
-    </div>
-)
 
 export default Login;

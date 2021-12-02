@@ -27,10 +27,4 @@ const Register = () => {
     )
 }
 
-const Test = () => (
-    <div id="results" className="search-results">
-        Some Results
-    </div>
-)
-
 export default Register;
