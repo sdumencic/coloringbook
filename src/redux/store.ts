@@ -1,3 +1,4 @@
+import { ClientState, clientReducer } from "./reducers/ClientReducer";
 import { combineReducers, createStore } from "redux";
 
 /**
@@ -14,10 +15,18 @@ export type ActionMap<M extends { [index: string]: any }> = {
       };
 };
 
-export type GlobalState = {};
+export type GlobalState = {
+  client: ClientState;
+};
 
-export const rootReducer = combineReducers<GlobalState>({});
+export const rootReducer = combineReducers<GlobalState>({
+  client: clientReducer,
+});
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  // @ts-expect-error
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;
