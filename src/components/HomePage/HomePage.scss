@@ -3,6 +3,7 @@ $turqoise: rgb(23, 131, 133);
 $turqoise-light: rgba(34, 193, 195, 1);
 $gradient: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%);
 $yellow: rgb(255, 212, 120);
+$text: #4357a5;
 .loginBackground {
     height: 100vh;
     background-size: contain;
@@ -53,6 +54,116 @@ $yellow: rgb(255, 212, 120);
 .register-to-right:focus {
     transition: background-position 1s;
     background-position: right;
+}
+
+.loginform {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 20px;
+    width: 500px;
+    height: 500px;
+    right: 12%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.loginformheader {
+    padding: 0rem 4rem;
+    padding-bottom: 0rem;
+}
+
+.loginformbody {
+    display: grid;
+    padding: 0rem 4rem;
+    padding-bottom: 0rem;
+    grid-gap: 10px;
+    height: 250px;
+}
+
+.loginformfooter {
+    flex: 1 1 auto;
+    padding: 0rem 4rem;
+}
+
+.loginsubmit {
+    margin: 10px 0 0 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #3085d6;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    position: initial;
+    /* background: radial-gradient(circle, rgba(252, 70, 107, 1) 0%, rgba(63, 94, 251, 1) 100%); */
+    /* radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%) */
+    background: $gradient;
+    border: 2px solid currentColor;
+    font-size: 20px;
+    transition: .2s;
+    transform: ease-in;
+}
+
+.loginsubmit:hover {
+    transform: scale(1.05);
+    background-color: $turqoise-light;
+}
+
+.materialui {
+    display: flex;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+
+.title {
+    font-size: 3em;
+    // font-weight: initial;
+    color: $text;
+}
+
+.image1 {
+    width: 200px;
+    height: 200px;
+}
+
+.image2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 174px;
+    left: 110px;
+}
+
+.leg {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate (45deg);
+    animation: myfirst 0.4s linear infinite;
+}
+
+@keyframes myfirst {
+    0% {
+        transform: rotate(0deg);
+        //transform-origin: bottom left;
+    }
+    50% {
+        transform: rotate(20deg);
+        //transform-origin: bottom left;
+    }
+    100% {
+        transform: rotate(0deg);
+        //transform-origin: bottom left;
+    }
 }
 
 

@@ -1,8 +1,14 @@
+import { MouseEventHandler } from "react";
 import "./Button.scss";
 
-const Button = () => {
+interface ButtonProps {
+    onHover?: MouseEventHandler<HTMLButtonElement>;
+}
+
+const Button = (props: ButtonProps) => {
     return (
-        <button className="loginsubmit" type="submit">Submit</button>
+        // TODO: Make responsive
+        <button className="loginsubmit" type="submit" onMouseEnter={props.onHover} onMouseLeave={props.onHover}>Submit</button>
     )
 }
 

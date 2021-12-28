@@ -1,46 +1,42 @@
-import Login from "./Login/Login";
-import Register from "./Register/Register";
 import "./HomePage.scss";
+import Button from "../Shared/Button/Button";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 
 const IMAGE = "/images/background.png";
+const ZECIC = "/images/zecnoleg.png"
+const ZECICLEG = "/images/zecleg.png"
+
 
 const HomePage = () => {
     const style = {
         backgroundImage: `url(${IMAGE})`
     }
 
-    const [title, setTitle] = useState("Log in");
+    const [change, setChange] = useState(false);
 
-    const [value, setValue] = useState(false);
-    const [active, setActive] = useState(false);
-    const changeRegister = () => {
-        setTitle('Register');
-        setValue(true);
-        setActive(true);
-    }
+    const changeAnimate = () => {
+        if (change === true) {
+            setChange(false);
+        } else {
+            setChange(true);
+        }
 
-    const changeLogin = () => {
-        setTitle('Log in');
-        setValue(false);        
-        setActive(false);
     }
 
     return (
         <div className="loginBackground" style={style}>
             <form className="loginform">
                 <div className="loginformheader">
-                    <div className="materialui">
-                        <div className={`button ${active ? "login-to-right" : "login-to-left"}`} onClick={changeLogin}>
-                            Log in
-                        </div>
-                        <div className={`button ${active ? "register-to-right" : "register-to-left"}`} onClick={changeRegister}>
-                            Register
-                        </div>
-                    </div>
-                    <h1>{title}</h1>
+
+                    <h1 className="title" onClick={changeAnimate}>Igraj</h1>
                 </div>
-                {value ? <Register /> : <Login />}
+                <div className="loginformbody">
+                    <img className="image1" src={ZECIC} />
+                    <img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
+                </div>
+                <div className="loginformfooter">
+                    <Button onHover={changeAnimate}/>
+                </div>
             </form>
         </div>
 
