@@ -1,4 +1,5 @@
 import Canvas from "./Canvas/Canvas";
+import HUD from "./HUD/HUD";
 import { useParams } from "react-router";
 
 const GamePage = () => {
@@ -7,7 +8,7 @@ const GamePage = () => {
   return (
     <>
       <Canvas />
-      <p>Game Page {id}</p>
+      <HUD />
     </>
   );
 };

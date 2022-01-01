@@ -43,9 +43,7 @@ const Canvas = () => {
   const DrawCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // References to images
-  const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(
-    null
-  );
+  const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(null);
   const [imageMask, setImageMask] = useState<HTMLImageElement | null>(null);
   const [imageData, setImageData] = useState<HTMLImageElement | null>(null);
 
@@ -145,13 +143,7 @@ const Canvas = () => {
         // TODO: Customizable drawing data etc :)
         if (HiddenCanvasRef.current) {
           Context.globalCompositeOperation = "source-in";
-          Context.drawImage(
-            HiddenCanvasRef.current,
-            0,
-            0,
-            CANVAS_WIDTH,
-            CANVAS_HEIGHT
-          );
+          Context.drawImage(HiddenCanvasRef.current, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         }
 
         // Draw outline and fill non painted parts with a mask

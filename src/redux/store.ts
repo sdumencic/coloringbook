@@ -1,3 +1,4 @@
+import { BrushState, brushReducer } from "./reducers/BrushReducer";
 import { ClientState, clientReducer } from "./reducers/ClientReducer";
 import { combineReducers, createStore } from "redux";
 
@@ -16,15 +17,18 @@ export type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export type GlobalState = {
+  brush: BrushState;
   client: ClientState;
 };
 
 export const rootReducer = combineReducers<GlobalState>({
+  brush: brushReducer,
   client: clientReducer,
 });
 
 export const store = createStore(
   rootReducer,
+  // TODO: Remove this :)
   // @ts-expect-error
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
