@@ -1,59 +1,10 @@
 $color: rgb(247, 243, 235);
-$turqoise: rgb(23, 131, 133);
-$turqoise-light: rgba(34, 193, 195, 1);
-$gradient: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%);
-$yellow: rgb(255, 212, 120);
 $text: #4357a5;
+$loginSubmit: #3085d6;
 .loginBackground {
     height: 100vh;
     background-size: contain;
     /* ili repeat i contain ili samo cover */
-}
-
-.login-to-left {
-    transition: background-position 1s, color 1s;
-    background-image: linear-gradient(to right, #eeeeee 50%, $turqoise-light 0);
-    background-position: right;
-    color: white;
-}
-
-.login-to-left:focus {
-    background-position: left;
-}
-
-.login-to-right {
-    transition: background-position 1s, color 0.4s;
-    background-image: linear-gradient(to left, $turqoise-light 50%, #eeeeee 0);
-    background-position: left;
-    color: rgb(0, 0, 0);
-}
-
-.login-to-right:focus {
-    transition: background-position 1s;
-    background-position: right;
-}
-
-.register-to-left {
-    transition: background-position 1s, color 0.4s;
-    background-image: linear-gradient(to right, $turqoise-light 50%, #eeeeee 0);
-    background-position: right;
-    color: rgb(0, 0, 0);
-}
-
-.register-to-left:focus {
-    background-position: left;
-}
-
-.register-to-right {
-    transition: background-position 1s, color 1s;
-    background-image: linear-gradient(to left, #eeeeee 50%, $turqoise-light 0);
-    background-position: left;
-    color: white;
-}
-
-.register-to-right:focus {
-    transition: background-position 1s;
-    background-position: right;
 }
 
 .loginform {
@@ -62,7 +13,7 @@ $text: #4357a5;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: white;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 20px;
@@ -84,7 +35,8 @@ $text: #4357a5;
     padding: 0rem 4rem;
     padding-bottom: 0rem;
     grid-gap: 10px;
-    height: 250px;
+    height: 200px;
+    position: relative;
 }
 
 .loginformfooter {
@@ -92,55 +44,29 @@ $text: #4357a5;
     padding: 0rem 4rem;
 }
 
-.loginsubmit {
-    margin: 10px 0 0 0;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #3085d6;
-    font-size: 20px;
-    color: white;
-    width: 100%;
-    position: initial;
-    /* background: radial-gradient(circle, rgba(252, 70, 107, 1) 0%, rgba(63, 94, 251, 1) 100%); */
-    /* radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%) */
-    background: $gradient;
-    border: 2px solid currentColor;
-    font-size: 20px;
-    transition: .2s;
-    transform: ease-in;
-}
-
-.loginsubmit:hover {
-    transform: scale(1.05);
-    background-color: $turqoise-light;
-}
-
-.materialui {
-    display: flex;
-    border-radius: 10px;
-    margin-top: 20px;
-    background-color: #eeeeee;
-    overflow: hidden;
-}
-
 .title {
-    font-size: 3em;
+    font-size: 5em;
     // font-weight: initial;
     color: $text;
+    margin-bottom: 0;
 }
 
 .image1 {
     width: 200px;
     height: 200px;
+    bottom: -40px;
+    position: absolute;
+    z-index: 1;
+    left: 25px;
 }
 
 .image2 {
     width: 100px;
     height: 100px;
     position: absolute;
-    bottom: 174px;
-    left: 110px;
+    bottom: -45px;
+    left: 70px;
+    z-index: 2;
 }
 
 .leg {
@@ -148,10 +74,10 @@ $text: #4357a5;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate (45deg);
-    animation: myfirst 0.4s linear infinite;
+    animation: leg 0.4s linear infinite;
 }
 
-@keyframes myfirst {
+@keyframes leg {
     0% {
         transform: rotate(0deg);
         //transform-origin: bottom left;
@@ -165,13 +91,3 @@ $text: #4357a5;
         //transform-origin: bottom left;
     }
 }
-
-
-/*
-radial-gradient(circle, #22c1c3 0%, #c5f9ca 100%)
-
-radial-gradient(circle, #5cd2b9 0%, #c5ffe4 100%)
-
-https://stackoverflow.com/questions/20751937/transition-background-color-via-slide-animation
-
-*/

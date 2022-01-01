@@ -2,7 +2,7 @@ import "./HomePage.scss";
 import Button from "../Shared/Button/Button";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 
-const IMAGE = "/images/background.png";
+const IMAGE = "/images/220102background.png";
 const ZECIC = "/images/zecnoleg.png"
 const ZECICLEG = "/images/zecleg.png"
 
@@ -35,7 +35,7 @@ const HomePage = () => {
                     <img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
                 </div>
                 <div className="loginformfooter">
-                    <Button onHover={changeAnimate}/>
+                    <Button onHover={changeAnimate} text={"Započni"}/>
                 </div>
             </form>
         </div>
