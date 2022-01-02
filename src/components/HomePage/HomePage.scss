@@ -1,9 +1,16 @@
 $color: rgb(247, 243, 235);
 $text: #4357a5;
 $loginSubmit: #3085d6;
+$background: rgb(220, 255, 254);
+body {
+    background: rgb(220, 255, 254);
+    width: 100vw;
+}
+
 .loginBackground {
     height: 100vh;
     background-size: contain;
+    background-repeat: no-repeat;
     /* ili repeat i contain ili samo cover */
 }
 
