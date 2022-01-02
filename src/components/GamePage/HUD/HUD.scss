@@ -4,12 +4,19 @@
   top: 10px;
   border-radius: 25px;
   z-index: 50;
+  font-size: 16px;
+  padding: 10px;
 
   p {
     padding: 0 15px;
     color: black;
     display: inline-block;
     vertical-align: baseline;
+  }
+
+  h2 {
+    text-align: center;
+    text-shadow: white 0px 0px 10px;
   }
 
   button {
@@ -21,29 +28,38 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 5px 4px -5px;
+    //font-size: 16px;
+    font-size: 1rem;
+    margin: 4px 5px 4px 5px;
     border-radius: 50%;
     vertical-align: middle;
     cursor: pointer;
+    min-width: 50px;
+    min-height: 50px;
+    width: 5vw;
+    height: 5vw;
 
     &:disabled {
       background-color: gray;
       border: 2px solid darkgrey;
       cursor: default;
     }
+
+    &.selected {
+      border: 8px double black;
+    }
+
+    &.back {
+      background-color: #17a2b8;
+    }
+
+    &.delete {
+      background-color: #dc3545;
+    }
   }
 
   svg {
     vertical-align: middle;
-  }
-
-  .history {
-    background-color: #dc3545;
-  }
-
-  .solution {
-    background-color: #17a2b8;
   }
 }
 
@@ -108,4 +124,5 @@
       transparent 4px
     );
   background-blend-mode: multiply;
+  border: 2px solid #37230d;
 }

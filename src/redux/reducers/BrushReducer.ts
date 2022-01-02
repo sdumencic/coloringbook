@@ -7,7 +7,7 @@ export type BrushState = {
    *
    * 0 - Small; 1 - Normal; 2 - Large
    */
-  weight: 0 | 1 | 2;
+  width: 0 | 1 | 2;
   /**
    * Represents the color of the brush.
    * Can be an RGB string, canvas gradient or pattern.
@@ -15,17 +15,17 @@ export type BrushState = {
   color: string | CanvasGradient | CanvasPattern;
 };
 const initialState: BrushState = {
-  weight: 2,
+  width: 1,
   color: "white",
 };
 
 //? Action
 export enum BrushTypes {
-  Weight = "BRUSH_WEIGHT",
+  Width = "BRUSH_WIDTH",
   Color = "BRUSH_COLOR",
 }
 type BrushPayload = {
-  [BrushTypes.Weight]: 0 | 1 | 2;
+  [BrushTypes.Width]: 0 | 1 | 2;
   [BrushTypes.Color]: string | CanvasGradient | CanvasPattern;
 };
 export type BrushActions = ActionMap<BrushPayload>[keyof ActionMap<BrushPayload>];
@@ -35,10 +35,10 @@ export const brushReducer = (
   action: BrushActions
 ) => {
   switch (action.type) {
-    case BrushTypes.Weight:
+    case BrushTypes.Width:
       return {
         ...state,
-        weight: action.payload,
+        width: action.payload,
       };
     case BrushTypes.Color:
       return {

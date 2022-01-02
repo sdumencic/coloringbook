@@ -1,5 +1,7 @@
+import { ActionsState, actionsReducer } from "./reducers/ActionReducer";
 import { BrushState, brushReducer } from "./reducers/BrushReducer";
 import { ClientState, clientReducer } from "./reducers/ClientReducer";
+import { GameState, gameReducer } from "./reducers/GameReducer";
 import { combineReducers, createStore } from "redux";
 
 /**
@@ -17,13 +19,17 @@ export type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export type GlobalState = {
+  actions: ActionsState;
   brush: BrushState;
   client: ClientState;
+  game: GameState;
 };
 
 export const rootReducer = combineReducers<GlobalState>({
+  actions: actionsReducer,
   brush: brushReducer,
   client: clientReducer,
+  game: gameReducer,
 });
 
 export const store = createStore(

@@ -1,19 +1,17 @@
 import "./Canvas.scss";
 
+import {
+  CANVAS_BASE_WIDTH,
+  CANVAS_BRUSH_CAP,
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  IMAGE_MASK_URL,
+  IMAGE_OUTLINE_URL,
+} from "./Constants";
 import { CSSProperties, MouseEvent, useEffect, useRef, useState } from "react";
 
 import { GlobalState } from "../../../redux/store";
 import { useSelector } from "react-redux";
-
-const IMAGE_OUTLINE = "/images/parrot_outline.png";
-const IMAGE_MASK = "/images/parrot_mask.png";
-
-const CANVAS_BRUSH_COLOR = "red";
-const CANVAS_BRUSH_WIDTH = 40;
-const CANVAS_BRUSH_CAP = "round";
-
-const CANVAS_WIDTH = 2000;
-const CANVAS_HEIGHT = 2000;
 
 interface MousePosition {
   x?: number;
@@ -21,7 +19,10 @@ interface MousePosition {
 }
 
 const Canvas = () => {
+  // Slices from the global state
   const client = useSelector((state: GlobalState) => state.client);
+  const brush = useSelector((state: GlobalState) => state.brush);
+  const clear_Canvas = useSelector((state: GlobalState) => state.actions.clearCanvas);
 
   const [isDrawing, setIsDrawing] = useState(false);
 
@@ -45,7 +46,6 @@ const Canvas = () => {
   // References to images
   const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(null);
   const [imageMask, setImageMask] = useState<HTMLImageElement | null>(null);
-  const [imageData, setImageData] = useState<HTMLImageElement | null>(null);
 
   /**
    * This useEffect runs only on mount and unmount.
@@ -54,13 +54,13 @@ const Canvas = () => {
    */
   useEffect(() => {
     const image_outline = new Image();
-    image_outline.src = IMAGE_OUTLINE;
+    image_outline.src = IMAGE_OUTLINE_URL;
     image_outline.onload = () => {
       setImageOutline(image_outline);
     };
 
     const image_mask = new Image();
-    image_mask.src = IMAGE_MASK;
+    image_mask.src = IMAGE_MASK_URL;
     image_mask.onload = () => {
       setImageMask(image_mask);
     };
@@ -69,51 +69,26 @@ const Canvas = () => {
   }, []);
 
   /**
-   * This useEffect runs on every rendering iteration.
-   * We use this to render the refreshed data onto a canvas. :)
+   * Starts the render Loop after the images have been loaded
    */
   useEffect(() => {
-    console.log(imageData);
-    renderFrame();
-  });
+    if (imageOutline && imageMask) {
+      window.requestAnimationFrame(renderFrame);
+    }
+    // eslint-disable-next-line
+  }, [imageOutline, imageMask]);
 
   /**
-   * Scales and positions the Rendering canvas
+   *
    */
-  const getCanvasStyle = (): CSSProperties => {
-    const properties: CSSProperties = {};
-
-    if (CanvasRef.current && DrawCanvasRef.current) {
-      if (client.height > client.width) {
-        properties.width = "100%";
-        properties.height = `${client.width}px`;
-        properties.top = `${(client.height - client.width) / 2}px`;
-      } else {
-        properties.height = "100%";
-        properties.width = `${client.height}px`;
-        properties.left = `${(client.width - client.height) / 2}px`;
-      }
-    }
-
-    return properties;
-  };
+  useEffect(() => {
+    console.log("Clearing canvas!");
+    clearCanvas(HiddenCanvasRef);
+  }, [clear_Canvas]);
 
   const renderFrame = () => {
     let Canvas: HTMLCanvasElement;
     let Context: CanvasRenderingContext2D | null;
-
-    // Draw Hidden canvas
-    if (HiddenCanvasRef.current) {
-      // Set references
-      Canvas = HiddenCanvasRef.current;
-      Context = Canvas.getContext("2d");
-
-      if (Context) {
-        if (imageData) {
-          Context.drawImage(imageData, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        }
-      }
-    }
 
     // Draw Background
     if (BGCanvasRef.current) {
@@ -140,7 +115,6 @@ const Canvas = () => {
         Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Fill in the drawing data
-        // TODO: Customizable drawing data etc :)
         if (HiddenCanvasRef.current) {
           Context.globalCompositeOperation = "source-in";
           Context.drawImage(HiddenCanvasRef.current, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -153,6 +127,29 @@ const Canvas = () => {
         Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       }
     }
+
+    window.requestAnimationFrame(renderFrame);
+  };
+
+  /**
+   * Scales and positions the Rendering canvas
+   */
+  const getCanvasStyle = (): CSSProperties => {
+    const properties: CSSProperties = {};
+
+    if (CanvasRef.current && DrawCanvasRef.current) {
+      if (client.height > client.width) {
+        properties.width = "100%";
+        properties.height = `${client.width}px`;
+        properties.top = `${(client.height - client.width) / 2}px`;
+      } else {
+        properties.height = "100%";
+        properties.width = `${client.height}px`;
+        properties.left = `${(client.width - client.height) / 2}px`;
+      }
+    }
+
+    return properties;
   };
 
   /**
@@ -233,22 +230,18 @@ const Canvas = () => {
   };
 
   const finishDrawing = () => {
-    if (DrawCanvasRef.current) {
+    if (DrawCanvasRef.current && HiddenCanvasRef.current) {
       const Canvas = DrawCanvasRef.current;
+      const HiddenCanvas = HiddenCanvasRef.current;
       const Context = Canvas.getContext("2d");
+      const HiddenContext = HiddenCanvas.getContext("2d");
 
-      if (Context) {
+      if (Context && HiddenContext) {
         // Stop drawing the path
         Context.closePath();
         setIsDrawing(false);
 
-        const tmpImg = new Image();
-        tmpImg.src = Canvas.toDataURL("image/png");
-        tmpImg.onload = () => {
-          setImageData(tmpImg);
-        };
-
-        //setImageData(Context.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT));
+        HiddenContext.drawImage(Canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         clearCanvas(DrawCanvasRef);
       }
@@ -278,7 +271,7 @@ const Canvas = () => {
   // Set Drawable Canvas Width and Height if images are loaded
   const style = imageMask && imageOutline ? getCanvasStyle() : {};
   // Brush settings
-  setBrush(CANVAS_BRUSH_COLOR, CANVAS_BRUSH_WIDTH, CANVAS_BRUSH_CAP);
+  setBrush(brush.color, (brush.width + 1) * CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP);
 
   return (
     <div className="viewport">
@@ -309,14 +302,6 @@ const Canvas = () => {
         onMouseMove={drawMove}
         ref={DrawCanvasRef}
       ></canvas>
-      <button
-        onClick={() => {
-          clearCanvas(HiddenCanvasRef);
-          setImageData(null);
-        }}
-      >
-        Brisi
-      </button>
     </div>
   );
 };
