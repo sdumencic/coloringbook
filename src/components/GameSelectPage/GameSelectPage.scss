@@ -1,19 +1,17 @@
 $color: rgb(247, 243, 235);
-$turqoise: rgb(23, 131, 133);
-$turqoise-light: rgba(34, 193, 195, 1);
-$gradient: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgb(255, 212, 120) 100%);
-$yellow: rgb(255, 212, 120);
+$text: #4357a5;
+$loginSubmit: #3085d6;
+$background: rgb(220, 255, 254);
 .loginBackground {
     height: 100vh;
     background-size: contain;
-    /* ili repeat i contain ili samo cover */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 body {
-    background-color: $color;
+    background-color: $background;
 }
 
 .loginform {
@@ -42,18 +40,12 @@ body {
     grid-gap: 10px;
 }
 
-.loginlabel {
-    /* margin: 10px 0 5px 0; */
-    font-family: Arial;
-    font-size: 20px;
-}
-
 .loginformfooter {
     flex: 1 1 auto;
     padding: 0rem 4rem;
 }
 
-.materialui {
+.buttons {
     display: flex;
     border-radius: 10px;
     margin-top: 20px;
@@ -62,15 +54,10 @@ body {
 }
 
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     box-sizing: border-box;
     cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size: 0.875rem;
+    font-size: 1rem;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
     padding: 14px 14px;
@@ -82,52 +69,6 @@ body {
 }
 
 .active {
-    background: $turqoise-light;
+    background: $loginSubmit;
     color: white;
-}
-
-.login-to-left {
-    transition: background-position 1s, color 1s;
-    background-image: linear-gradient(to right, #eeeeee 50%, $turqoise-light 0);
-    background-position: right;
-    color: white;
-}
-
-.login-to-left:focus {
-    background-position: left;
-}
-
-.login-to-right {
-    transition: background-position 1s, color 0.4s;
-    background-image: linear-gradient(to left, $turqoise-light 50%, #eeeeee 0);
-    background-position: left;
-    color: rgb(0, 0, 0);
-}
-
-.login-to-right:focus {
-    transition: background-position 1s;
-    background-position: right;
-}
-
-.register-to-left {
-    transition: background-position 1s, color 0.4s;
-    background-image: linear-gradient(to right, $turqoise-light 50%, #eeeeee 0);
-    background-position: right;
-    color: rgb(0, 0, 0);
-}
-
-.register-to-left:focus {
-    background-position: left;
-}
-
-.register-to-right {
-    transition: background-position 1s, color 1s;
-    background-image: linear-gradient(to left, #eeeeee 50%, $turqoise-light 0);
-    background-position: left;
-    color: white;
-}
-
-.register-to-right:focus {
-    transition: background-position 1s;
-    background-position: right;
 }

@@ -2,12 +2,7 @@ import "./GameSelectPage.scss";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import Images from "./Images/Images";
 
-const IMAGE = "/images/background.png";
-
 const GameSelectPage = () => {
-    const style = {
-        backgroundImage: `url(${IMAGE})`
-    }
 
     const [animals, setAnimals] = useState("All");
     const [active, setActive] = useState(0);
@@ -28,10 +23,10 @@ const GameSelectPage = () => {
     }
 
     return (
-        <div className="loginBackground" style={style}>
+        <div className="loginBackground">
             <form className="loginform">
                 <div className="loginformheader">
-                    <div className="materialui">
+                    <div className="buttons">
                         <div className={`button ${active == 0 ? "active" : ""}`} onClick={changeToAll}>
                             Sve životinje
                         </div>
