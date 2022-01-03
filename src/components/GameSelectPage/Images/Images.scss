@@ -30,8 +30,9 @@
 .card-deck {
     flex-flow: row wrap;
     display: flex;
-    padding: 0rem 4rem;
+    padding: 0rem 1rem;
     overflow-y: scroll;
+    justify-content: center;
 }
 
 .card-img-top {
