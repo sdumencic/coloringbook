@@ -1,11 +1,12 @@
 .HUD {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(#4357a5, 0.5);
   top: 10px;
   border-radius: 25px;
   z-index: 50;
   font-size: 16px;
   padding: 10px;
+  color: white;
 
   p {
     padding: 0 15px;
@@ -46,7 +47,8 @@
     }
 
     &.selected {
-      border: 8px double black;
+      border: 1px solid white;
+      filter: drop-shadow(white 0px 0px 10px);
     }
 
     &.back {

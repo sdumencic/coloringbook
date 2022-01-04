@@ -8,15 +8,18 @@ import {
   IMAGE_MASK_URL,
   IMAGE_OUTLINE_URL,
 } from "./Constants";
-import { CSSProperties, MouseEvent, useEffect, useRef, useState } from "react";
+import {
+  CSSProperties,
+  MouseEvent,
+  TouchEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { clearCanvas, getMousePos, setBrush } from "./Helpers";
 
 import { GlobalState } from "../../../redux/store";
 import { useSelector } from "react-redux";
-
-interface MousePosition {
-  x?: number;
-  y?: number;
-}
 
 const Canvas = () => {
   // Slices from the global state
@@ -152,78 +155,62 @@ const Canvas = () => {
     return properties;
   };
 
-  /**
-   * Set canvas brush to the specified width, color and cap.
-   * @param width Width of the canvas brush.
-   * @param color Color of the canvas brush.
-   * @param cap Cap of the canvas brush.
-   */
-  const setBrush = (
-    color?: string | CanvasGradient | CanvasPattern,
-    width?: number,
-    cap?: CanvasLineCap
-  ) => {
-    if (DrawCanvasRef.current) {
-      const Canvas = DrawCanvasRef.current;
-      const Context = Canvas.getContext("2d");
-
-      if (Context) {
-        if (color) Context.strokeStyle = color;
-        if (width) Context.lineWidth = width;
-        if (cap) Context.lineCap = cap;
-      }
-    }
+  const touchStart = (event: TouchEvent) => {
+    startDrawing(
+      event.nativeEvent.touches[0].clientX,
+      event.nativeEvent.touches[0].clientY
+    );
   };
 
-  /**
-   * Returns mouse position correctly scaled from the DOM coordinates to the internal canvas ones
-   * @param param0 HTML Mouse Event
-   * @returns MousePosition (x, y) interface with correctly scaled position
-   */
-  const getMousePos = ({ nativeEvent }: MouseEvent): MousePosition => {
-    const canvas = DrawCanvasRef.current;
-
-    if (canvas) {
-      const rect = canvas.getBoundingClientRect(); // Abs. size of element
-      const scaleX = canvas.width / rect.width; // Relationship bitmap vs. element for X
-      const scaleY = canvas.height / rect.height; // Relationship bitmap vs. element for Y
-
-      return {
-        x: (nativeEvent.clientX - rect!.left) * scaleX, // Scale mouse coordinates after they have
-        y: (nativeEvent.clientY - rect!.top) * scaleY, // been adjusted to be relative to element
-      };
-    }
-
-    return {};
+  const mouseDown = (event: MouseEvent) => {
+    startDrawing(event.nativeEvent.clientX, event.nativeEvent.clientY);
   };
 
-  const clearCanvas = (
-    CanvasToClearRef: React.MutableRefObject<HTMLCanvasElement | null>
-  ) => {
-    if (CanvasToClearRef.current) {
-      const Canvas = CanvasToClearRef.current;
-      const Context = Canvas.getContext("2d");
-
-      if (Context) {
-        Context.clearRect(0, 0, Canvas.width, Canvas.height);
-      }
-    }
-  };
-
-  const startDrawing = (event: MouseEvent) => {
+  const startDrawing = (clientX: number, clientY: number) => {
     if (DrawCanvasRef.current) {
       const Canvas = DrawCanvasRef.current;
       const Context = Canvas.getContext("2d");
 
       if (Context) {
         // Get current mouse positions
-        const { x, y } = getMousePos(event);
+        const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
 
         // If mouse position is allright, then begin line path
         if (x && y) {
           Context.beginPath();
           Context.moveTo(x, y);
           setIsDrawing(true);
+        }
+      }
+    }
+  };
+
+  const touchMove = (event: TouchEvent) => {
+    drawMove(
+      event.nativeEvent.touches[0].clientX,
+      event.nativeEvent.touches[0].clientY
+    );
+  };
+
+  const mouseMove = (event: MouseEvent) => {
+    drawMove(event.nativeEvent.clientX, event.nativeEvent.clientY);
+  };
+
+  const drawMove = (clientX: number, clientY: number) => {
+    if (!isDrawing) {
+      return;
+    }
+
+    if (DrawCanvasRef.current) {
+      const Canvas = DrawCanvasRef.current;
+      const Context = Canvas.getContext("2d");
+
+      if (Context) {
+        const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
+
+        if (x && y) {
+          Context.lineTo(x, y);
+          Context.stroke();
         }
       }
     }
@@ -248,30 +235,15 @@ const Canvas = () => {
     }
   };
 
-  const drawMove = (event: MouseEvent) => {
-    if (!isDrawing) {
-      return;
-    }
-
-    if (DrawCanvasRef.current) {
-      const Canvas = DrawCanvasRef.current;
-      const Context = Canvas.getContext("2d");
-
-      if (Context) {
-        const { x, y } = getMousePos(event);
-
-        if (x && y) {
-          Context.lineTo(x, y);
-          Context.stroke();
-        }
-      }
-    }
-  };
-
   // Set Drawable Canvas Width and Height if images are loaded
   const style = imageMask && imageOutline ? getCanvasStyle() : {};
   // Brush settings
-  setBrush(brush.color, (brush.width + 1) * CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP);
+  setBrush(
+    DrawCanvasRef,
+    brush.color,
+    (brush.width + 1) * CANVAS_BASE_WIDTH,
+    CANVAS_BRUSH_CAP
+  );
 
   return (
     <div className="viewport">
@@ -297,9 +269,12 @@ const Canvas = () => {
         style={style}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
-        onMouseDown={startDrawing}
+        onMouseDown={mouseDown}
+        onTouchStart={touchStart}
+        onMouseMove={mouseMove}
+        onTouchMove={touchMove}
         onMouseUp={finishDrawing}
-        onMouseMove={drawMove}
+        onTouchEnd={finishDrawing}
         ref={DrawCanvasRef}
       ></canvas>
     </div>
