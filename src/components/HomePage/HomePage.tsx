@@ -1,7 +1,8 @@
 import "./HomePage.scss";
 import Button from "../Shared/Button/Button";
 import { MouseEvent, useEffect, useRef, useState } from "react";
-import {FiSettings} from 'react-icons/fi';
+import { FiSettings } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const IMAGE = "/images/220102background.png";
 const ZECIC = "/images/zecnoleg1.png"
@@ -34,12 +35,16 @@ const HomePage = () => {
                 <div className="loginformbody">
                     <img className="image1" src={ZECIC} />
                     <img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
-                    <Button onHover={changeAnimate} text={"Započni"}/>
+                    <Link to="/game">
+                        <Button onHover={changeAnimate} text={"Započni"} />
+                    </Link>
                 </div>
             </form>
-            <div className="hud">
-                <FiSettings size={30} className="hud-icon"/>
-            </div>
+            <Link to="/settings">
+                <div className="hud">
+                    <FiSettings size={30} className="hud-icon" />
+                </div>
+            </Link>
         </div>
 
     )
