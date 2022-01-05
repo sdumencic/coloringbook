@@ -11,6 +11,7 @@ html {
     /*! Framer bug */
     padding: 10px;
     text-align: center;
+    margin-top: 100px;
 }
 
 .settings .flex {
@@ -96,4 +97,30 @@ html {
     border: 4px solid $loginSubmit;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.hud {
+    position: absolute;
+    background-color: #3086d63a;
+    top: 10px;
+    border-radius: 25px;
+    z-index: 50;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: 3px solid $loginSubmit;
+    color: $text;
+    transition: 0.3s;
+}
+
+.hud:hover {
+    background-color: #ffffff9f;
+}
+
+.hud-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px;
 }
