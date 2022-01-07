@@ -1,45 +1,83 @@
 import "./Images.scss";
 import Image from "./Image/Image";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 
 const Images = () => {
-    const IMAGE = "/images/parrot.png";
+    const IMAGE = "/images/parrot.png";    
 
     return (
-        <div className="images-container row row-cols-md-3 g-4">
-            <div className="col">
-                <div className="card">
-                    <img src={IMAGE} className="card-img-top" alt="..."/>
-                    <div className ="card-body">
-                    <h5 className ="card-title">Papiga</h5>
-                    {/* <p className ="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p> */}
-                    </div>
+
+        <div className="card-deck">
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
                 </div>
             </div>
-            <div className="col">
-                <div className="card">
-                    <img src={IMAGE} className="card-img-top" alt="..."/>
-                    <div className ="card-body">
-                    <h5 className ="card-title">Papiga</h5>
-                    {/* <p className ="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p> */}
-                    </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
                 </div>
             </div>
-            <div className="col">
-                <div className="card">
-                    <img src={IMAGE} className="card-img-top" alt="..."/>
-                    <div className ="card-body">
-                    <h5 className ="card-title">Papiga</h5>
-                    {/* <p className ="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p> */}
-                    </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
                 </div>
             </div>
-            <div className="col">
-                <div className="card">
-                    <img src={IMAGE} className="card-img-top" alt="..."/>
-                    <div className ="card-body">
-                    <h5 className ="card-title">Papiga</h5>
-                    {/* <p className ="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p> */}
-                    </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card" style={{visibility: "hidden"}}>
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
+                </div>
+            </div>
+            <div className="card" style={{visibility: "hidden"}}>
+                <div className="card-body">
+                    <img className="card-img-top" src={IMAGE} alt="Card image cap" />
+                    <h5 className="card-title">Card title</h5>
                 </div>
             </div>
         </div>
