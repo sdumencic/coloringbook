@@ -1,12 +1,12 @@
-import './App.scss';
+import "./App.scss";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import GamePage from './components/GamePage/GamePage';
-import GameSelectPage from './components/GameSelectPage/GameSelectPage';
-import HomePage from './components/HomePage/HomePage';
-import SettingsPage from './components/SettingsPage/SettingsPage';
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import GamePage from "./components/GamePage/GamePage";
+import GameSelectPage from "./components/GameSelectPage/GameSelectPage";
+import HomePage from "./components/HomePage/HomePage";
+import SettingsPage from "./components/SettingsPage/SettingsPage";
 
 const App = () => {
   return (
@@ -20,6 +20,6 @@ const App = () => {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

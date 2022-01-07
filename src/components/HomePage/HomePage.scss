@@ -3,121 +3,121 @@ $text: #4357a5;
 $loginSubmit: #3085d6;
 $background: rgb(220, 255, 254);
 body {
-    background: rgb(220, 255, 254);
-    width: 100vw;
+  background: rgb(220, 255, 254);
+  width: 100vw;
 }
 
 .loginBackground {
-    height: 100vh;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left;
-    /* ili repeat i contain ili samo cover */
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  /* ili repeat i contain ili samo cover */
 }
 
 .loginform {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: white;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 20px;
-    width: 500px;
-    height: 500px;
-    right: 12%;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 20px;
+  width: 500px;
+  height: 500px;
+  right: 12%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .loginformheader {
-    padding: 0rem 4rem;
-    padding-bottom: 0rem;
-    max-height: 20%;
+  padding: 0rem 4rem;
+  padding-bottom: 0rem;
+  max-height: 20%;
 }
 
 .loginformbody {
-    padding: 0rem 4rem;
-    padding-bottom: 0rem;
-    position: relative;
-    height: 100%;
+  padding: 0rem 4rem;
+  padding-bottom: 0rem;
+  position: relative;
+  height: 100%;
 }
 
 .hud {
-    position: absolute;
-    background-color: #3086d63a;
-    top: 10px;
-    border-radius: 25px;
-    z-index: 50;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    border: 3px solid $loginSubmit;
-    color: $text;
-    transition: 0.3s;
+  position: absolute;
+  background-color: #3086d63a;
+  top: 10px;
+  border-radius: 25px;
+  z-index: 50;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border: 3px solid $loginSubmit;
+  color: $text;
+  transition: 0.3s;
 }
 
 .hud:hover {
-    background-color: #ffffff9f;
+  background-color: #ffffff9f;
 }
 
 .hud-icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 2px;
 }
 
 .title {
-    font-size: 4em;
-    // font-weight: initial;
-    color: $text;
-    margin-bottom: 0;
+  font-size: 4em;
+  // font-weight: initial;
+  color: $text;
+  margin-bottom: 0;
 }
 
 .image1 {
-    width: 200px;
-    height: 200px;
-    bottom: -40px;
-    position: absolute;
-    z-index: 1;
-    left: 25px;
-    top: 90px;
+  width: 200px;
+  height: 200px;
+  bottom: -40px;
+  position: absolute;
+  z-index: 1;
+  left: 25px;
+  top: 90px;
 }
 
 .image2 {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    bottom: -45px;
-    left: 70px;
-    top: 195px;
-    z-index: 2;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: -45px;
+  left: 70px;
+  top: 195px;
+  z-index: 2;
 }
 
 .leg {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate (45deg);
-    animation: leg 0.4s linear infinite;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate (45deg);
+  animation: leg 0.4s linear infinite;
 }
 
 @keyframes leg {
-    0% {
-        transform: rotate(0deg);
-        //transform-origin: bottom left;
-    }
-    50% {
-        transform: rotate(20deg);
-        //transform-origin: bottom left;
-    }
-    100% {
-        transform: rotate(0deg);
-        //transform-origin: bottom left;
-    }
+  0% {
+    transform: rotate(0deg);
+    //transform-origin: bottom left;
+  }
+  50% {
+    transform: rotate(20deg);
+    //transform-origin: bottom left;
+  }
+  100% {
+    transform: rotate(0deg);
+    //transform-origin: bottom left;
+  }
 }
