@@ -1,23 +1,23 @@
 $text: #4357a5;
 $loginSubmit: #3085d6;
 .loginsubmit {
-    margin: 10px 0 0 0;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    background: $loginSubmit;
-    font-size: 20px;
-    color: white;
-    width: 100%;
-    position: initial;
-    border: 2px solid currentColor;
-    font-size: 20px;
-    transition: .2s;
-    transform: ease-in;
-    margin-top: 70%;
+	margin: 10px 0 0 0;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	background: $loginSubmit;
+	font-size: 20px;
+	color: white;
+	width: 100%;
+	position: initial;
+	border: 2px solid currentColor;
+	font-size: 20px;
+	transition: 0.2s;
+	transform: ease-in;
+	margin-top: 70%;
 }
 
 .loginsubmit:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+	transform: scale(1.05);
+	cursor: pointer;
 }

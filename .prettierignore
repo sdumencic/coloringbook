@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+public
+dist
+node_modules
+
+package.json
+package-lock.json
+*.md
