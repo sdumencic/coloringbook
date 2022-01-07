@@ -1,6 +1,11 @@
 import "./GameSelectPage.scss";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import Images from "./Images/Images";
+import { Link } from 'react-router-dom';
+import Hud from "../Shared/Hud/Hud";
+import { FcSpeaker, FcVoicePresentation, FcUndo } from 'react-icons/fc';
+
+
 
 const GameSelectPage = () => {
 
@@ -23,23 +28,28 @@ const GameSelectPage = () => {
     }
 
     return (
-        <div className="loginBackground">
-            <form className="loginform">
-                <div className="loginformheader">
-                    <div className="buttons">
-                        <div className={`button ${active == 0 ? "active" : ""}`} onClick={changeToAll}>
-                            Sve životinje
-                        </div>
-                        <div className={`button ${active == 1 ? "active" : ""}`} onClick={changeToDomestic}>
-                            Domaće životinje
-                        </div>
-                        <div className={`button ${active == 2 ? "active" : ""}`} onClick={changeToWild}>     {/* "register-to-right" : "register-to-left" */}
-                            Divlje životinje
+        <div>
+            <div className="loginBackground">
+                <form className="loginform">
+                    <div className="loginformheader">
+                        <div className="buttons">
+                            <div className={`button ${active == 0 ? "active" : ""}`} onClick={changeToAll}>
+                                Sve životinje
+                            </div>
+                            <div className={`button ${active == 1 ? "active" : ""}`} onClick={changeToDomestic}>
+                                Domaće životinje
+                            </div>
+                            <div className={`button ${active == 2 ? "active" : ""}`} onClick={changeToWild}>     {/* "register-to-right" : "register-to-left" */}
+                                Divlje životinje
+                            </div>
                         </div>
                     </div>
-                </div>
-                {active == 0 ? <Images /> : ""}
-            </form>
+                    {active == 0 ? <Images /> : ""}
+                </form>
+            </div>
+            <Link to="/">
+                <Hud icon={<FcUndo size={30} className='hud-icon' />} />
+            </Link>
         </div>
     )
 }

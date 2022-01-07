@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FcSpeaker, FcVoicePresentation, FcUndo } from 'react-icons/fc';
 import { IoArrowUndo } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import Hud from "../Shared/Hud/Hud";
 
 const BritishFlag = 'images/BritishFlag.png';
 const CroatianFlag = 'images/CroatianFlag.png';
@@ -50,12 +51,10 @@ const SettingsPage = () => {
                 </div>
             </div>
             <Link to="/">
-                <div className="hud">
-                    <FcUndo size={30} className="hud-icon" />
-                </div>
+                <Hud icon={<FcUndo size={30} className='hud-icon' />} />
             </Link>
         </div>
-        )
+    )
 }
 
 export default SettingsPage;
