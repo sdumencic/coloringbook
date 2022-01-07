@@ -3,6 +3,7 @@ import Button from "../Shared/Button/Button";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import { FiSettings } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import Hud from "../Shared/Hud/Hud";
 
 const IMAGE = "/images/220102background.png";
 const ZECIC = "/images/zecnoleg1.png"
@@ -41,9 +42,7 @@ const HomePage = () => {
                 </div>
             </form>
             <Link to="/settings">
-                <div className="hud">
-                    <FiSettings size={30} className="hud-icon" />
-                </div>
+                <Hud icon={<FiSettings size={30} className='hud-icon' />} />
             </Link>
         </div>
 
