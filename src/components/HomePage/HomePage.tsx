@@ -10,41 +10,41 @@ const ZECIC = "/images/zecnoleg1.png";
 const ZECICLEG = "/images/zecleg1.png";
 
 const HomePage = () => {
-  const style = {
-    backgroundImage: `url(${IMAGE})`,
-  };
+	const style = {
+		backgroundImage: `url(${IMAGE})`,
+	};
 
-  const [change, setChange] = useState(false);
+	const [change, setChange] = useState(false);
 
-  const changeAnimate = () => {
-    if (change === true) {
-      setChange(false);
-    } else {
-      setChange(true);
-    }
-  };
+	const changeAnimate = () => {
+		if (change === true) {
+			setChange(false);
+		} else {
+			setChange(true);
+		}
+	};
 
-  return (
-    <div className="loginBackground" style={style}>
-      <form className="loginform">
-        <div className="loginformheader">
-          <h1 className="title" onClick={changeAnimate}>
-            Bojanka
-          </h1>
-        </div>
-        <div className="loginformbody">
-          <img className="image1" src={ZECIC} />
-          <img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
-          <Link to="/game">
-            <Button onHover={changeAnimate} text={"Započni"} />
-          </Link>
-        </div>
-      </form>
-      <Link to="/settings">
-        <Hud icon={<FiSettings size={30} className="hud-icon" />} />
-      </Link>
-    </div>
-  );
+	return (
+		<div className="loginBackground" style={style}>
+			<form className="loginform">
+				<div className="loginformheader">
+					<h1 className="title" onClick={changeAnimate}>
+						Bojanka
+					</h1>
+				</div>
+				<div className="loginformbody">
+					<img className="image1" src={ZECIC} />
+					<img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
+					<Link to="/game">
+						<Button onHover={changeAnimate} text={"Započni"} />
+					</Link>
+				</div>
+			</form>
+			<Link to="/settings">
+				<Hud icon={<FiSettings size={30} className="hud-icon" />} />
+			</Link>
+		</div>
+	);
 };
 
 export default HomePage;
