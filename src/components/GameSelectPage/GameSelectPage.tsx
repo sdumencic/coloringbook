@@ -27,36 +27,34 @@ const GameSelectPage = () => {
 	};
 
 	return (
-		<div>
-			<div className="loginBackground">
-				<form className="loginform">
-					<div className="loginformheader">
-						<div className="buttons">
-							<div
-								className={`button ${active == 0 ? "active" : ""}`}
-								onClick={changeToAll}
-							>
-								Sve životinje
-							</div>
-							<div
-								className={`button ${active == 1 ? "active" : ""}`}
-								onClick={changeToDomestic}
-							>
-								Domaće životinje
-							</div>
-							<div
-								className={`button ${active == 2 ? "active" : ""}`}
-								onClick={changeToWild}
-							>
-								{" "}
-								{/* "register-to-right" : "register-to-left" */}
-								Divlje životinje
-							</div>
+		<div className="selectBackground">
+			<form className="imgContainer">
+				<div className="loginformheader">
+					<div className="buttons">
+						<div
+							className={`button ${active == 0 ? "active" : ""}`}
+							onClick={changeToAll}
+						>
+							Sve životinje
+						</div>
+						<div
+							className={`button ${active == 1 ? "active" : ""}`}
+							onClick={changeToDomestic}
+						>
+							Domaće životinje
+						</div>
+						<div
+							className={`button ${active == 2 ? "active" : ""}`}
+							onClick={changeToWild}
+						>
+							{" "}
+							{/* "register-to-right" : "register-to-left" */}
+							Divlje životinje
 						</div>
 					</div>
-					{active == 0 ? <Images /> : ""}
-				</form>
-			</div>
+				</div>
+				{active == 0 ? <Images /> : ""}
+			</form>
 			<Link to="/">
 				<Hud icon={<FcUndo size={30} className="hud-icon" />} />
 			</Link>

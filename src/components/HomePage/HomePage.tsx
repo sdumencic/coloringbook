@@ -7,7 +7,7 @@ import { FiSettings } from "react-icons/fi";
 import Hud from "../Shared/Hud/Hud";
 import { Link } from "react-router-dom";
 
-const IMAGE = "/images/220102background.png";
+const IMAGE = "/images/220108background.png";
 const ZECIC = "/images/zecnoleg1.png";
 const ZECICLEG = "/images/zecleg1.png";
 
