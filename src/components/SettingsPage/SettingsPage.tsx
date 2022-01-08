@@ -2,7 +2,7 @@ import "./SettingsPage.scss";
 
 import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
 
-import Hud from "../Shared/FloatingButton/FloatingButton";
+import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { IoArrowUndo } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -66,7 +66,7 @@ const SettingsPage = () => {
 				</div>
 			</div>
 			<Link to="/">
-				<Hud
+				<FloatingButton
 					icon={<FcUndo size={30} className="floating-button-icon" />}
 					style={{ top: "10px", left: "10px" }}
 				/>

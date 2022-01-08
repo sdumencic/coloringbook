@@ -3,7 +3,7 @@ import "./GameSelectPage.scss";
 import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 
-import Hud from "../Shared/FloatingButton/FloatingButton";
+import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import Images from "./Images/Images";
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,7 @@ const GameSelectPage = () => {
 				{active == 0 ? <Images /> : ""}
 			</form>
 			<Link to="/">
-				<Hud
+				<FloatingButton
 					icon={<FcUndo size={30} className="floating-button-icon" />}
 					style={{ top: "10px", left: "10px" }}
 				/>
