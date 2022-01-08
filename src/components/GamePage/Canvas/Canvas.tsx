@@ -1,88 +1,293 @@
-import "./Canvas.module.css";
+import "./Canvas.scss";
 
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import {
+	CANVAS_BASE_WIDTH,
+	CANVAS_BRUSH_CAP,
+	CANVAS_HEIGHT,
+	CANVAS_WIDTH,
+	IMAGE_MASK_URL,
+	IMAGE_OUTLINE_URL,
+} from "./Constants";
+import {
+	CSSProperties,
+	MouseEvent,
+	TouchEvent,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
+import { clearCanvas, getMousePos, setBrush } from "./Helpers";
 
-const IMAGE = "/images/parrot.png";
+import { GlobalState } from "../../../redux/store";
+import { useSelector } from "react-redux";
 
 const Canvas = () => {
+	// Slices from the global state
+	const client = useSelector((state: GlobalState) => state.client);
+	const brush = useSelector((state: GlobalState) => state.brush);
+	const clear_Canvas = useSelector(
+		(state: GlobalState) => state.actions.clearCanvas
+	);
+
 	const [isDrawing, setIsDrawing] = useState(false);
 
-	const canvasRef = useRef<HTMLCanvasElement | null>(null);
-	const canvasContextRef = useRef<CanvasRenderingContext2D | null>(null);
+	/**
+	 * Canvas used to draw background image or color to it.
+	 */
+	const BGCanvasRef = useRef<HTMLCanvasElement | null>(null);
+	/**
+	 * Canvas used to display the animal and the manipulated drawing data.
+	 */
+	const CanvasRef = useRef<HTMLCanvasElement | null>(null);
+	/**
+	 * Canvas used to manipulate drawing data and convert it to image.
+	 */
+	const HiddenCanvasRef = useRef<HTMLCanvasElement | null>(null);
+	/**
+	 * Canvas used to intercept mouse.
+	 */
+	const DrawCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
+	// References to images
+	const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(
+		null
+	);
+	const [imageMask, setImageMask] = useState<HTMLImageElement | null>(null);
+
+	/**
+	 * This useEffect runs only on mount and unmount.
+	 * We only use this to load our initial image data.
+	 * Linter cant detect this use case which is why we have disable next-line at the end.
+	 */
 	useEffect(() => {
-		// Initialize the Canvas
-		if (canvasRef.current) {
-			canvasContextRef.current = canvasRef.current.getContext("2d");
+		const image_outline = new Image();
+		image_outline.src = IMAGE_OUTLINE_URL;
+		image_outline.onload = () => {
+			setImageOutline(image_outline);
+		};
 
-			//poveca density pixela
-			canvasRef.current.width = window.innerWidth * 2;
-			canvasRef.current.height = window.innerHeight * 2;
-			canvasRef.current.style.width = `${window.innerWidth}px`;
-			canvasRef.current.style.height = `${window.innerHeight}px`;
+		const image_mask = new Image();
+		image_mask.src = IMAGE_MASK_URL;
+		image_mask.onload = () => {
+			setImageMask(image_mask);
+		};
 
-			const image = new Image();
-			image.src = IMAGE;
-
-			//postavke kista
-			if (canvasContextRef.current) {
-				image.onload = () => {
-					canvasContextRef.current?.drawImage(image, 0, 0);
-				};
-				canvasContextRef.current.scale(2, 2);
-				canvasContextRef.current.lineCap = "round";
-				canvasContextRef.current.strokeStyle = "pink";
-				canvasContextRef.current.lineWidth = 40;
-			}
-		}
+		// eslint-disable-next-line
 	}, []);
 
-	const startDrawing = ({ nativeEvent }: MouseEvent) => {
-		const { offsetX, offsetY } = nativeEvent;
+	/**
+	 * Starts the render Loop after the images have been loaded
+	 */
+	useEffect(() => {
+		if (imageOutline && imageMask) {
+			window.requestAnimationFrame(renderFrame);
+		}
+		// eslint-disable-next-line
+	}, [imageOutline, imageMask]);
 
-		canvasContextRef.current?.beginPath();
-		canvasContextRef.current?.moveTo(offsetX, offsetY);
-		setIsDrawing(true);
+	/**
+	 *
+	 */
+	useEffect(() => {
+		console.log("Clearing canvas!");
+		clearCanvas(HiddenCanvasRef);
+	}, [clear_Canvas]);
+
+	const renderFrame = () => {
+		let Canvas: HTMLCanvasElement;
+		let Context: CanvasRenderingContext2D | null;
+
+		// Draw Background
+		if (BGCanvasRef.current) {
+			// Set references
+			Canvas = BGCanvasRef.current;
+			Context = Canvas.getContext("2d");
+
+			// TODO: Customizable color
+			if (Context) {
+				Context.fillStyle = "green";
+				Context.fillRect(0, 0, Canvas.width, Canvas.height);
+			}
+		}
+
+		// Draw Image
+		if (CanvasRef.current) {
+			Canvas = CanvasRef.current;
+			Context = Canvas.getContext("2d");
+
+			if (Context && imageMask && imageOutline) {
+				// Clear the canvas and draw the mask
+				Context.globalCompositeOperation = "source-over";
+				Context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+				Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+				// Fill in the drawing data
+				if (HiddenCanvasRef.current) {
+					Context.globalCompositeOperation = "source-in";
+					Context.drawImage(
+						HiddenCanvasRef.current,
+						0,
+						0,
+						CANVAS_WIDTH,
+						CANVAS_HEIGHT
+					);
+				}
+
+				// Draw outline and fill non painted parts with a mask
+				Context.globalCompositeOperation = "source-over";
+				Context.drawImage(imageOutline, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+				Context.globalCompositeOperation = "destination-over";
+				Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+			}
+		}
+
+		window.requestAnimationFrame(renderFrame);
 	};
 
-	const finishDrawing = () => {
-		canvasContextRef.current?.closePath();
-		setIsDrawing(false);
+	/**
+	 * Scales and positions the Rendering canvas
+	 */
+	const getCanvasStyle = (): CSSProperties => {
+		const properties: CSSProperties = {};
+
+		if (CanvasRef.current && DrawCanvasRef.current) {
+			if (client.height > client.width) {
+				properties.width = "100%";
+				properties.height = `${client.width}px`;
+				properties.top = `${(client.height - client.width) / 2}px`;
+			} else {
+				properties.height = "100%";
+				properties.width = `${client.height}px`;
+				properties.left = `${(client.width - client.height) / 2}px`;
+			}
+		}
+
+		return properties;
 	};
 
-	const draw = ({ nativeEvent }: MouseEvent) => {
+	const touchStart = (event: TouchEvent) => {
+		startDrawing(
+			event.nativeEvent.touches[0].clientX,
+			event.nativeEvent.touches[0].clientY
+		);
+	};
+
+	const mouseDown = (event: MouseEvent) => {
+		startDrawing(event.nativeEvent.clientX, event.nativeEvent.clientY);
+	};
+
+	const startDrawing = (clientX: number, clientY: number) => {
+		if (DrawCanvasRef.current) {
+			const Canvas = DrawCanvasRef.current;
+			const Context = Canvas.getContext("2d");
+
+			if (Context) {
+				// Get current mouse positions
+				const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
+
+				// If mouse position is allright, then begin line path
+				if (x && y) {
+					Context.beginPath();
+					Context.moveTo(x, y);
+					setIsDrawing(true);
+				}
+			}
+		}
+	};
+
+	const touchMove = (event: TouchEvent) => {
+		drawMove(
+			event.nativeEvent.touches[0].clientX,
+			event.nativeEvent.touches[0].clientY
+		);
+	};
+
+	const mouseMove = (event: MouseEvent) => {
+		drawMove(event.nativeEvent.clientX, event.nativeEvent.clientY);
+	};
+
+	const drawMove = (clientX: number, clientY: number) => {
 		if (!isDrawing) {
 			return;
 		}
-		const { offsetX, offsetY } = nativeEvent;
-		canvasContextRef.current?.lineTo(offsetX, offsetY);
-		canvasContextRef.current?.stroke();
+
+		if (DrawCanvasRef.current) {
+			const Canvas = DrawCanvasRef.current;
+			const Context = Canvas.getContext("2d");
+
+			if (Context) {
+				const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
+
+				if (x && y) {
+					Context.lineTo(x, y);
+					Context.stroke();
+				}
+			}
+		}
 	};
 
-	const clearCanvas = () => {
-		const canvas = canvasRef.current;
-		const context = canvas?.getContext("2d");
+	const finishDrawing = () => {
+		if (DrawCanvasRef.current && HiddenCanvasRef.current) {
+			const Canvas = DrawCanvasRef.current;
+			const HiddenCanvas = HiddenCanvasRef.current;
+			const Context = Canvas.getContext("2d");
+			const HiddenContext = HiddenCanvas.getContext("2d");
 
-		context!.fillStyle = "white";
-		context?.fillRect(0, 0, canvas!.width, canvas!.height);
+			if (Context && HiddenContext) {
+				// Stop drawing the path
+				Context.closePath();
+				setIsDrawing(false);
 
-		const image = new Image();
-		image.src = IMAGE;
-		image.onload = () => {
-			context?.drawImage(image, 0, 0);
-		};
+				HiddenContext.drawImage(Canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+				clearCanvas(DrawCanvasRef);
+			}
+		}
 	};
+
+	// Set Drawable Canvas Width and Height if images are loaded
+	const style = imageMask && imageOutline ? getCanvasStyle() : {};
+	// Brush settings
+	setBrush(
+		DrawCanvasRef,
+		brush.color,
+		(brush.width + 1) * CANVAS_BASE_WIDTH,
+		CANVAS_BRUSH_CAP
+	);
 
 	return (
-		<>
+		<div className="viewport">
 			<canvas
-				onMouseDown={startDrawing}
-				onMouseUp={finishDrawing}
-				onMouseMove={draw}
-				ref={canvasRef}
+				className="background"
+				height={client.height}
+				width={client.width}
+				ref={BGCanvasRef}
 			></canvas>
-			<button onClick={clearCanvas}>Brisi</button>
-		</>
+			<canvas
+				style={style}
+				width={CANVAS_WIDTH}
+				height={CANVAS_HEIGHT}
+				ref={CanvasRef}
+			></canvas>
+			<canvas
+				className="hidden"
+				width={CANVAS_WIDTH}
+				height={CANVAS_HEIGHT}
+				ref={HiddenCanvasRef}
+			></canvas>
+			<canvas
+				style={style}
+				width={CANVAS_WIDTH}
+				height={CANVAS_HEIGHT}
+				onMouseDown={mouseDown}
+				onTouchStart={touchStart}
+				onMouseMove={mouseMove}
+				onTouchMove={touchMove}
+				onMouseUp={finishDrawing}
+				onTouchEnd={finishDrawing}
+				ref={DrawCanvasRef}
+			></canvas>
+		</div>
 	);
 };
 

@@ -1,9 +1,11 @@
 import "./SettingsPage.scss";
-import { useState } from "react";
-import { FcSpeaker, FcVoicePresentation, FcUndo } from "react-icons/fc";
+
+import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
+
+import Hud from "../Shared/Hud/Hud";
 import { IoArrowUndo } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Hud from "../Shared/Hud/Hud";
+import { useState } from "react";
 
 const BritishFlag = "images/BritishFlag.png";
 const CroatianFlag = "images/CroatianFlag.png";

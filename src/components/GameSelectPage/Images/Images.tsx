@@ -1,6 +1,8 @@
 import "./Images.scss";
-import Image from "./Image/Image";
+
 import { MouseEvent, useEffect, useRef, useState } from "react";
+
+import Image from "./Image/Image";
 
 const Images = () => {
 	const IMAGE = "/images/parrot.png";
