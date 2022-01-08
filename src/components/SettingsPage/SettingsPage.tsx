@@ -7,6 +7,7 @@ import { GlobalState } from "../../redux/store";
 import Hud from "../Shared/Hud/Hud";
 import { Link } from "react-router-dom";
 import { SettingsTypes } from "../../redux/reducers/SettingsReducer";
+import { strings } from "../../util/language";
 
 const BritishFlag = "images/BritishFlag.png";
 const CroatianFlag = "images/CroatianFlag.png";
@@ -54,19 +55,19 @@ const SettingsPage = () => {
 					className={`item ${language !== "hr" ? "active" : ""}`}
 					onClick={() => flagClicked("hr")}
 				>
-					<img src={CroatianFlag} />
+					<img src={CroatianFlag} alt={strings[language].settingsPage.hr} />
 				</div>
 				<div
 					className={`item ${language !== "en" ? "active" : ""}`}
 					onClick={() => flagClicked("en")}
 				>
-					<img src={BritishFlag} />
+					<img src={BritishFlag} alt={strings[language].settingsPage.en} />
 				</div>
 				<div
 					className={`item ${language !== "de" ? "active" : ""}`}
 					onClick={() => flagClicked("de")}
 				>
-					<img src={GermanFlag} />
+					<img src={GermanFlag} alt={strings[language].settingsPage.de} />
 				</div>
 			</div>
 			<Link to="/">

@@ -36,14 +36,25 @@ const HomePage = () => {
 			<form className="loginform">
 				<div className="loginformheader">
 					<h1 className="title" onClick={changeAnimate}>
-						{strings[language].homepage.title}
+						{strings[language].homePage.title}
 					</h1>
 				</div>
 				<div className="loginformbody">
-					<img className="image1" src={ZECIC} />
-					<img className={`image2 ${change ? "leg" : " "}`} src={ZECICLEG} />
+					<img
+						className="image1"
+						src={ZECIC}
+						alt={strings[language].homePage.altImgRabbit}
+					/>
+					<img
+						className={`image2 ${change ? "leg" : " "}`}
+						src={ZECICLEG}
+						alt={strings[language].homePage.altImgRabbitLeg}
+					/>
 					<Link to="/game">
-						<Button onHover={changeAnimate} text={"Započni"} />
+						<Button
+							onHover={changeAnimate}
+							text={strings[language].homePage.start}
+						/>
 					</Link>
 				</div>
 			</form>

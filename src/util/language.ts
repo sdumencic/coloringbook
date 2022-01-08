@@ -8,18 +8,60 @@ type LangStringList = {
 
 export const strings: LangStringList = {
 	en: {
-		homepage: {
+		homePage: {
 			title: "Coloring book",
+			start: "Start",
+			altImgRabbit: "Rabbit",
+			altImgRabbitLeg: "Rabbit leg",
+		},
+		gameSelectPage: {
+			allAnimals: "All animals",
+			wildAnimals: "Wild animals",
+			domesticAnimals: "Domestic animals",
+		},
+		settingsPage: {
+			en: "English",
+			hr: "Croatian",
+			de: "German",
+			sound: "Sound",
 		},
 	},
 	hr: {
-		homepage: {
+		homePage: {
 			title: "Bojanka",
+			start: "Započni",
+			altImgRabbit: "Zec",
+			altImgRabbitLeg: "Zečeva noga",
+		},
+		gameSelectPage: {
+			allAnimals: "Sve životinje",
+			wildAnimals: "Divlje životinje",
+			domesticAnimals: "Domaće životinje",
+		},
+		settingsPage: {
+			en: "Engleski",
+			hr: "Hrvatski",
+			de: "Njemački",
+			sound: "Zvuk",
 		},
 	},
 	de: {
-		homepage: {
+		homePage: {
 			title: "Malbuch",
+			start: "Starten",
+			altImgRabbit: "Hase",
+			altImgRabbitLeg: "Das Bein vom Hasen",
+		},
+		gameSelectPage: {
+			allAnimals: "Alle Tiere",
+			wildAnimals: "Wildtiere",
+			domesticAnimals: "Haustiere",
+		},
+		settingsPage: {
+			en: "Englisch",
+			hr: "Kroatisch",
+			de: "Deutsch",
+			sound: "Ton",
 		},
 	},
 };
