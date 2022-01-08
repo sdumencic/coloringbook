@@ -4,7 +4,7 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 
 import Button from "./Button/StartButton";
 import { FiSettings } from "react-icons/fi";
-import Hud from "../Shared/FloatingButton/FloatingButton";
+import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { Link } from "react-router-dom";
 
 const IMAGE = "/images/220108background.png";
@@ -43,7 +43,7 @@ const HomePage = () => {
 				</div>
 			</form>
 			<Link to="/settings">
-				<Hud
+				<FloatingButton
 					icon={<FiSettings size={30} className="floating-button-icon" />}
 					style={{ top: "10px", right: "10px" }}
 				/>
