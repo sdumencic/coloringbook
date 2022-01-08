@@ -1,5 +1,6 @@
-import { MouseEventHandler } from "react";
 import "./Button.scss";
+
+import { MouseEventHandler } from "react";
 
 interface ButtonProps {
 	onHover?: MouseEventHandler<HTMLButtonElement>;

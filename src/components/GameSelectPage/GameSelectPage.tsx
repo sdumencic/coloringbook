@@ -1,9 +1,11 @@
 import "./GameSelectPage.scss";
+
+import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
 import { MouseEvent, useEffect, useRef, useState } from "react";
+
+import Hud from "../Shared/Hud/Hud";
 import Images from "./Images/Images";
 import { Link } from "react-router-dom";
-import Hud from "../Shared/Hud/Hud";
-import { FcSpeaker, FcVoicePresentation, FcUndo } from "react-icons/fc";
 
 const GameSelectPage = () => {
 	const [animals, setAnimals] = useState("All");

@@ -1,5 +1,7 @@
-import * as React from "react";
 import "./Hud.scss";
+
+import * as React from "react";
+
 import { FiSettings } from "react-icons/fi";
 
 const IMAGE = "/images/220102background.png";

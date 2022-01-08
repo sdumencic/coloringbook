@@ -1,9 +1,11 @@
 import "./HomePage.scss";
-import Button from "../Shared/Button/Button";
+
 import { MouseEvent, useEffect, useRef, useState } from "react";
+
+import Button from "../Shared/Button/Button";
 import { FiSettings } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import Hud from "../Shared/Hud/Hud";
+import { Link } from "react-router-dom";
 
 const IMAGE = "/images/220102background.png";
 const ZECIC = "/images/zecnoleg1.png";

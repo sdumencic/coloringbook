@@ -1,18 +1,14 @@
-import * as firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
 
+import * as firebase from "firebase/app";
+
 const firebaseConfig = {
 	apiKey: "",
-
 	authDomain: "",
-
 	projectId: "",
-
 	storageBucket: "",
-
 	messagingSenderId: "",
-
 	appId: "",
 };
 
