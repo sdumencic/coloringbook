@@ -2,6 +2,7 @@ import { ActionsState, actionsReducer } from "./reducers/ActionReducer";
 import { BrushState, brushReducer } from "./reducers/BrushReducer";
 import { ClientState, clientReducer } from "./reducers/ClientReducer";
 import { GameState, gameReducer } from "./reducers/GameReducer";
+import { SettingsState, settingsReducer } from "./reducers/SettingsReducer";
 import { combineReducers, createStore } from "redux";
 
 /**
@@ -23,6 +24,7 @@ export type GlobalState = {
 	brush: BrushState;
 	client: ClientState;
 	game: GameState;
+	settings: SettingsState;
 };
 
 export const rootReducer = combineReducers<GlobalState>({
@@ -30,6 +32,7 @@ export const rootReducer = combineReducers<GlobalState>({
 	brush: brushReducer,
 	client: clientReducer,
 	game: gameReducer,
+	settings: settingsReducer,
 });
 
 export const store = createStore(
