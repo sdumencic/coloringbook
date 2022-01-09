@@ -1,21 +1,22 @@
+$easy: rgba(177, 224, 65, 0.452);
+$medium: rgba(255, 186, 102, 0.7);
+$hard: rgba(197, 55, 55, 0.452);
+$color: rgb(247, 243, 235);
+$text: #4357a5;
+$loginSubmit: #3085d6;
+
 .card {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
 	word-wrap: break-word;
-	background-color: #fff;
+	background-color: white;
 	background-clip: border-box;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
-}
-
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
+	flex: 0 0 20%;
+	margin: 20px 20px;
 }
 
 .card-body {
@@ -25,47 +26,48 @@
 
 .card-title {
 	margin-bottom: 0.5rem;
-}
-
-.h5,
-h5 {
-	font-size: 1.25rem;
-}
-
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+	text-align: center;
 	margin-top: 0;
 	margin-bottom: 0.5rem;
 	font-weight: 500;
 	line-height: 1.2;
+	font-size: 1.25rem;
+	font-weight: 700;
 }
 
-.card-text:last-child {
-	margin-bottom: 0;
-}
-
-p {
-	margin-top: 0;
-	margin-bottom: 1rem;
-}
-
-.img-wrap {
-	overflow: hidden;
-	opacity: 0.9;
+.card-img-top {
 	width: 100%;
-	height: 100%;
+	border-top-left-radius: calc(0.25rem - 1px);
+	border-top-right-radius: calc(0.25rem - 1px);
 }
 
-.img-wrap img {
+.difficulty {
+	text-align: center;
+	background-color: $medium;
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
+	padding: 4px 0;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	justify-content: space-between;
+
+	.text {
+		text-align: left;
+		margin-left: 10px;
+	}
+
+	.stars {
+		margin-top: -1px;
+		margin-right: 10px;
+	}
+}
+
+.icon-margin {
+	line-height: 20px;
+	vertical-align: middle;
+	color: $text;
 }
