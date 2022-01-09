@@ -4,12 +4,16 @@ import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
+import { GlobalState } from "../../redux/store";
 import Images from "./Images/Images";
 import { Link } from "react-router-dom";
+import { strings } from "../../util/language";
+import { useSelector } from "react-redux";
 
 const GameSelectPage = () => {
 	const [animals, setAnimals] = useState("All");
 	const [active, setActive] = useState(0);
+	const { language } = useSelector((state: GlobalState) => state.settings);
 
 	const changeToAll = () => {
 		setAnimals("All");
@@ -35,13 +39,13 @@ const GameSelectPage = () => {
 							className={`button ${active == 0 ? "active" : ""}`}
 							onClick={changeToAll}
 						>
-							Sve životinje
+							{strings[language].gameSelectPage.allAnimals}
 						</div>
 						<div
 							className={`button ${active == 1 ? "active" : ""}`}
 							onClick={changeToDomestic}
 						>
-							Domaće životinje
+							{strings[language].gameSelectPage.domesticAnimals}
 						</div>
 						<div
 							className={`button ${active == 2 ? "active" : ""}`}
@@ -49,7 +53,7 @@ const GameSelectPage = () => {
 						>
 							{" "}
 							{/* "register-to-right" : "register-to-left" */}
-							Divlje životinje
+							{strings[language].gameSelectPage.wildAnimals}
 						</div>
 					</div>
 				</div>

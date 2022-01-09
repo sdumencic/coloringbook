@@ -1,29 +1,35 @@
 import "./SettingsPage.scss";
 
 import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
+import { useDispatch, useSelector } from "react-redux";
 
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
+import { GlobalState } from "../../redux/store";
 import { IoArrowUndo } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { SettingsTypes } from "../../redux/reducers/SettingsReducer";
+import { strings } from "../../util/language";
 
 const BritishFlag = "images/BritishFlag.png";
 const CroatianFlag = "images/CroatianFlag.png";
 const GermanFlag = "images/GermanFlag.png";
 
 const SettingsPage = () => {
-	const [language, setLanguage] = useState("hr");
+	const dispatch = useDispatch();
+	const { sound_volume, language } = useSelector(
+		(state: GlobalState) => state.settings
+	);
 
 	const flagClicked = (country: string) => {
 		if (country !== language) {
-			//localStorage.setItem('language', country);
-			//dispatch({ type: SettingsTypes.Language, payload: country });
+			localStorage.setItem("language", country);
+			dispatch({ type: SettingsTypes.Language, payload: country });
 		}
 	};
 
 	const sliderChange = (event: any) => {
-		localStorage.setItem("duration", event.target.value);
-		//dispatch({ type: SettingsTypes.AnimationDuration, payload: event.target.value });
+		localStorage.setItem("sound_volume", event.target.value);
+		dispatch({ type: SettingsTypes.SoundVolume, payload: event.target.value });
 	};
 
 	return (
@@ -34,10 +40,10 @@ const SettingsPage = () => {
 			<div className="animation">
 				<input
 					type="range"
-					min="0.1"
-					max="2"
-					step="0.1"
-					value="1"
+					min="0"
+					max="100"
+					step="1"
+					value={sound_volume}
 					className="slider"
 					onChange={sliderChange}
 				/>
@@ -50,19 +56,19 @@ const SettingsPage = () => {
 					className={`item ${language !== "hr" ? "active" : ""}`}
 					onClick={() => flagClicked("hr")}
 				>
-					<img src={CroatianFlag} />
+					<img src={CroatianFlag} alt={strings[language].settingsPage.hr} />
 				</div>
 				<div
 					className={`item ${language !== "en" ? "active" : ""}`}
 					onClick={() => flagClicked("en")}
 				>
-					<img src={BritishFlag} />
+					<img src={BritishFlag} alt={strings[language].settingsPage.en} />
 				</div>
 				<div
 					className={`item ${language !== "de" ? "active" : ""}`}
 					onClick={() => flagClicked("de")}
 				>
-					<img src={GermanFlag} />
+					<img src={GermanFlag} alt={strings[language].settingsPage.de} />
 				</div>
 			</div>
 			<Link to="/">
