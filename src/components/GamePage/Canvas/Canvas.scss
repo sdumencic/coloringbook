@@ -30,7 +30,6 @@ button {
 
 	// FIXME: Currently not hidden because it is very useful for debugging :)
 	.hidden {
-		width: 200px;
-		height: 200px;
+		display: hidden;
 	}
 }

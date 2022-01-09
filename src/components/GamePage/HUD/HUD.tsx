@@ -1,5 +1,6 @@
 import "./HUD.scss";
 
+import { FcFullTrash, FcLeft } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ActionsTypes } from "../../../redux/reducers/ActionReducer";
@@ -61,7 +62,8 @@ const HUD = () => {
 		));
 
 		return (
-			<div className="HUD" style={{ left: "10px", top: "calc(80px + 5vw)" }}>
+			// TODO: Make these styles responsive
+			<div className="HUD" style={{ left: "10px", top: "120px" }}>
 				<h2>Boja</h2>
 				{colors}
 			</div>
@@ -85,6 +87,7 @@ const HUD = () => {
 
 		return (
 			<div className="HUD" style={{ right: "10px", top: "120px" }}>
+				<h2>Kist</h2>
 				{widths}
 			</div>
 		);

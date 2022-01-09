@@ -29,16 +29,15 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		//font-size: 16px;
-		font-size: 1rem;
+		font-size: 30px;
 		margin: 4px 5px 4px 5px;
 		border-radius: 50%;
 		vertical-align: middle;
 		cursor: pointer;
-		min-width: 50px;
-		min-height: 50px;
-		width: 5vw;
-		height: 5vw;
+		// TODO: Make responsive
+		// NOTE: Must fit all translations
+		min-width: 75px;
+		min-height: 75px;
 
 		&:disabled {
 			background-color: gray;
