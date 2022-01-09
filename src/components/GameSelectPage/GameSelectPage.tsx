@@ -3,6 +3,7 @@ import "./GameSelectPage.scss";
 import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 
+import { FiSettings } from "react-icons/fi";
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../redux/store";
 import Images from "./Images/Images";
@@ -63,6 +64,12 @@ const GameSelectPage = () => {
 				<FloatingButton
 					icon={<FcUndo size={30} className="floating-button-icon" />}
 					style={{ top: "10px", left: "10px" }}
+				/>
+			</Link>
+			<Link to="/settings">
+				<FloatingButton
+					icon={<FiSettings size={30} className="floating-button-icon" />}
+					style={{ top: "10px", right: "10px" }}
 				/>
 			</Link>
 		</div>
