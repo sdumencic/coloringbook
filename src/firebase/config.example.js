@@ -1,8 +1,10 @@
-import "firebase/storage";
-import "firebase/firestore";
-
 import * as firebase from "firebase/app";
 
+import { ref as databaseRef, getDatabase } from "firebase/database";
+
+import { getStorage } from "firebase/storage";
+
+// NOTE: Put in the correct API key etc. and rename this file to config.js
 const firebaseConfig = {
 	apiKey: "",
 	authDomain: "",
@@ -14,7 +16,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
-
-export { projectStorage, projectFirestore };
+export const projectDatabase = databaseRef(getDatabase());
+export const projectStorage = getStorage();
