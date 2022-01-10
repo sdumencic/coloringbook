@@ -19,6 +19,7 @@ const AnimalGrid = (props: AnimalGridProps) => {
 					key={`${animal}.${index}`}
 					difficulty={animal.difficulty}
 					name={animal.name[language]}
+					image={animal.url.small}
 				/>
 			))}
 		</div>

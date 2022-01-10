@@ -8,7 +8,7 @@ export type Animal = {
 	colors: string[];
 	category: string;
 	name: JSONStringList;
-	urls: JSONStringList;
+	url: JSONStringList;
 };
 
 export type AnimalsState = Animal[];

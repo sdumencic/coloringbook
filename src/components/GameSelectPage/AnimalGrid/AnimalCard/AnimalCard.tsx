@@ -10,13 +10,11 @@ interface ImageProps {
 	style?: React.CSSProperties;
 	difficulty: number;
 	name: string;
+	image: string;
 }
 
 const AnimalCard = (props: ImageProps) => {
 	const { language } = useSelector((state: GlobalState) => state.settings);
-
-	// TODO: Image should be selectable
-	const IMAGE = "/images/papiga_small1.png";
 
 	const difficultyClass = ["easy", "medium", "hard"];
 
@@ -29,7 +27,7 @@ const AnimalCard = (props: ImageProps) => {
 					</div>
 					<div className="stars">{"⭐".repeat(props.difficulty + 1)}</div>
 				</div>
-				<img className="card-img-top" src={IMAGE} alt="Card image cap" />
+				<img className="card-img-top" src={props.image} alt="Card image cap" />
 				<h5 className="card-title">{props.name}</h5>
 			</div>
 		</div>
