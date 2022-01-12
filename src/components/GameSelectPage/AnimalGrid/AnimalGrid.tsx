@@ -16,6 +16,7 @@ const AnimalGrid = (props: AnimalGridProps) => {
 		<div className="card-deck">
 			{props.animals.map((animal, index) => (
 				<AnimalCard
+					id={animal.id}
 					key={`${animal}.${index}`}
 					difficulty={animal.difficulty}
 					name={animal.name[language]}

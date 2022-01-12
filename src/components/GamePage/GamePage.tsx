@@ -1,33 +1,59 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
 
 import { BrushTypes } from "../../redux/reducers/BrushReducer";
 import Canvas from "./Canvas/Canvas";
+import { GameTypes } from "../../redux/reducers/GameReducer";
 import { GlobalState } from "../../redux/store";
 import HUD from "./HUD/HUD";
-import { useParams } from "react-router";
+import { useEffect } from "react";
 
 const GamePage = () => {
+	// Hooks
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	// Load information from the parameters
 	const { id } = useParams(); // Fetch the picture id
-
-	// Send global info
-	const dispatch = useDispatch();
+	const numId = isNaN(Number(id)) ? 0 : Number(id);
 
 	// Load info from the global state
 	const game = useSelector((state: GlobalState) => state.game);
 	const brush = useSelector((state: GlobalState) => state.brush);
+	const animals = useSelector((state: GlobalState) => state.animals);
 
-	// Check that everything is okie dokie
-	if (!game.brushColors.includes(brush.color)) {
+	useEffect(() => {
+		// Animals are not loaded, go to the selection screen
+		if (numId >= animals.length) {
+			navigate("/game");
+		}
+	}, []);
+
+	if (numId >= animals.length) {
+		return null;
+	}
+
+	if (game.selectedId !== numId) {
+		dispatch({
+			type: GameTypes.SelectedId,
+			payload: numId,
+		});
+	}
+
+	// Check that brush is ok
+	if (!animals[numId].colors.includes(brush.color)) {
 		dispatch({
 			type: BrushTypes.Color,
-			payload: game.brushColors[0],
+			payload: animals[numId].colors[0],
 		});
 	}
 
 	return (
 		<>
-			<Canvas />
+			<Canvas
+				mask_url={animals[numId].url.mask}
+				outline_url={animals[numId].url.outline}
+			/>
 			<HUD />
 		</>
 	);

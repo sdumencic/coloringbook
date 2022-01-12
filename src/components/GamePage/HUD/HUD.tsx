@@ -14,9 +14,8 @@ const HUD = () => {
 
 	// Load info from the global state
 	const client = useSelector((state: GlobalState) => state.client);
-	const brushColors = useSelector(
-		(state: GlobalState) => state.game.brushColors
-	);
+	const selectedId = useSelector((state: GlobalState) => state.game.selectedId);
+	const animals = useSelector((state: GlobalState) => state.animals);
 	const brush = useSelector((state: GlobalState) => state.brush);
 
 	/**
@@ -26,7 +25,7 @@ const HUD = () => {
 	const setColor = (index: number) => {
 		dispatch({
 			type: BrushTypes.Color,
-			payload: brushColors[index],
+			payload: animals[selectedId].colors[index],
 		});
 	};
 
@@ -48,7 +47,7 @@ const HUD = () => {
 	};
 
 	const renderColors = () => {
-		const colors = brushColors.map((color, index) => (
+		const colors = animals[selectedId].colors.map((color, index) => (
 			<Fragment key={`brushColors-${color}-${index}`}>
 				<button
 					type="button"
