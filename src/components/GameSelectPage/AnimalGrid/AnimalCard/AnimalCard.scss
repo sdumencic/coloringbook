@@ -20,8 +20,10 @@ $loginSubmit: #3085d6;
 }
 
 .card-body {
+	color: black;
 	flex: 1 1 auto;
 	padding: 1rem 1rem;
+	text-decoration: none;
 }
 
 .card-title {
@@ -43,7 +45,6 @@ $loginSubmit: #3085d6;
 
 .difficulty {
 	text-align: center;
-	background-color: $medium;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -63,6 +64,18 @@ $loginSubmit: #3085d6;
 	.stars {
 		margin-top: -1px;
 		margin-right: 10px;
+	}
+
+	&.easy {
+		background-color: $easy;
+	}
+
+	&.medium {
+		background-color: $medium;
+	}
+
+	&.hard {
+		background-color: $hard;
 	}
 }
 

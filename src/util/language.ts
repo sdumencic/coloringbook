@@ -1,12 +1,6 @@
-type Language = {
-	navbar: string;
-};
+import { JSONStringList } from "./misc";
 
-type LangStringList = {
-	[key: string]: any;
-};
-
-export const strings: LangStringList = {
+export const strings: JSONStringList = {
 	en: {
 		homePage: {
 			title: "Coloring book",
@@ -18,6 +12,7 @@ export const strings: LangStringList = {
 			allAnimals: "All animals",
 			wildAnimals: "Wild animals",
 			domesticAnimals: "Domestic animals",
+			difficulty: ["Easy", "Medium", "Hard"],
 		},
 		settingsPage: {
 			en: "English",
@@ -40,6 +35,7 @@ export const strings: LangStringList = {
 			allAnimals: "Sve životinje",
 			wildAnimals: "Divlje životinje",
 			domesticAnimals: "Domaće životinje",
+			difficulty: ["Lako", "Srednje", "Teško"],
 		},
 		settingsPage: {
 			en: "Engleski",
@@ -62,6 +58,7 @@ export const strings: LangStringList = {
 			allAnimals: "Alle Tiere",
 			wildAnimals: "Wildtiere",
 			domesticAnimals: "Haustiere",
+			difficulty: ["Einfach", "Mittel", "Schwer"],
 		},
 		settingsPage: {
 			en: "Englisch",

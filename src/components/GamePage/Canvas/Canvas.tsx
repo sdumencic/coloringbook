@@ -5,8 +5,6 @@ import {
 	CANVAS_BRUSH_CAP,
 	CANVAS_HEIGHT,
 	CANVAS_WIDTH,
-	IMAGE_MASK_URL,
-	IMAGE_OUTLINE_URL,
 } from "./Constants";
 import {
 	CSSProperties,
@@ -21,7 +19,12 @@ import { clearCanvas, getMousePos, setBrush } from "./Helpers";
 import { GlobalState } from "../../../redux/store";
 import { useSelector } from "react-redux";
 
-const Canvas = () => {
+interface CanvasProps {
+	outline_url: string;
+	mask_url: string;
+}
+
+const Canvas = (props: CanvasProps) => {
 	// Slices from the global state
 	const client = useSelector((state: GlobalState) => state.client);
 	const brush = useSelector((state: GlobalState) => state.brush);
@@ -60,17 +63,21 @@ const Canvas = () => {
 	 * Linter cant detect this use case which is why we have disable next-line at the end.
 	 */
 	useEffect(() => {
-		const image_outline = new Image();
-		image_outline.src = IMAGE_OUTLINE_URL;
-		image_outline.onload = () => {
-			setImageOutline(image_outline);
-		};
+		if (!imageOutline) {
+			const image_outline = new Image();
+			image_outline.src = props.outline_url;
+			image_outline.onload = () => {
+				setImageOutline(image_outline);
+			};
+		}
 
-		const image_mask = new Image();
-		image_mask.src = IMAGE_MASK_URL;
-		image_mask.onload = () => {
-			setImageMask(image_mask);
-		};
+		if (!imageMask) {
+			const image_mask = new Image();
+			image_mask.src = props.mask_url;
+			image_mask.onload = () => {
+				setImageMask(image_mask);
+			};
+		}
 
 		// eslint-disable-next-line
 	}, []);
@@ -86,10 +93,9 @@ const Canvas = () => {
 	}, [imageOutline, imageMask]);
 
 	/**
-	 *
+	 * Used for clearing canvas
 	 */
 	useEffect(() => {
-		console.log("Clearing canvas!");
 		clearCanvas(HiddenCanvasRef);
 	}, [clear_Canvas]);
 

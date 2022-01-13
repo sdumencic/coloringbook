@@ -3,24 +3,18 @@ import { ActionMap } from "../store";
 // TODO: Actually create this
 //? State
 export type GameState = {
-	/**
-	 * Represents the available brush colors.
-	 */
-	brushColors: (string | CanvasGradient | CanvasPattern)[];
+	selectedId: number;
 };
 const initialState: GameState = {
-	// FIXME: This should be []
-	brushColors: ["red", "green", "blue"],
+	selectedId: 0,
 };
 
 //? Action
 export enum GameTypes {
-	Weight = "BRUSH_WEIGHT",
-	Color = "BRUSH_COLOR",
+	SelectedId = "GAME_ID",
 }
 type GamePayload = {
-	[GameTypes.Weight]: 0 | 1 | 2;
-	[GameTypes.Color]: string | CanvasGradient | CanvasPattern;
+	[GameTypes.SelectedId]: number;
 };
 export type GameActions = ActionMap<GamePayload>[keyof ActionMap<GamePayload>];
 
@@ -29,15 +23,10 @@ export const gameReducer = (
 	action: GameActions
 ) => {
 	switch (action.type) {
-		case GameTypes.Weight:
+		case GameTypes.SelectedId:
 			return {
 				...state,
-				weight: action.payload,
-			};
-		case GameTypes.Color:
-			return {
-				...state,
-				color: action.payload,
+				selectedId: action.payload,
 			};
 		default:
 			return state;
