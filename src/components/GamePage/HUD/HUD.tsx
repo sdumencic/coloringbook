@@ -8,6 +8,12 @@ import { BrushTypes } from "../../../redux/reducers/BrushReducer";
 import { Fragment } from "react";
 import { GlobalState } from "../../../redux/store";
 import { Link } from "react-router-dom";
+import { BsTrash } from "react-icons/bs";
+import { ImUndo2 } from "react-icons/im";
+
+const IMAGE1 = "/images/small.png";
+const IMAGE2 = "/images/medium.png";
+const IMAGE3 = "/images/big.png";
 
 const HUD = () => {
 	// Redux dispatcher
@@ -71,7 +77,7 @@ const HUD = () => {
 	};
 
 	const renderWidths = () => {
-		const widthNames = ["M", "S", "V"];
+		const widthNames = [IMAGE1, IMAGE2, IMAGE3];
 		const widths = widthNames.map((width, index) => (
 			<Fragment key={`brushWidths-${width}-${index}`}>
 				<button
@@ -79,7 +85,7 @@ const HUD = () => {
 					className={`back ${brush.width === index ? "selected" : ""}`}
 					onClick={() => setWidth(index)}
 				>
-					{width}
+					<img className="width-img" src={width} />
 				</button>
 				<br />
 			</Fragment>
@@ -102,11 +108,11 @@ const HUD = () => {
 			<div className="HUD" style={{ left: "10px" }}>
 				<Link to="/">
 					<button type="button" className="back">
-						◀
+						<ImUndo2 size={30} />
 					</button>
 				</Link>
 				<button type="button" onClick={clearCanvas} className="delete">
-					♻
+					<BsTrash size={30} />
 				</button>
 			</div>
 		);

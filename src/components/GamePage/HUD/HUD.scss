@@ -17,7 +17,6 @@
 
 	h2 {
 		text-align: center;
-		text-shadow: white 0px 0px 10px;
 	}
 
 	button {
@@ -126,4 +125,9 @@
 		);
 	background-blend-mode: multiply;
 	border: 2px solid #37230d;
+}
+
+.width-img {
+	width: 50px;
+	vertical-align: inherit;
 }

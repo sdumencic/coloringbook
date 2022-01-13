@@ -105,7 +105,7 @@ const Canvas = () => {
 
 			// TODO: Customizable color
 			if (Context) {
-				Context.fillStyle = "green";
+				Context.fillStyle = "rgb(220,255,244)";
 				Context.fillRect(0, 0, Canvas.width, Canvas.height);
 			}
 		}
