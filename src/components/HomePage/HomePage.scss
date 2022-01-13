@@ -34,8 +34,6 @@ body {
 }
 
 .loginformheader {
-	padding: 0rem 4rem;
-	padding-bottom: 0rem;
 	max-height: 20%;
 }
 
@@ -46,37 +44,11 @@ body {
 	height: 100%;
 }
 
-.hud {
-	position: absolute;
-	background-color: #3086d63a;
-	top: 10px;
-	border-radius: 25px;
-	z-index: 50;
-	right: 10px;
-	width: 50px;
-	height: 50px;
-	text-align: center;
-	line-height: 50px;
-	border: 3px solid $loginSubmit;
-	color: $text;
-	transition: 0.3s;
-}
-
-.hud:hover {
-	background-color: #ffffff9f;
-}
-
-.hud-icon {
-	display: inline-block;
-	vertical-align: middle;
-	margin-bottom: 2px;
-}
-
 .title {
 	font-size: 4em;
-	// font-weight: initial;
 	color: $text;
 	margin-bottom: 0;
+	text-align: center;
 }
 
 .image1 {

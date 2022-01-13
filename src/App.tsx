@@ -1,7 +1,8 @@
 import "./App.scss";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
+import { ActionsTypes } from "./redux/reducers/ActionReducer";
 import { ClientTypes } from "./redux/reducers/ClientReducer";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import GamePage from "./components/GamePage/GamePage";
@@ -14,6 +15,7 @@ import { useEffect } from "react";
 
 const App = () => {
 	const dispatch = useDispatch();
+	const { pathname } = useLocation();
 
 	// On window resize, update the dimensions in global state
 	useEffect(() => {
@@ -36,16 +38,19 @@ const App = () => {
 		// eslint-disable-next-line
 	}, []);
 
+	// Because router v6 does not expose history, we use this hack to track length
+	useEffect(() => {
+		dispatch({ type: ActionsTypes.LocationCount });
+	}, [pathname]);
+
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/settings" element={<SettingsPage />} />
-				<Route path="/game" element={<GameSelectPage />} />
-				<Route path="/game/:id" element={<GamePage />} />
-				<Route path="*" element={<ErrorPage />} />
-			</Routes>
-		</BrowserRouter>
+		<Routes>
+			<Route path="/" element={<HomePage />} />
+			<Route path="/settings" element={<SettingsPage />} />
+			<Route path="/game" element={<GameSelectPage />} />
+			<Route path="/game/:id" element={<GamePage />} />
+			<Route path="*" element={<ErrorPage />} />
+		</Routes>
 	);
 };
 

@@ -1,7 +1,9 @@
 import { ActionsState, actionsReducer } from "./reducers/ActionReducer";
+import { AnimalsState, animalsReducer } from "./reducers/AnimalsReducer";
 import { BrushState, brushReducer } from "./reducers/BrushReducer";
 import { ClientState, clientReducer } from "./reducers/ClientReducer";
 import { GameState, gameReducer } from "./reducers/GameReducer";
+import { SettingsState, settingsReducer } from "./reducers/SettingsReducer";
 import { combineReducers, createStore } from "redux";
 
 /**
@@ -20,16 +22,20 @@ export type ActionMap<M extends { [index: string]: any }> = {
 
 export type GlobalState = {
 	actions: ActionsState;
+	animals: AnimalsState;
 	brush: BrushState;
 	client: ClientState;
 	game: GameState;
+	settings: SettingsState;
 };
 
 export const rootReducer = combineReducers<GlobalState>({
 	actions: actionsReducer,
+	animals: animalsReducer,
 	brush: brushReducer,
 	client: clientReducer,
 	game: gameReducer,
+	settings: settingsReducer,
 });
 
 export const store = createStore(
