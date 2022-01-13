@@ -1,12 +1,12 @@
 import "./SettingsPage.scss";
 
 import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../redux/store";
 import { IoArrowUndo } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import { SettingsTypes } from "../../redux/reducers/SettingsReducer";
 import { strings } from "../../util/language";
 
@@ -15,6 +15,7 @@ const CroatianFlag = "images/CroatianFlag.png";
 const GermanFlag = "images/GermanFlag.png";
 
 const SettingsPage = () => {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { sound_volume, language } = useSelector(
 		(state: GlobalState) => state.settings
@@ -71,12 +72,11 @@ const SettingsPage = () => {
 					<img src={GermanFlag} alt={strings[language].settingsPage.de} />
 				</div>
 			</div>
-			<Link to="/">
-				<FloatingButton
-					icon={<FcUndo size={30} className="floating-button-icon" />}
-					style={{ top: "10px", left: "10px" }}
-				/>
-			</Link>
+			<FloatingButton
+				icon={<FcUndo size={30} className="floating-button-icon" />}
+				style={{ top: "10px", left: "10px" }}
+				onClick={() => navigate(-1)}
+			/>
 		</div>
 	);
 };

@@ -96,7 +96,7 @@ const HUD = () => {
 	const renderToolbar = () => {
 		return (
 			<div className="HUD" style={{ left: "10px" }}>
-				<Link to="/">
+				<Link to="/game">
 					<button type="button" className="back">
 						◀
 					</button>
