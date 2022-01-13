@@ -2,7 +2,7 @@ $color: rgb(247, 243, 235);
 $text: #4357a5;
 $loginSubmit: #3085d6;
 $background: rgb(220, 255, 254);
-.loginBackground {
+.selectBackground {
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -13,7 +13,7 @@ body {
 	background-color: $background;
 }
 
-.loginform {
+.imgContainer {
 	position: absolute;
 	display: flex;
 	flex-direction: column;

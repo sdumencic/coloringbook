@@ -12,7 +12,7 @@ export type BrushState = {
 	 * Represents the color of the brush.
 	 * Can be an RGB string, canvas gradient or pattern.
 	 */
-	color: string | CanvasGradient | CanvasPattern;
+	color: string;
 };
 const initialState: BrushState = {
 	width: 1,
@@ -26,7 +26,7 @@ export enum BrushTypes {
 }
 type BrushPayload = {
 	[BrushTypes.Width]: 0 | 1 | 2;
-	[BrushTypes.Color]: string | CanvasGradient | CanvasPattern;
+	[BrushTypes.Color]: string;
 };
 export type BrushActions =
 	ActionMap<BrushPayload>[keyof ActionMap<BrushPayload>];

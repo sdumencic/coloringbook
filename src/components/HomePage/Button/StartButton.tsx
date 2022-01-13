@@ -1,5 +1,6 @@
-import "./Button.scss";
+import "./StartButton.scss";
 
+import { BsFillPlayFill } from "react-icons/bs";
 import { MouseEventHandler } from "react";
 
 interface ButtonProps {
@@ -7,7 +8,7 @@ interface ButtonProps {
 	text?: string;
 }
 
-const Button = (props: ButtonProps) => {
+const StartButton = (props: ButtonProps) => {
 	return (
 		// TODO: Make responsive
 		<button
@@ -17,8 +18,9 @@ const Button = (props: ButtonProps) => {
 			onMouseLeave={props.onHover}
 		>
 			{props.text}
+			<BsFillPlayFill className="floating-button-margin" />
 		</button>
 	);
 };
 
-export default Button;
+export default StartButton;

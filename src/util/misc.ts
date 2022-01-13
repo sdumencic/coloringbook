@@ -12,3 +12,7 @@ export const debounce = (func: TimerHandler, delay: number) => {
 		timer = setTimeout(func, delay, event);
 	};
 };
+
+export type JSONStringList = {
+	[key: string]: any;
+};
