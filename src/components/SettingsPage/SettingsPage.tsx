@@ -20,6 +20,9 @@ const SettingsPage = () => {
 	const { sound_volume, language } = useSelector(
 		(state: GlobalState) => state.settings
 	);
+	const locationCount = useSelector(
+		(state: GlobalState) => state.actions.locationCount
+	);
 
 	const flagClicked = (country: string) => {
 		if (country !== language) {
@@ -75,7 +78,7 @@ const SettingsPage = () => {
 			<FloatingButton
 				icon={<FcUndo size={30} className="floating-button-icon" />}
 				style={{ top: "10px", left: "10px" }}
-				onClick={() => navigate(-1)}
+				onClick={() => (locationCount <= 1 ? navigate("/") : navigate(-1))}
 			/>
 		</div>
 	);
