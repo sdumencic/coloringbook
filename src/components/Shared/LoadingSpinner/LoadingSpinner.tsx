@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 interface LoadingSpinnerProps {
 	bgColor?: string;
+	textColor?: string;
+	spinnerColor?: string;
 }
 
 const LoadingSpinner = (props: LoadingSpinnerProps) => {
@@ -21,6 +23,7 @@ const LoadingSpinner = (props: LoadingSpinnerProps) => {
 				style={{
 					top: `${(client.height - size) / 2}px`,
 					left: `${(client.width - size) / 2}px`,
+					color: `${props.spinnerColor}`,
 				}}
 				size={size}
 			/>
@@ -29,6 +32,7 @@ const LoadingSpinner = (props: LoadingSpinnerProps) => {
 					width: size,
 					top: `${(client.height + size) / 2}px`,
 					left: `${(client.width - size) / 2}px`,
+					color: `${props.textColor}`,
 				}}
 			>
 				{strings[language].misc.loading}

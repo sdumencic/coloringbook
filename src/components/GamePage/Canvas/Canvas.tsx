@@ -297,7 +297,13 @@ const Canvas = (props: CanvasProps) => {
 	const renderSpinner = () => {
 		if (imageMask !== null && imageOutline !== null) return null;
 
-		return <LoadingSpinner />;
+		return (
+			<LoadingSpinner
+				bgColor={"rgb(215, 233, 227)"}
+				textColor="#4357a5"
+				spinnerColor="#3085d6"
+			/>
+		);
 	};
 
 	return (
