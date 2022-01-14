@@ -20,10 +20,10 @@ const HUD = () => {
 	const dispatch = useDispatch();
 
 	// Load info from the global state
-	const client = useSelector((state: GlobalState) => state.client);
 	const selectedId = useSelector((state: GlobalState) => state.game.selectedId);
 	const animals = useSelector((state: GlobalState) => state.animals);
 	const brush = useSelector((state: GlobalState) => state.brush);
+	const language = useSelector((state: GlobalState) => state.settings.language);
 
 	/**
 	 * Set the color from the brush pallete :)
@@ -91,7 +91,7 @@ const HUD = () => {
 		));
 
 		return (
-			<div className="HUD" style={{ right: "10px", top: "240px" }}>
+			<div className="HUD" style={{ right: "10px", top: "310px" }}>
 				<h2>Kist</h2>
 				{widths}
 			</div>
@@ -120,6 +120,7 @@ const HUD = () => {
 	const renderPreview = () => {
 		return (
 			<div className="HUD" style={{ top: "10px", right: "10px" }}>
+				<h2 className="slim">{animals[selectedId].name[language]}</h2>
 				<img className="preview" src={animals[selectedId].url.small}></img>
 			</div>
 		);
