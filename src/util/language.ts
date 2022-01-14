@@ -23,6 +23,9 @@ export const strings: JSONStringList = {
 		errorPage: {
 			notFound: "Page not found",
 		},
+		misc: {
+			loading: "Loading",
+		},
 	},
 	hr: {
 		homePage: {
@@ -46,6 +49,9 @@ export const strings: JSONStringList = {
 		errorPage: {
 			notFound: "Stranica nije pronađena",
 		},
+		misc: {
+			loading: "Učitavanje",
+		},
 	},
 	de: {
 		homePage: {
@@ -68,6 +74,9 @@ export const strings: JSONStringList = {
 		},
 		errorPage: {
 			notFound: "Seite nicht gefunden",
+		},
+		misc: {
+			loading: "Beladung",
 		},
 	},
 };

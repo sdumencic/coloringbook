@@ -17,6 +17,7 @@ import {
 import { clearCanvas, getMousePos, setBrush } from "./Helpers";
 
 import { GlobalState } from "../../../redux/store";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import { useSelector } from "react-redux";
 
 interface CanvasProps {
@@ -109,7 +110,6 @@ const Canvas = (props: CanvasProps) => {
 			Canvas = BGCanvasRef.current;
 			Context = Canvas.getContext("2d");
 
-			// TODO: Customizable color
 			if (Context) {
 				Context.fillStyle = "rgb(220,255,244)";
 				Context.fillRect(0, 0, Canvas.width, Canvas.height);
@@ -261,39 +261,48 @@ const Canvas = (props: CanvasProps) => {
 		CANVAS_BRUSH_CAP
 	);
 
+	const renderSpinner = () => {
+		if (imageMask !== null && imageOutline !== null) return null;
+
+		return <LoadingSpinner />;
+	};
+
 	return (
-		<div className="viewport">
-			<canvas
-				className="background"
-				height={client.height}
-				width={client.width}
-				ref={BGCanvasRef}
-			></canvas>
-			<canvas
-				style={style}
-				width={CANVAS_WIDTH}
-				height={CANVAS_HEIGHT}
-				ref={CanvasRef}
-			></canvas>
-			<canvas
-				className="hidden"
-				width={CANVAS_WIDTH}
-				height={CANVAS_HEIGHT}
-				ref={HiddenCanvasRef}
-			></canvas>
-			<canvas
-				style={style}
-				width={CANVAS_WIDTH}
-				height={CANVAS_HEIGHT}
-				onMouseDown={mouseDown}
-				onTouchStart={touchStart}
-				onMouseMove={mouseMove}
-				onTouchMove={touchMove}
-				onMouseUp={finishDrawing}
-				onTouchEnd={finishDrawing}
-				ref={DrawCanvasRef}
-			></canvas>
-		</div>
+		<>
+			{renderSpinner()}
+			<div className="viewport">
+				<canvas
+					className="background"
+					height={client.height}
+					width={client.width}
+					ref={BGCanvasRef}
+				></canvas>
+				<canvas
+					style={style}
+					width={CANVAS_WIDTH}
+					height={CANVAS_HEIGHT}
+					ref={CanvasRef}
+				></canvas>
+				<canvas
+					className="hidden"
+					width={CANVAS_WIDTH}
+					height={CANVAS_HEIGHT}
+					ref={HiddenCanvasRef}
+				></canvas>
+				<canvas
+					style={style}
+					width={CANVAS_WIDTH}
+					height={CANVAS_HEIGHT}
+					onMouseDown={mouseDown}
+					onTouchStart={touchStart}
+					onMouseMove={mouseMove}
+					onTouchMove={touchMove}
+					onMouseUp={finishDrawing}
+					onTouchEnd={finishDrawing}
+					ref={DrawCanvasRef}
+				></canvas>
+			</div>
+		</>
 	);
 };
 

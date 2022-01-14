@@ -29,6 +29,8 @@ const GamePage = () => {
 		}
 	}, []);
 
+	// NOTE: We need to do this both in useEffect and in render since useEffect is running
+	// while rendering.
 	if (numId >= animals.length) {
 		return null;
 	}
