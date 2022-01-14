@@ -24,7 +24,7 @@ export const strings: JSONStringList = {
 			notFound: "Page not found",
 		},
 		hud: {
-			color: "Color",
+			color: "Colour",
 			brush: "Brush",
 		},
 		misc: {
@@ -55,7 +55,7 @@ export const strings: JSONStringList = {
 		},
 		hud: {
 			color: "Boja",
-			brush: "Kst",
+			brush: "Kist",
 		},
 		misc: {
 			loading: "Učitavanje",
@@ -85,10 +85,10 @@ export const strings: JSONStringList = {
 		},
 		hud: {
 			color: "Farbe",
-			brush: "Bürste",
+			brush: "Pinsel",
 		},
 		misc: {
-			loading: "Beladung",
+			loading: "Wird geladen",
 		},
 	},
 };
