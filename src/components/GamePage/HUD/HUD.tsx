@@ -10,6 +10,7 @@ import { Fragment } from "react";
 import { GlobalState } from "../../../redux/store";
 import { ImUndo2 } from "react-icons/im";
 import { Link } from "react-router-dom";
+import { strings } from "../../../util/language";
 
 const IMAGE1 = "/images/small.png";
 const IMAGE2 = "/images/medium.png";
@@ -69,7 +70,7 @@ const HUD = () => {
 		return (
 			// TODO: Make these styles responsive
 			<div className="HUD" style={{ left: "10px", top: "120px" }}>
-				<h2>Boja</h2>
+				<h2>{strings[language].hud.color}</h2>
 				{colors}
 			</div>
 		);
@@ -92,7 +93,7 @@ const HUD = () => {
 
 		return (
 			<div className="HUD" style={{ right: "10px", top: "310px" }}>
-				<h2>Kist</h2>
+				<h2>{strings[language].hud.brush}</h2>
 				{widths}
 			</div>
 		);

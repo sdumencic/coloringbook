@@ -23,6 +23,10 @@ export const strings: JSONStringList = {
 		errorPage: {
 			notFound: "Page not found",
 		},
+		hud: {
+			color: "Color",
+			brush: "Brush",
+		},
 		misc: {
 			loading: "Loading",
 		},
@@ -49,6 +53,10 @@ export const strings: JSONStringList = {
 		errorPage: {
 			notFound: "Stranica nije pronađena",
 		},
+		hud: {
+			color: "Boja",
+			brush: "Kst",
+		},
 		misc: {
 			loading: "Učitavanje",
 		},
@@ -74,6 +82,10 @@ export const strings: JSONStringList = {
 		},
 		errorPage: {
 			notFound: "Seite nicht gefunden",
+		},
+		hud: {
+			color: "Farbe",
+			brush: "Bürste",
 		},
 		misc: {
 			loading: "Beladung",
