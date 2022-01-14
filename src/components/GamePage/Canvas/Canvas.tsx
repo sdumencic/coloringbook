@@ -14,7 +14,7 @@ import {
 	useRef,
 	useState,
 } from "react";
-import { clearCanvas, getMousePos, setBrush } from "./Helpers";
+import { MousePosition, clearCanvas, getMousePos, setBrush } from "./Helpers";
 
 import { GlobalState } from "../../../redux/store";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
@@ -34,6 +34,7 @@ const Canvas = (props: CanvasProps) => {
 	);
 
 	const [isDrawing, setIsDrawing] = useState(false);
+	const [lastPoint, setLastPoint] = useState<MousePosition | null>(null);
 
 	/**
 	 * Canvas used to draw background image or color to it.
@@ -201,6 +202,16 @@ const Canvas = (props: CanvasProps) => {
 		}
 	};
 
+	const distanceBetween = (point1: MousePosition, point2: MousePosition) => {
+		return Math.sqrt(
+			Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2)
+		);
+	};
+
+	const angleBetween = (point1: MousePosition, point2: MousePosition) => {
+		return Math.atan2(point2.x - point1.x, point2.y - point1.y);
+	};
+
 	const touchMove = (event: TouchEvent) => {
 		drawMove(
 			event.nativeEvent.touches[0].clientX,
@@ -222,12 +233,33 @@ const Canvas = (props: CanvasProps) => {
 			const Context = Canvas.getContext("2d");
 
 			if (Context) {
-				const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
+				const currentPoint = getMousePos(DrawCanvasRef, clientX, clientY);
 
-				if (x && y) {
-					Context.lineTo(x, y);
-					Context.stroke();
+				if (lastPoint !== null) {
+					const dist = distanceBetween(lastPoint, currentPoint);
+					const angle = angleBetween(lastPoint, currentPoint);
+
+					const brushWidth = (brush.width + 1) * CANVAS_BASE_WIDTH;
+
+					for (let i = 0; i < dist; i += 5) {
+						const x = lastPoint.x + Math.sin(angle) * i - 25;
+						const y = lastPoint.y + Math.cos(angle) * i - 25;
+						Context.beginPath();
+						Context.arc(
+							x + brushWidth / 2,
+							y + brushWidth / 2,
+							0,
+							0,
+							Math.PI * 2,
+							false
+						);
+						Context.closePath();
+						Context.fill();
+						Context.stroke();
+					}
 				}
+
+				setLastPoint(currentPoint);
 			}
 		}
 	};
@@ -247,6 +279,7 @@ const Canvas = (props: CanvasProps) => {
 				HiddenContext.drawImage(Canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
 				clearCanvas(DrawCanvasRef);
+				setLastPoint(null);
 			}
 		}
 	};

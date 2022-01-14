@@ -3,8 +3,8 @@
  */
 // eslint-disable-next-line
 export interface MousePosition {
-	x?: number;
-	y?: number;
+	x: number;
+	y: number;
 }
 
 /**
@@ -75,5 +75,5 @@ export const getMousePos = (
 
 	// No coordinates have been found
 	console.error("No mouse or touch coordinates found");
-	return {};
+	return { x: 0, y: 0 };
 };
