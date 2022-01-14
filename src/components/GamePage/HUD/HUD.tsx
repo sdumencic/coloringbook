@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { ActionsTypes } from "../../../redux/reducers/ActionReducer";
 import { BrushTypes } from "../../../redux/reducers/BrushReducer";
+import { BsTrash } from "react-icons/bs";
 import { Fragment } from "react";
 import { GlobalState } from "../../../redux/store";
-import { Link } from "react-router-dom";
-import { BsTrash } from "react-icons/bs";
 import { ImUndo2 } from "react-icons/im";
+import { Link } from "react-router-dom";
 
 const IMAGE1 = "/images/small.png";
 const IMAGE2 = "/images/medium.png";
@@ -91,7 +91,7 @@ const HUD = () => {
 		));
 
 		return (
-			<div className="HUD" style={{ right: "10px", top: "120px" }}>
+			<div className="HUD" style={{ right: "10px", top: "240px" }}>
 				<h2>Kist</h2>
 				{widths}
 			</div>
@@ -117,11 +117,20 @@ const HUD = () => {
 		);
 	};
 
+	const renderPreview = () => {
+		return (
+			<div className="HUD" style={{ top: "10px", right: "10px" }}>
+				<img className="preview" src={animals[selectedId].url.small}></img>
+			</div>
+		);
+	};
+
 	return (
 		<>
 			{renderToolbar()}
 			{renderColors()}
 			{renderWidths()}
+			{renderPreview()}
 		</>
 	);
 };
