@@ -57,10 +57,10 @@ html {
 
 			&::-webkit-slider-thumb {
 				appearance: none;
-				width: 25px;
-				height: 25px;
-				background: #ffffff9f;
-				border: 4px solid #ffffff9f;
+				width: 30px;
+				height: 30px;
+				background: $loginSubmit;
+				border: 4px solid $loginSubmit;
 				border-radius: 5px;
 				cursor: pointer;
 			}
