@@ -26,13 +26,11 @@ const SettingsPage = () => {
 
 	const flagClicked = (country: string) => {
 		if (country !== language) {
-			localStorage.setItem("language", country);
 			dispatch({ type: SettingsTypes.Language, payload: country });
 		}
 	};
 
 	const sliderChange = (event: any) => {
-		localStorage.setItem("sound_volume", event.target.value);
 		dispatch({ type: SettingsTypes.SoundVolume, payload: event.target.value });
 	};
 

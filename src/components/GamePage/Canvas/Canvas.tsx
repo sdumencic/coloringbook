@@ -27,6 +27,7 @@ interface CanvasProps {
 
 const Canvas = (props: CanvasProps) => {
 	// Slices from the global state
+	const settings = useSelector((state: GlobalState) => state.settings);
 	const client = useSelector((state: GlobalState) => state.client);
 	const brush = useSelector((state: GlobalState) => state.brush);
 	const clear_Canvas = useSelector(
@@ -172,33 +173,24 @@ const Canvas = (props: CanvasProps) => {
 		return properties;
 	};
 
-	const touchStart = (event: TouchEvent) => {
-		startDrawing(
-			event.nativeEvent.touches[0].clientX,
-			event.nativeEvent.touches[0].clientY
-		);
-	};
-
-	const mouseDown = (event: MouseEvent) => {
-		startDrawing(event.nativeEvent.clientX, event.nativeEvent.clientY);
-	};
-
-	const startDrawing = (clientX: number, clientY: number) => {
-		if (DrawCanvasRef.current) {
-			const Canvas = DrawCanvasRef.current;
-			const Context = Canvas.getContext("2d");
-
-			if (Context) {
-				// Get current mouse positions
-				const { x, y } = getMousePos(DrawCanvasRef, clientX, clientY);
-
-				// If mouse position is allright, then begin line path
-				if (x && y) {
-					Context.beginPath();
-					Context.moveTo(x, y);
-					setIsDrawing(true);
-				}
+	const startStopToggleMode = () => {
+		if (settings.draw_mode === "toggle") {
+			if (isDrawing) {
+				setLastPoint(null);
 			}
+
+			setIsDrawing(!isDrawing);
+		}
+	};
+
+	const startHoldMode = () => {
+		if (settings.draw_mode === "hold") setIsDrawing(true);
+	};
+
+	const stopHoldMode = () => {
+		if (settings.draw_mode === "hold") {
+			setLastPoint(null);
+			setIsDrawing(false);
 		}
 	};
 
@@ -262,9 +254,11 @@ const Canvas = (props: CanvasProps) => {
 				setLastPoint(currentPoint);
 			}
 		}
+
+		copyFromDrawingToHidden();
 	};
 
-	const finishDrawing = () => {
+	const copyFromDrawingToHidden = () => {
 		if (DrawCanvasRef.current && HiddenCanvasRef.current) {
 			const Canvas = DrawCanvasRef.current;
 			const HiddenCanvas = HiddenCanvasRef.current;
@@ -272,14 +266,8 @@ const Canvas = (props: CanvasProps) => {
 			const HiddenContext = HiddenCanvas.getContext("2d");
 
 			if (Context && HiddenContext) {
-				// Stop drawing the path
-				Context.closePath();
-				setIsDrawing(false);
-
 				HiddenContext.drawImage(Canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
 				clearCanvas(DrawCanvasRef);
-				setLastPoint(null);
 			}
 		}
 	};
@@ -332,12 +320,13 @@ const Canvas = (props: CanvasProps) => {
 					style={style}
 					width={CANVAS_WIDTH}
 					height={CANVAS_HEIGHT}
-					onMouseDown={mouseDown}
-					onTouchStart={touchStart}
+					onClick={startStopToggleMode}
+					onMouseDown={startHoldMode}
+					onTouchStart={startHoldMode}
 					onMouseMove={mouseMove}
 					onTouchMove={touchMove}
-					onMouseUp={finishDrawing}
-					onTouchEnd={finishDrawing}
+					onMouseUp={stopHoldMode}
+					onTouchEnd={stopHoldMode}
 					ref={DrawCanvasRef}
 				></canvas>
 			</div>
