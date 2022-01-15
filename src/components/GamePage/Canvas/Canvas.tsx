@@ -173,13 +173,28 @@ const Canvas = (props: CanvasProps) => {
 		return properties;
 	};
 
-	const startStopToggleMode = () => {
+	const startStopToggleMode = (event: MouseEvent) => {
 		if (settings.draw_mode === "toggle") {
 			if (isDrawing) {
+				setIsDrawing(false);
 				setLastPoint(null);
-			}
+			} else {
+				setIsDrawing(true);
 
-			setIsDrawing(!isDrawing);
+				if (DrawCanvasRef.current) {
+					const Canvas = DrawCanvasRef.current;
+					const Context = Canvas.getContext("2d");
+
+					if (Context) {
+						const { x, y } = getMousePos(
+							DrawCanvasRef,
+							event.nativeEvent.clientX,
+							event.nativeEvent.clientY
+						);
+						drawCircle(x, y, false);
+					}
+				}
+			}
 		}
 	};
 
@@ -188,7 +203,10 @@ const Canvas = (props: CanvasProps) => {
 	};
 
 	const stopHoldMode = () => {
-		if (settings.draw_mode === "hold") {
+		// NOTE: This function is also used by outside canvas to stop drawing if we go out
+		// of the drawing canvas, thats why we have isDrawing, to prevent it spamming state
+		// reloads
+		if (settings.draw_mode === "hold" && isDrawing) {
 			setLastPoint(null);
 			setIsDrawing(false);
 		}
@@ -231,23 +249,10 @@ const Canvas = (props: CanvasProps) => {
 					const dist = distanceBetween(lastPoint, currentPoint);
 					const angle = angleBetween(lastPoint, currentPoint);
 
-					const brushWidth = (brush.width + 1) * CANVAS_BASE_WIDTH;
-
 					for (let i = 0; i < dist; i += 5) {
 						const x = lastPoint.x + Math.sin(angle) * i - 25;
 						const y = lastPoint.y + Math.cos(angle) * i - 25;
-						Context.beginPath();
-						Context.arc(
-							x + brushWidth / 2,
-							y + brushWidth / 2,
-							0,
-							0,
-							Math.PI * 2,
-							false
-						);
-						Context.closePath();
-						Context.fill();
-						Context.stroke();
+						drawCircle(x, y);
 					}
 				}
 
@@ -256,6 +261,31 @@ const Canvas = (props: CanvasProps) => {
 		}
 
 		copyFromDrawingToHidden();
+	};
+
+	const drawCircle = (x: number, y: number, correctBrush = true) => {
+		if (DrawCanvasRef.current) {
+			const Canvas = DrawCanvasRef.current;
+			const Context = Canvas.getContext("2d");
+
+			if (Context) {
+				const brushWidth = correctBrush
+					? (brush.width + 1) * CANVAS_BASE_WIDTH
+					: 0;
+				Context.beginPath();
+				Context.arc(
+					x + brushWidth / 2,
+					y + brushWidth / 2,
+					0,
+					0,
+					Math.PI * 2,
+					false
+				);
+				Context.closePath();
+				Context.fill();
+				Context.stroke();
+			}
+		}
 	};
 
 	const copyFromDrawingToHidden = () => {
@@ -303,6 +333,7 @@ const Canvas = (props: CanvasProps) => {
 					height={client.height}
 					width={client.width}
 					ref={BGCanvasRef}
+					onMouseMove={stopHoldMode}
 				></canvas>
 				<canvas
 					style={style}
