@@ -9,6 +9,7 @@ import { GlobalState } from "../../redux/store";
 import { IoArrowUndo } from "react-icons/io5";
 import { SettingsTypes } from "../../redux/reducers/SettingsReducer";
 import { strings } from "../../util/language";
+import Switch from "./switch/Switch";
 
 const BritishFlag = "images/BritishFlag.png";
 const CroatianFlag = "images/CroatianFlag.png";
@@ -36,9 +37,12 @@ const SettingsPage = () => {
 
 	return (
 		<div className="settings">
+			<h2>{strings[language].settingsPage.mode}</h2>
+			<Switch />
 			<h1>
-				<FcSpeaker size={100} />
+				<FcSpeaker size={70} />
 			</h1>
+
 			<div className="animation">
 				<input
 					type="range"
@@ -50,27 +54,31 @@ const SettingsPage = () => {
 					onChange={sliderChange}
 				/>
 			</div>
+
 			<h1>
-				<FcVoicePresentation size={100} />
+				<FcVoicePresentation size={70} />
 			</h1>
 			<div className="flex">
 				<div
-					className={`item ${language !== "hr" ? "active" : ""}`}
+					className={`item ${language !== "hr" ? "" : "active"}`}
 					onClick={() => flagClicked("hr")}
 				>
 					<img src={CroatianFlag} alt={strings[language].settingsPage.hr} />
+					<h2>{strings[language].settingsPage.hr}</h2>
 				</div>
 				<div
-					className={`item ${language !== "en" ? "active" : ""}`}
+					className={`item ${language !== "en" ? "" : "active"}`}
 					onClick={() => flagClicked("en")}
 				>
 					<img src={BritishFlag} alt={strings[language].settingsPage.en} />
+					<h2>{strings[language].settingsPage.en}</h2>
 				</div>
 				<div
-					className={`item ${language !== "de" ? "active" : ""}`}
+					className={`item ${language !== "de" ? "" : "active"}`}
 					onClick={() => flagClicked("de")}
 				>
 					<img src={GermanFlag} alt={strings[language].settingsPage.de} />
+					<h2>{strings[language].settingsPage.de}</h2>
 				</div>
 			</div>
 			<FloatingButton

@@ -317,7 +317,7 @@ const Canvas = (props: CanvasProps) => {
 
 		return (
 			<LoadingSpinner
-				bgColor={"rgb(215, 233, 227)"}
+				bgColor={"rgb(220, 255, 254)"}
 				textColor="#4357a5"
 				spinnerColor="#3085d6"
 			/>

@@ -19,6 +19,7 @@ export const strings: JSONStringList = {
 			hr: "Croatian",
 			de: "German",
 			sound: "Sound",
+			mode: "Game mode",
 		},
 		errorPage: {
 			notFound: "Page not found",
@@ -49,6 +50,7 @@ export const strings: JSONStringList = {
 			hr: "Hrvatski",
 			de: "Njemački",
 			sound: "Zvuk",
+			mode: "Način igre",
 		},
 		errorPage: {
 			notFound: "Stranica nije pronađena",
@@ -79,6 +81,7 @@ export const strings: JSONStringList = {
 			hr: "Kroatisch",
 			de: "Deutsch",
 			sound: "Ton",
+			mode: "Spielmodus",
 		},
 		errorPage: {
 			notFound: "Seite nicht gefunden",
