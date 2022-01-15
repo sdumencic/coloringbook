@@ -65,9 +65,9 @@ body {
 	transition: background-position 1s;
 	display: inline-block;
 	background-size: 200% 200%;
-}
 
-.active {
-	background: $loginSubmit;
-	color: white;
+	&.active {
+		background: $loginSubmit;
+		color: white;
+	}
 }
