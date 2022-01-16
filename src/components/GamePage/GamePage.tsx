@@ -44,15 +44,6 @@ const GamePage = () => {
 		},
 	};
 
-	const style = {
-		top: 0,
-		left: 0,
-		width: "100%",
-		height: "100%",
-		position: "fixed",
-		background: "#000",
-	};
-
 	useEffect(() => {
 		// Animals are not loaded, go to the selection screen
 		if (numId >= animals.length) {
