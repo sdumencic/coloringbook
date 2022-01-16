@@ -39,7 +39,7 @@ const GamePage = () => {
 			],
 			volume: {
 				min: (1 * sound_volume) / 100,
-				max: (100 * sound_volume) / 100,
+				max: (2 * sound_volume) / 100,
 			},
 		},
 	};
