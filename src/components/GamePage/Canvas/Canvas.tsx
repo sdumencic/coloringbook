@@ -1,20 +1,15 @@
 import "./Canvas.scss";
 
+import { CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP, CANVAS_HEIGHT, CANVAS_WIDTH } from "./Constants";
+import { CSSProperties, MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import {
-	CANVAS_BASE_WIDTH,
-	CANVAS_BRUSH_CAP,
-	CANVAS_HEIGHT,
-	CANVAS_WIDTH,
-} from "./Constants";
-import {
-	CSSProperties,
-	MouseEvent,
-	TouchEvent,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
-import { MousePosition, clearCanvas, getMousePos, setBrush } from "./Helpers";
+	MousePosition,
+	angleBetweenPoints,
+	clearCanvas,
+	distanceBetweenPoints,
+	getMousePos,
+	setBrush,
+} from "./Helpers";
 
 import { GlobalState } from "../../../redux/store";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
@@ -26,303 +21,172 @@ interface CanvasProps {
 }
 
 const Canvas = (props: CanvasProps) => {
-	// Slices from the global state
+	// SECTION: Slices from the global state
 	const settings = useSelector((state: GlobalState) => state.settings);
 	const client = useSelector((state: GlobalState) => state.client);
 	const brush = useSelector((state: GlobalState) => state.brush);
-	const clear_Canvas = useSelector(
-		(state: GlobalState) => state.actions.clearCanvas
-	);
+	const clear_Canvas = useSelector((state: GlobalState) => state.actions.clearCanvas);
 
+	// SECTION: Internal state
 	const [isDrawing, setIsDrawing] = useState(false);
 	const [lastPoint, setLastPoint] = useState<MousePosition | null>(null);
-
-	/**
-	 * Canvas used to draw background image or color to it.
-	 */
-	const BGCanvasRef = useRef<HTMLCanvasElement | null>(null);
-	/**
-	 * Canvas used to display the animal and the manipulated drawing data.
-	 */
-	const CanvasRef = useRef<HTMLCanvasElement | null>(null);
-	/**
-	 * Canvas used to manipulate drawing data and convert it to image.
-	 */
-	const HiddenCanvasRef = useRef<HTMLCanvasElement | null>(null);
-	/**
-	 * Canvas used to intercept mouse.
-	 */
-	const DrawCanvasRef = useRef<HTMLCanvasElement | null>(null);
-
-	// References to images
-	const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(
-		null
-	);
+	const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(null);
 	const [imageMask, setImageMask] = useState<HTMLImageElement | null>(null);
 
-	/**
-	 * This useEffect runs only on mount and unmount.
-	 * We only use this to load our initial image data.
-	 * Linter cant detect this use case which is why we have disable next-line at the end.
-	 */
+	// SECTION: Internal references
+	// BG - Background, Data - What we draw, FG - The outline
+	const BGCanvasRef = useRef<HTMLCanvasElement | null>(null);
+	const DataCanvasRef = useRef<HTMLCanvasElement | null>(null);
+	const FGCanvasRef = useRef<HTMLCanvasElement | null>(null);
+
+	// SECTION: UseEffects
+	// We only use this to load our initial image data
 	useEffect(() => {
 		if (!imageOutline) {
 			const image_outline = new Image();
 			image_outline.src = props.outline_url;
-			image_outline.onload = () => {
-				setImageOutline(image_outline);
-			};
+			image_outline.onload = () => setImageOutline(image_outline);
 		}
 
 		if (!imageMask) {
 			const image_mask = new Image();
 			image_mask.src = props.mask_url;
-			image_mask.onload = () => {
-				setImageMask(image_mask);
-			};
+			image_mask.onload = () => setImageMask(image_mask);
 		}
 
 		// eslint-disable-next-line
 	}, []);
 
-	/**
-	 * Starts the render Loop after the images have been loaded
-	 */
+	// Starts the render Loop after the images have been loaded
 	useEffect(() => {
-		if (imageOutline && imageMask) {
-			window.requestAnimationFrame(renderFrame);
-		}
-		// eslint-disable-next-line
+		if (imageOutline && imageMask) window.requestAnimationFrame(renderLoop);
 	}, [imageOutline, imageMask]);
 
-	/**
-	 * Used for clearing canvas
-	 */
+	// Used for clearing canvas
 	useEffect(() => {
-		clearCanvas(HiddenCanvasRef);
+		clearCanvas(DataCanvasRef);
 	}, [clear_Canvas]);
 
-	const renderFrame = () => {
-		let Canvas: HTMLCanvasElement;
-		let Context: CanvasRenderingContext2D | null;
-
-		// Draw Background
-		if (BGCanvasRef.current) {
-			// Set references
-			Canvas = BGCanvasRef.current;
-			Context = Canvas.getContext("2d");
-
-			if (Context) {
-				Context.fillStyle = "rgb(220,255,244)";
-				Context.fillRect(0, 0, Canvas.width, Canvas.height);
-			}
-		}
-
-		// Draw Image
-		if (CanvasRef.current) {
-			Canvas = CanvasRef.current;
-			Context = Canvas.getContext("2d");
-
-			if (Context && imageMask && imageOutline) {
-				// Clear the canvas and draw the mask
-				Context.globalCompositeOperation = "source-over";
-				Context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-				Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-				// Fill in the drawing data
-				if (HiddenCanvasRef.current) {
-					Context.globalCompositeOperation = "source-in";
-					Context.drawImage(
-						HiddenCanvasRef.current,
-						0,
-						0,
-						CANVAS_WIDTH,
-						CANVAS_HEIGHT
-					);
-				}
-
-				// Draw outline and fill non painted parts with a mask
-				Context.globalCompositeOperation = "source-over";
-				Context.drawImage(imageOutline, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-				Context.globalCompositeOperation = "destination-over";
-				Context.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-			}
-		}
-
-		window.requestAnimationFrame(renderFrame);
+	const mainCanvasStyle: CSSProperties = {
+		width: client.height > client.width ? "100%" : `${client.height}px`,
+		height: client.height > client.width ? `${client.width}px` : "100%",
+		top: client.height > client.width ? `${(client.height - client.width) / 2}px` : 0,
+		left: client.height > client.width ? 0 : `${(client.width - client.height) / 2}px`,
 	};
 
-	/**
-	 * Scales and positions the Rendering canvas
-	 */
-	const getCanvasStyle = (): CSSProperties => {
-		const properties: CSSProperties = {};
+	const renderLoop = () => {
+		// Set up the variables
+		const BGCanvas = BGCanvasRef.current;
+		const BGContext = BGCanvasRef.current?.getContext("2d");
+		const FGCanvas = FGCanvasRef.current;
+		const FGContext = FGCanvas?.getContext("2d");
+		const DataCanvas = DataCanvasRef.current;
 
-		if (CanvasRef.current && DrawCanvasRef.current) {
-			if (client.height > client.width) {
-				properties.width = "100%";
-				properties.height = `${client.width}px`;
-				properties.top = `${(client.height - client.width) / 2}px`;
-			} else {
-				properties.height = "100%";
-				properties.width = `${client.height}px`;
-				properties.left = `${(client.width - client.height) / 2}px`;
-			}
+		if (BGCanvas && BGContext && FGCanvas && FGContext && DataCanvas && imageOutline && imageMask) {
+			// Draw Background
+			BGContext.fillStyle = "rgb(220,255,244)";
+			BGContext?.fillRect(0, 0, BGCanvas.width, BGCanvas.height);
+
+			// Clear the canvas and draw the mask
+			FGContext.globalCompositeOperation = "source-over";
+			FGContext?.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+			FGContext?.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+			// Fill in the drawing data
+			FGContext.globalCompositeOperation = "source-in";
+			FGContext?.drawImage(DataCanvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+			// Draw outline and fill non painted parts with a mask
+			FGContext.globalCompositeOperation = "source-over";
+			FGContext?.drawImage(imageOutline, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+			FGContext.globalCompositeOperation = "destination-over";
+			FGContext?.drawImage(imageMask, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 		}
 
-		return properties;
+		window.requestAnimationFrame(renderLoop);
 	};
 
-	const startStopToggleMode = (event: MouseEvent) => {
+	const startStopToggleMode = ({ nativeEvent: { clientX, clientY } }: MouseEvent) => {
 		if (settings.draw_mode === "toggle") {
 			if (isDrawing) {
 				setIsDrawing(false);
 				setLastPoint(null);
 			} else {
 				setIsDrawing(true);
-
-				if (DrawCanvasRef.current) {
-					const Canvas = DrawCanvasRef.current;
-					const Context = Canvas.getContext("2d");
-
-					if (Context) {
-						const { x, y } = getMousePos(
-							DrawCanvasRef,
-							event.nativeEvent.clientX,
-							event.nativeEvent.clientY
-						);
-						drawCircle(x, y, false);
-					}
-				}
+				const { x, y } = getMousePos(FGCanvasRef, clientX, clientY);
+				drawCircle(x, y, false);
 			}
 		}
 	};
 
-	const startHoldMode = () => {
-		if (settings.draw_mode === "hold") setIsDrawing(true);
+	const mouseDown = ({ nativeEvent: { clientX, clientY } }: MouseEvent) => {
+		startHoldMode(clientX, clientY);
+	};
+
+	const touchStart = ({ nativeEvent: { touches } }: TouchEvent) => {
+		startHoldMode(touches[0].clientX, touches[0].clientY);
+	};
+
+	const startHoldMode = (clientX: number, clientY: number) => {
+		if (settings.draw_mode === "hold") {
+			setIsDrawing(true);
+			const { x, y } = getMousePos(FGCanvasRef, clientX, clientY);
+			drawCircle(x, y, false);
+		}
 	};
 
 	const stopHoldMode = () => {
-		// NOTE: This function is also used by outside canvas to stop drawing if we go out
-		// of the drawing canvas, thats why we have isDrawing, to prevent it spamming state
-		// reloads
 		if (settings.draw_mode === "hold" && isDrawing) {
 			setLastPoint(null);
 			setIsDrawing(false);
 		}
 	};
 
-	const distanceBetween = (point1: MousePosition, point2: MousePosition) => {
-		return Math.sqrt(
-			Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2)
-		);
-	};
-
-	const angleBetween = (point1: MousePosition, point2: MousePosition) => {
-		return Math.atan2(point2.x - point1.x, point2.y - point1.y);
-	};
-
 	const touchMove = (event: TouchEvent) => {
-		drawMove(
-			event.nativeEvent.touches[0].clientX,
-			event.nativeEvent.touches[0].clientY
-		);
+		drawMove(event.nativeEvent.touches[0].clientX, event.nativeEvent.touches[0].clientY);
 	};
 
-	const mouseMove = (event: MouseEvent) => {
-		drawMove(event.nativeEvent.clientX, event.nativeEvent.clientY);
+	const mouseMove = ({ nativeEvent: { clientX, clientY } }: MouseEvent) => {
+		drawMove(clientX, clientY);
 	};
 
 	const drawMove = (clientX: number, clientY: number) => {
-		if (!isDrawing) {
-			return;
-		}
+		if (!isDrawing) return;
 
-		if (DrawCanvasRef.current) {
-			const Canvas = DrawCanvasRef.current;
-			const Context = Canvas.getContext("2d");
+		const currentPoint = getMousePos(FGCanvasRef, clientX, clientY);
 
-			if (Context) {
-				const currentPoint = getMousePos(DrawCanvasRef, clientX, clientY);
+		if (lastPoint !== null) {
+			const dist = distanceBetweenPoints(lastPoint, currentPoint);
+			const angle = angleBetweenPoints(lastPoint, currentPoint);
 
-				if (lastPoint !== null) {
-					const dist = distanceBetween(lastPoint, currentPoint);
-					const angle = angleBetween(lastPoint, currentPoint);
-
-					for (let i = 0; i < dist; i += 5) {
-						const x = lastPoint.x + Math.sin(angle) * i - 25;
-						const y = lastPoint.y + Math.cos(angle) * i - 25;
-						drawCircle(x, y);
-					}
-				}
-
-				setLastPoint(currentPoint);
+			for (let i = 0; i < dist; i += 5) {
+				const x = lastPoint.x + Math.sin(angle) * i - 25;
+				const y = lastPoint.y + Math.cos(angle) * i - 25;
+				drawCircle(x, y);
 			}
 		}
 
-		copyFromDrawingToHidden();
+		setLastPoint(currentPoint);
 	};
 
 	const drawCircle = (x: number, y: number, correctBrush = true) => {
-		if (DrawCanvasRef.current) {
-			const Canvas = DrawCanvasRef.current;
-			const Context = Canvas.getContext("2d");
-
-			if (Context) {
-				const brushWidth = correctBrush
-					? (brush.width + 1) * CANVAS_BASE_WIDTH
-					: 0;
-				Context.beginPath();
-				Context.arc(
-					x + brushWidth / 2,
-					y + brushWidth / 2,
-					0,
-					0,
-					Math.PI * 2,
-					false
-				);
-				Context.closePath();
-				Context.fill();
-				Context.stroke();
-			}
-		}
+		const Context = DataCanvasRef.current?.getContext("2d");
+		const brushOffset = correctBrush ? ((brush.width + 1) * CANVAS_BASE_WIDTH) / 2 : 0;
+		Context?.beginPath();
+		Context?.arc(x + brushOffset, y + brushOffset, 0, 0, Math.PI * 2, false);
+		Context?.closePath();
+		Context?.fill();
+		Context?.stroke();
 	};
-
-	const copyFromDrawingToHidden = () => {
-		if (DrawCanvasRef.current && HiddenCanvasRef.current) {
-			const Canvas = DrawCanvasRef.current;
-			const HiddenCanvas = HiddenCanvasRef.current;
-			const Context = Canvas.getContext("2d");
-			const HiddenContext = HiddenCanvas.getContext("2d");
-
-			if (Context && HiddenContext) {
-				HiddenContext.drawImage(Canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-				clearCanvas(DrawCanvasRef);
-			}
-		}
-	};
-
-	// Set Drawable Canvas Width and Height if images are loaded
-	const style = imageMask && imageOutline ? getCanvasStyle() : {};
-	// Brush settings
-	setBrush(
-		DrawCanvasRef,
-		brush.color,
-		(brush.width + 1) * CANVAS_BASE_WIDTH,
-		CANVAS_BRUSH_CAP
-	);
 
 	const renderSpinner = () => {
 		if (imageMask !== null && imageOutline !== null) return null;
 
-		return (
-			<LoadingSpinner
-				bgColor={"rgb(220, 255, 254)"}
-				textColor="#4357a5"
-				spinnerColor="#3085d6"
-			/>
-		);
+		return <LoadingSpinner bgColor={"rgb(220, 255, 254)"} textColor="#4357a5" spinnerColor="#3085d6" />;
 	};
+
+	// Brush settings
+	setBrush(DataCanvasRef, brush.color, (brush.width + 1) * CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP);
 
 	return (
 		<>
@@ -335,30 +199,19 @@ const Canvas = (props: CanvasProps) => {
 					ref={BGCanvasRef}
 					onMouseMove={stopHoldMode}
 				></canvas>
+				<canvas className="hidden" width={CANVAS_WIDTH} height={CANVAS_HEIGHT} ref={DataCanvasRef}></canvas>
 				<canvas
-					style={style}
-					width={CANVAS_WIDTH}
-					height={CANVAS_HEIGHT}
-					ref={CanvasRef}
-				></canvas>
-				<canvas
-					className="hidden"
-					width={CANVAS_WIDTH}
-					height={CANVAS_HEIGHT}
-					ref={HiddenCanvasRef}
-				></canvas>
-				<canvas
-					style={style}
+					style={mainCanvasStyle}
 					width={CANVAS_WIDTH}
 					height={CANVAS_HEIGHT}
 					onClick={startStopToggleMode}
-					onMouseDown={startHoldMode}
-					onTouchStart={startHoldMode}
+					onMouseDown={mouseDown}
+					onTouchStart={touchStart}
 					onMouseMove={mouseMove}
 					onTouchMove={touchMove}
 					onMouseUp={stopHoldMode}
 					onTouchEnd={stopHoldMode}
-					ref={DrawCanvasRef}
+					ref={FGCanvasRef}
 				></canvas>
 			</div>
 		</>
