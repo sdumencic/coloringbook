@@ -1,9 +1,9 @@
 import "./HUD.scss";
 
-import { FcFullTrash, FcLeft } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ActionsTypes } from "../../../redux/reducers/ActionReducer";
+import { AiOutlineSave } from "react-icons/ai";
 import { BrushTypes } from "../../../redux/reducers/BrushReducer";
 import { BsTrash } from "react-icons/bs";
 import { Fragment } from "react";
@@ -51,6 +51,12 @@ const HUD = () => {
 	const clearCanvas = () => {
 		dispatch({
 			type: ActionsTypes.ClearCanvas,
+		});
+	};
+
+	const saveImage = () => {
+		dispatch({
+			type: ActionsTypes.SaveImage,
 		});
 	};
 
@@ -113,6 +119,9 @@ const HUD = () => {
 				</Link>
 				<button type="button" onClick={clearCanvas} className="delete">
 					<BsTrash size={30} />
+				</button>
+				<button type="button" onClick={saveImage} className="save">
+					<AiOutlineSave size={30} />
 				</button>
 			</div>
 		);

@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 interface CanvasProps {
 	outline_url: string;
 	mask_url: string;
+	name: string;
 }
 
 const Canvas = (props: CanvasProps) => {
@@ -25,7 +26,7 @@ const Canvas = (props: CanvasProps) => {
 	const settings = useSelector((state: GlobalState) => state.settings);
 	const client = useSelector((state: GlobalState) => state.client);
 	const brush = useSelector((state: GlobalState) => state.brush);
-	const clear_Canvas = useSelector((state: GlobalState) => state.actions.clearCanvas);
+	const actions = useSelector((state: GlobalState) => state.actions);
 
 	// SECTION: Internal state
 	const [isDrawing, setIsDrawing] = useState(false);
@@ -45,15 +46,15 @@ const Canvas = (props: CanvasProps) => {
 		if (!imageOutline) {
 			const image_outline = new Image();
 			image_outline.src = props.outline_url;
+			image_outline.crossOrigin = "anonymous";
 			image_outline.onload = () => setImageOutline(image_outline);
 		}
-
 		if (!imageMask) {
 			const image_mask = new Image();
 			image_mask.src = props.mask_url;
+			image_mask.crossOrigin = "anonymous";
 			image_mask.onload = () => setImageMask(image_mask);
 		}
-
 		// eslint-disable-next-line
 	}, []);
 
@@ -62,10 +63,18 @@ const Canvas = (props: CanvasProps) => {
 		if (imageOutline && imageMask) window.requestAnimationFrame(renderLoop);
 	}, [imageOutline, imageMask]);
 
-	// Used for clearing canvas
+	// Canvas Actions
 	useEffect(() => {
 		clearCanvas(DataCanvasRef);
-	}, [clear_Canvas]);
+	}, [actions.clearCanvas]);
+	useEffect(() => {
+		if (FGCanvasRef.current && imageMask !== null && imageOutline !== null) {
+			const link = document.createElement("a");
+			link.download = `${props.name}.png`;
+			link.href = FGCanvasRef.current.toDataURL("image/png");
+			link.click();
+		}
+	}, [actions.saveImage]);
 
 	const mainCanvasStyle: CSSProperties = {
 		width: client.height > client.width ? "100%" : `${client.height}px`,

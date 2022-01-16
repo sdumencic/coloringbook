@@ -21,6 +21,7 @@ const GamePage = () => {
 	const game = useSelector((state: GlobalState) => state.game);
 	const brush = useSelector((state: GlobalState) => state.brush);
 	const animals = useSelector((state: GlobalState) => state.animals);
+	const language = useSelector((state: GlobalState) => state.settings.language);
 
 	useEffect(() => {
 		// Animals are not loaded, go to the selection screen
@@ -55,6 +56,7 @@ const GamePage = () => {
 			<Canvas
 				mask_url={animals[numId].url.mask}
 				outline_url={animals[numId].url.outline}
+				name={animals[numId].name[language]}
 			/>
 			<HUD />
 		</>
