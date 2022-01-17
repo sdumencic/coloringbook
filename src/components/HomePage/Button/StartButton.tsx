@@ -11,12 +11,7 @@ interface ButtonProps {
 const StartButton = (props: ButtonProps) => {
 	return (
 		// TODO: Make responsive
-		<button
-			className="loginsubmit"
-			type="submit"
-			onMouseEnter={props.onHover}
-			onMouseLeave={props.onHover}
-		>
+		<button className="loginsubmit" type="submit" onMouseEnter={props.onHover} onMouseLeave={props.onHover}>
 			{props.text}
 			<BsFillPlayFill className="floating-button-margin" />
 		</button>

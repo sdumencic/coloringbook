@@ -37,10 +37,7 @@ const GameSelectPage = () => {
 			<form className="imgContainer">
 				<div className="loginformheader">
 					<div className="buttons">
-						<div
-							className={`button ${category === "all" ? "active" : ""}`}
-							onClick={() => setCategory("all")}
-						>
+						<div className={`button ${category === "all" ? "active" : ""}`} onClick={() => setCategory("all")}>
 							{strings[language].gameSelectPage.allAnimals}
 						</div>
 						<div
@@ -49,10 +46,7 @@ const GameSelectPage = () => {
 						>
 							{strings[language].gameSelectPage.domesticAnimals}
 						</div>
-						<div
-							className={`button ${category === "wild" ? "active" : ""}`}
-							onClick={() => setCategory("wild")}
-						>
+						<div className={`button ${category === "wild" ? "active" : ""}`} onClick={() => setCategory("wild")}>
 							{strings[language].gameSelectPage.wildAnimals}
 						</div>
 					</div>

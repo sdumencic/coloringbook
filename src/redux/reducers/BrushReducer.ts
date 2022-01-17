@@ -28,13 +28,9 @@ type BrushPayload = {
 	[BrushTypes.Width]: 0 | 1 | 2;
 	[BrushTypes.Color]: string;
 };
-export type BrushActions =
-	ActionMap<BrushPayload>[keyof ActionMap<BrushPayload>];
+export type BrushActions = ActionMap<BrushPayload>[keyof ActionMap<BrushPayload>];
 
-export const brushReducer = (
-	state: BrushState = initialState,
-	action: BrushActions
-) => {
+export const brushReducer = (state: BrushState = initialState, action: BrushActions) => {
 	switch (action.type) {
 		case BrushTypes.Width:
 			return {

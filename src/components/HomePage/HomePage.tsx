@@ -40,21 +40,14 @@ const HomePage = () => {
 					</h1>
 				</div>
 				<div className="loginformbody">
-					<img
-						className="image1"
-						src={ZECIC}
-						alt={strings[language].homePage.altImgRabbit}
-					/>
+					<img className="image1" src={ZECIC} alt={strings[language].homePage.altImgRabbit} />
 					<img
 						className={`image2 ${change ? "leg" : " "}`}
 						src={ZECICLEG}
 						alt={strings[language].homePage.altImgRabbitLeg}
 					/>
 					<Link to="/game">
-						<Button
-							onHover={changeAnimate}
-							text={strings[language].homePage.start}
-						/>
+						<Button onHover={changeAnimate} text={strings[language].homePage.start} />
 					</Link>
 				</div>
 			</form>

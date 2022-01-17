@@ -24,9 +24,7 @@ const AnimalCard = (props: ImageProps) => {
 		<div className="card" style={props.style}>
 			<Link to={`/game/${props.id}`} className="card-body">
 				<div className={`difficulty ${difficultyClass[props.difficulty]}`}>
-					<div className="text">
-						{strings[language].gameSelectPage.difficulty[props.difficulty]}
-					</div>
+					<div className="text">{strings[language].gameSelectPage.difficulty[props.difficulty]}</div>
 					<div className="stars">{"⭐".repeat(props.difficulty + 1)}</div>
 				</div>
 				<img className="card-img-top" src={props.image} alt="Card image cap" />

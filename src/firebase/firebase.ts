@@ -28,10 +28,7 @@ export const loadAnimals = async () => {
 
 type ImageType = "color" | "mask" | "outline" | "small";
 
-export const getImageURL = async (
-	type: ImageType,
-	name: string
-): Promise<string> => {
+export const getImageURL = async (type: ImageType, name: string): Promise<string> => {
 	// Create a reference to the file we want to download
 	const starsRef = storageRef(projectStorage, `${type}/${name}_${type}.png`);
 

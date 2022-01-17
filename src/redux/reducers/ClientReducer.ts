@@ -17,13 +17,9 @@ export enum ClientTypes {
 type ClientPayload = {
 	[ClientTypes.Resize]: ClientState;
 };
-export type ClientActions =
-	ActionMap<ClientPayload>[keyof ActionMap<ClientPayload>];
+export type ClientActions = ActionMap<ClientPayload>[keyof ActionMap<ClientPayload>];
 
-export const clientReducer = (
-	state: ClientState = initialState,
-	action: ClientActions
-) => {
+export const clientReducer = (state: ClientState = initialState, action: ClientActions) => {
 	switch (action.type) {
 		case ClientTypes.Resize:
 			return {

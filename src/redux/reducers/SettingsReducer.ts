@@ -39,13 +39,9 @@ type SettingsPayload = {
 	[SettingsTypes.Language]: "en" | "hr" | "de";
 	[SettingsTypes.DrawMode]: "toggle" | "hold";
 };
-export type SettingsActions =
-	ActionMap<SettingsPayload>[keyof ActionMap<SettingsPayload>];
+export type SettingsActions = ActionMap<SettingsPayload>[keyof ActionMap<SettingsPayload>];
 
-export const settingsReducer = (
-	state: SettingsState = initialState,
-	action: SettingsActions
-) => {
+export const settingsReducer = (state: SettingsState = initialState, action: SettingsActions) => {
 	switch (action.type) {
 		case SettingsTypes.SoundVolume: {
 			// NOTE: Ensure that the volume is between 0 and 100

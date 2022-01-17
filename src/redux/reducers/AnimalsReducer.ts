@@ -25,14 +25,10 @@ type AnimalsPayload = {
 	[AnimalsTypes.Update]: AnimalsState;
 	[AnimalsTypes.Clear]: never;
 };
-export type AnimalsActions =
-	ActionMap<AnimalsPayload>[keyof ActionMap<AnimalsPayload>];
+export type AnimalsActions = ActionMap<AnimalsPayload>[keyof ActionMap<AnimalsPayload>];
 
 //? Reducer
-export const animalsReducer = (
-	state: AnimalsState = initialState,
-	action: AnimalsActions
-) => {
+export const animalsReducer = (state: AnimalsState = initialState, action: AnimalsActions) => {
 	switch (action.type) {
 		case AnimalsTypes.Add:
 			return [...state, action.payload];

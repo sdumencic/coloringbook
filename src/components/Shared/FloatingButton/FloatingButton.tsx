@@ -16,11 +16,7 @@ interface FloatingButtonProps {
 
 const FloatingButton = (props: FloatingButtonProps) => {
 	return (
-		<div
-			className="floating-button"
-			style={props.style}
-			onClick={props.onClick}
-		>
+		<div className="floating-button" style={props.style} onClick={props.onClick}>
 			{props.icon}
 		</div>
 	);
