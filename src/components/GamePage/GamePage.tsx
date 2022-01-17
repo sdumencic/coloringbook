@@ -40,18 +40,9 @@ const GamePage = () => {
 			],
 			volume: {
 				min: (1 * sound_volume) / 100,
-				max: (100 * sound_volume) / 100,
+				max: (2 * sound_volume) / 100,
 			},
 		},
-	};
-
-	const style = {
-		top: 0,
-		left: 0,
-		width: "100%",
-		height: "100%",
-		position: "fixed",
-		background: "#000",
 	};
 
 	useEffect(() => {
