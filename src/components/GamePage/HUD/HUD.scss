@@ -17,7 +17,10 @@
 
 	h2 {
 		text-align: center;
-		text-shadow: white 0px 0px 10px;
+
+		.slim {
+			margin: 0px;
+		}
 	}
 
 	button {
@@ -29,16 +32,15 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		//font-size: 16px;
-		font-size: 1rem;
+		font-size: 30px;
 		margin: 4px 5px 4px 5px;
 		border-radius: 50%;
 		vertical-align: middle;
 		cursor: pointer;
-		min-width: 50px;
-		min-height: 50px;
-		width: 5vw;
-		height: 5vw;
+		// TODO: Make responsive
+		// NOTE: Must fit all translations
+		min-width: 75px;
+		min-height: 75px;
 
 		&:disabled {
 			background-color: gray;
@@ -58,10 +60,62 @@
 		&.delete {
 			background-color: #dc3545;
 		}
+
+		&.save {
+			background-color: #28a745;
+		}
+
+		&.gold {
+			background-color: gold;
+		}
+
+		&.silver {
+			background-color: silver;
+		}
+
+		&.bronze {
+			background-color: #ae7135;
+		}
 	}
 
 	svg {
 		vertical-align: middle;
+	}
+
+	.preview {
+		width: 200px;
+		height: 200px;
+	}
+
+	@mixin anim($name, $value, $duration) {
+		animation: $name #{$duration}s linear infinite;
+
+		@keyframes #{$name} {
+			0% {
+				filter: brightness(1);
+			}
+			50% {
+				filter: brightness($value);
+			}
+			100% {
+				filter: brightness(1);
+			}
+		}
+	}
+
+	.medal {
+		width: 200px;
+		height: 200px;
+
+		&.bronze {
+			@include anim(bronze, 1.25, 5);
+		}
+		&.silver {
+			@include anim(silver, 1.5, 5);
+		}
+		&.gold {
+			@include anim(gold, 2, 5);
+		}
 	}
 }
 
@@ -117,14 +171,23 @@
 	background-color: #d08632;
 	opacity: 1;
 	background-image: radial-gradient(circle at center center, #37230d, #d08632),
-		repeating-radial-gradient(
-			circle at center center,
-			#37230d,
-			#37230d,
-			4px,
-			transparent 8px,
-			transparent 4px
-		);
+		repeating-radial-gradient(circle at center center, #37230d, #37230d, 4px, transparent 8px, transparent 4px);
 	background-blend-mode: multiply;
 	border: 2px solid #37230d;
+}
+
+.width-img {
+	width: 50px;
+	vertical-align: inherit;
+}
+
+.blocker {
+	position: absolute;
+	z-index: 49;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 0;
 }

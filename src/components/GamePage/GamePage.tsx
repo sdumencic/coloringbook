@@ -21,6 +21,7 @@ const GamePage = () => {
 	const game = useSelector((state: GlobalState) => state.game);
 	const brush = useSelector((state: GlobalState) => state.brush);
 	const animals = useSelector((state: GlobalState) => state.animals);
+	const language = useSelector((state: GlobalState) => state.settings.language);
 
 	useEffect(() => {
 		// Animals are not loaded, go to the selection screen
@@ -29,6 +30,8 @@ const GamePage = () => {
 		}
 	}, []);
 
+	// NOTE: We need to do this both in useEffect and in render since useEffect is running
+	// while rendering.
 	if (numId >= animals.length) {
 		return null;
 	}
@@ -37,6 +40,10 @@ const GamePage = () => {
 		dispatch({
 			type: GameTypes.SelectedId,
 			payload: numId,
+		});
+		dispatch({
+			type: GameTypes.Score,
+			payload: 0,
 		});
 	}
 
@@ -51,9 +58,12 @@ const GamePage = () => {
 	return (
 		<>
 			<Canvas
-				mask_url={animals[numId].url.mask}
-				outline_url={animals[numId].url.outline}
+				maskImageURL={animals[numId].url.mask}
+				outlineImageURL={animals[numId].url.outline}
+				bigImageURL={animals[numId].url.big}
+				name={animals[numId].name[language]}
 			/>
+
 			<HUD />
 		</>
 	);

@@ -18,10 +18,8 @@ const ErrorPage = () => {
 	};
 
 	return (
-		<div className="loginBackground" style={style}>
-			<h1 className="error-page-title">
-				{strings[language].homePage.altImgRabbit}
-			</h1>
+		<div className="loginBackground flex" style={style}>
+			<h1 className="error-page-title">{strings[language].errorPage.notFound}</h1>
 
 			<Link to="/">
 				<FloatingButton

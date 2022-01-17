@@ -11,6 +11,11 @@ html {
 	/*! Framer bug */
 	padding: 10px;
 	text-align: center;
+	color: $text;
+
+	h2 {
+		margin: 10px;
+	}
 
 	.flex {
 		display: flex;
@@ -23,28 +28,29 @@ html {
 			border-radius: 5px;
 			padding: 10px;
 			transition: all 0.5s;
-			border: 4px solid $loginSubmit;
-			background: #ffffff9f;
+			border: 4px solid transparent;
 
 			&.active {
 				background: none;
-				border: 4px solid transparent;
+				color: $loginSubmit;
+				border: 4px solid $loginSubmit;
+				background: #ffffff9f;
+			}
 
-				&:hover {
-					border: 4px solid $text;
-					cursor: pointer;
-				}
+			&:hover {
+				border: 4px solid $text;
+				cursor: pointer;
 			}
 
 			img {
-				width: inherit;
+				width: 70%;
 			}
 		}
 	}
 
 	.animation {
 		width: 100%;
-		margin-bottom: 100px;
+		margin-bottom: 7vh;
 
 		.slider {
 			appearance: none;
@@ -57,10 +63,10 @@ html {
 
 			&::-webkit-slider-thumb {
 				appearance: none;
-				width: 25px;
-				height: 25px;
-				background: #ffffff9f;
-				border: 4px solid #ffffff9f;
+				width: 30px;
+				height: 30px;
+				background: $loginSubmit;
+				border: 4px solid $loginSubmit;
 				border-radius: 5px;
 				cursor: pointer;
 			}

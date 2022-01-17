@@ -19,9 +19,18 @@ export const strings: JSONStringList = {
 			hr: "Croatian",
 			de: "German",
 			sound: "Sound",
+			mode: "Game mode",
 		},
 		errorPage: {
 			notFound: "Page not found",
+		},
+		hud: {
+			color: "Colour",
+			brush: "Brush",
+		},
+		misc: {
+			loading: "Loading",
+			congrats: "Congratulations",
 		},
 	},
 	hr: {
@@ -42,9 +51,18 @@ export const strings: JSONStringList = {
 			hr: "Hrvatski",
 			de: "Njemački",
 			sound: "Zvuk",
+			mode: "Način igre",
 		},
 		errorPage: {
 			notFound: "Stranica nije pronađena",
+		},
+		hud: {
+			color: "Boja",
+			brush: "Kist",
+		},
+		misc: {
+			loading: "Učitavanje",
+			congrats: "Čestitamo",
 		},
 	},
 	de: {
@@ -65,9 +83,18 @@ export const strings: JSONStringList = {
 			hr: "Kroatisch",
 			de: "Deutsch",
 			sound: "Ton",
+			mode: "Spielmodus",
 		},
 		errorPage: {
 			notFound: "Seite nicht gefunden",
+		},
+		hud: {
+			color: "Farbe",
+			brush: "Pinsel",
+		},
+		misc: {
+			loading: "Wird geladen",
+			congrats: "Glückwunsch",
 		},
 	},
 };
