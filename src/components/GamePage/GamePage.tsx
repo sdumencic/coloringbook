@@ -72,6 +72,10 @@ const GamePage = () => {
 			type: GameTypes.SelectedId,
 			payload: numId,
 		});
+		dispatch({
+			type: GameTypes.Score,
+			payload: 0,
+		});
 	}
 
 	// Check that brush is ok
@@ -85,11 +89,12 @@ const GamePage = () => {
 	return (
 		<>
 			<Canvas
-				mask_url={animals[numId].url.mask}
-				outline_url={animals[numId].url.outline}
+				maskImageURL={animals[numId].url.mask}
+				outlineImageURL={animals[numId].url.outline}
+				bigImageURL={animals[numId].url.big}
 				name={animals[numId].name[language]}
 			/>
-			<Fireworks
+			{/* <Fireworks
 				style={{
 					position: "fixed",
 					top: "0",
@@ -99,7 +104,7 @@ const GamePage = () => {
 					pointerEvents: "none",
 				}}
 				options={options}
-			/>
+			/> */}
 			<HUD />
 		</>
 	);

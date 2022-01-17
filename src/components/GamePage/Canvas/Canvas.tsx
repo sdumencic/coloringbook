@@ -6,22 +6,32 @@ import {
 	MousePosition,
 	angleBetweenPoints,
 	clearCanvas,
+	compareReal,
+	createCanvas,
 	distanceBetweenPoints,
+	downloadCanvas,
 	getMousePos,
+	getRealPixelCount,
+	loadImageToState,
+	loadRawImageArrayToState,
 	setBrush,
 } from "./Helpers";
+import { useDispatch, useSelector } from "react-redux";
 
+import { GameTypes } from "../../../redux/reducers/GameReducer";
 import { GlobalState } from "../../../redux/store";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
-import { useSelector } from "react-redux";
 
 interface CanvasProps {
-	outline_url: string;
-	mask_url: string;
+	outlineImageURL: string;
+	maskImageURL: string;
+	bigImageURL: string;
 	name: string;
 }
 
 const Canvas = (props: CanvasProps) => {
+	const dispatch = useDispatch(); // For updating the score :)
+
 	// SECTION: Slices from the global state
 	const settings = useSelector((state: GlobalState) => state.settings);
 	const client = useSelector((state: GlobalState) => state.client);
@@ -31,50 +41,46 @@ const Canvas = (props: CanvasProps) => {
 	// SECTION: Internal state
 	const [isDrawing, setIsDrawing] = useState(false);
 	const [lastPoint, setLastPoint] = useState<MousePosition | null>(null);
+
+	// SECTION: Loaded images
 	const [imageOutline, setImageOutline] = useState<HTMLImageElement | null>(null);
 	const [imageMask, setImageMask] = useState<HTMLImageElement | null>(null);
+	const [imageBigArray, setImageBigArray] = useState<Uint8ClampedArray | null>(null);
+	const [imageBigPixelCount, setImageBigPixelCount] = useState(0);
 
-	// SECTION: Internal references
-	// BG - Background, Data - What we draw, FG - The outline
-	const BGCanvasRef = useRef<HTMLCanvasElement | null>(null);
-	const DataCanvasRef = useRef<HTMLCanvasElement | null>(null);
-	const FGCanvasRef = useRef<HTMLCanvasElement | null>(null);
+	const allImagesLoaded = () => {
+		return imageOutline && imageMask && imageBigArray;
+	};
 
-	// SECTION: UseEffects
-	// We only use this to load our initial image data
 	useEffect(() => {
-		if (!imageOutline) {
-			const image_outline = new Image();
-			image_outline.src = props.outline_url;
-			image_outline.crossOrigin = "anonymous";
-			image_outline.onload = () => setImageOutline(image_outline);
+		// Start the render Loop after the images have been loaded
+		if (allImagesLoaded()) {
+			window.requestAnimationFrame(renderLoop);
+			setImageBigPixelCount(getRealPixelCount(imageBigArray!));
 		}
-		if (!imageMask) {
-			const image_mask = new Image();
-			image_mask.src = props.mask_url;
-			image_mask.crossOrigin = "anonymous";
-			image_mask.onload = () => setImageMask(image_mask);
-		}
-		// eslint-disable-next-line
-	}, []);
+	}, [imageOutline, imageMask, imageBigArray]);
 
-	// Starts the render Loop after the images have been loaded
-	useEffect(() => {
-		if (imageOutline && imageMask) window.requestAnimationFrame(renderLoop);
-	}, [imageOutline, imageMask]);
+	// SECTION: Canvas references
+	const BGCanvasRef = useRef<HTMLCanvasElement | null>(null); // Background
+	const DataCanvasRef = useRef<HTMLCanvasElement | null>(null); // Our drawn data
+	const FGCanvasRef = useRef<HTMLCanvasElement | null>(null); // Outline
 
-	// Canvas Actions
+	// SECTION: Canvas Actions
 	useEffect(() => {
 		clearCanvas(DataCanvasRef);
 	}, [actions.clearCanvas]);
 	useEffect(() => {
-		if (FGCanvasRef.current && imageMask !== null && imageOutline !== null) {
-			const link = document.createElement("a");
-			link.download = `${props.name}.png`;
-			link.href = FGCanvasRef.current.toDataURL("image/png");
-			link.click();
-		}
+		if (allImagesLoaded()) downloadCanvas(FGCanvasRef, props.name);
 	}, [actions.saveImage]);
+
+	// NOTE: Initial Load
+	useEffect(() => {
+		loadImageToState(props.outlineImageURL, imageOutline, setImageOutline);
+		loadImageToState(props.maskImageURL, imageMask, setImageMask);
+		loadRawImageArrayToState(props.bigImageURL, CANVAS_WIDTH, CANVAS_HEIGHT, setImageBigArray);
+		createCanvas(DataCanvasRef, CANVAS_WIDTH, CANVAS_HEIGHT);
+		// eslint-disable-next-line
+	}, []);
 
 	const mainCanvasStyle: CSSProperties = {
 		width: client.height > client.width ? "100%" : `${client.height}px`,
@@ -115,11 +121,22 @@ const Canvas = (props: CanvasProps) => {
 		window.requestAnimationFrame(renderLoop);
 	};
 
+	const compareImages = () => {
+		const FGImageData = FGCanvasRef.current?.getContext("2d")?.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+		if (FGImageData && imageBigArray) {
+			dispatch({
+				type: GameTypes.Score,
+				payload: compareReal(imageBigArray, FGImageData.data, imageBigPixelCount),
+			});
+		}
+	};
+
 	const startStopToggleMode = ({ nativeEvent: { clientX, clientY } }: MouseEvent) => {
 		if (settings.draw_mode === "toggle") {
 			if (isDrawing) {
 				setIsDrawing(false);
 				setLastPoint(null);
+				compareImages();
 			} else {
 				setIsDrawing(true);
 				const { x, y } = getMousePos(FGCanvasRef, clientX, clientY);
@@ -148,6 +165,7 @@ const Canvas = (props: CanvasProps) => {
 		if (settings.draw_mode === "hold" && isDrawing) {
 			setLastPoint(null);
 			setIsDrawing(false);
+			compareImages();
 		}
 	};
 
@@ -189,8 +207,7 @@ const Canvas = (props: CanvasProps) => {
 	};
 
 	const renderSpinner = () => {
-		if (imageMask !== null && imageOutline !== null) return null;
-
+		if (allImagesLoaded()) return null;
 		return <LoadingSpinner bgColor={"rgb(220, 255, 254)"} textColor="#4357a5" spinnerColor="#3085d6" />;
 	};
 
@@ -208,7 +225,6 @@ const Canvas = (props: CanvasProps) => {
 					ref={BGCanvasRef}
 					onMouseMove={stopHoldMode}
 				></canvas>
-				<canvas className="hidden" width={CANVAS_WIDTH} height={CANVAS_HEIGHT} ref={DataCanvasRef}></canvas>
 				<canvas
 					style={mainCanvasStyle}
 					width={CANVAS_WIDTH}
