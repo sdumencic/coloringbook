@@ -8,13 +8,13 @@ import { AiOutlineSave } from "react-icons/ai";
 import { BrushTypes } from "../../../redux/reducers/BrushReducer";
 import { BsTrash } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa";
+import { FcUndo } from "react-icons/fc";
 import { Fireworks } from "fireworks-js/dist/react";
+import FloatingButton from "../../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../../redux/store";
 import { ImUndo2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { strings } from "../../../util/language";
-import FloatingButton from "../../Shared/FloatingButton/FloatingButton";
-import { FcUndo } from "react-icons/fc";
 
 const SMALL_BRUSH = "/images/small.png";
 const MEDIUM_BRUSH = "/images/medium.png";

@@ -114,7 +114,7 @@
 			@include anim(silver, 1.5, 5);
 		}
 		&.gold {
-			@include anim(gold, 2, 5);
+			@include anim(gold, 1.75, 5);
 		}
 	}
 }
