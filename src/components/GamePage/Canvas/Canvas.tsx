@@ -68,6 +68,10 @@ const Canvas = (props: CanvasProps) => {
 	// SECTION: Canvas Actions
 	useEffect(() => {
 		clearCanvas(DataCanvasRef);
+		dispatch({
+			type: GameTypes.Score,
+			payload: 0,
+		});
 	}, [actions.clearCanvas]);
 	useEffect(() => {
 		if (allImagesLoaded()) downloadCanvas(FGCanvasRef, props.name);

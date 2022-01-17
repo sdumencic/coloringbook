@@ -64,6 +64,18 @@
 		&.save {
 			background-color: #28a745;
 		}
+
+		&.gold {
+			background-color: gold;
+		}
+
+		&.silver {
+			background-color: silver;
+		}
+
+		&.bronze {
+			background-color: #ae7135;
+		}
 	}
 
 	svg {
@@ -73,6 +85,37 @@
 	.preview {
 		width: 200px;
 		height: 200px;
+	}
+
+	@mixin anim($name, $value, $duration) {
+		animation: $name #{$duration}s linear infinite;
+
+		@keyframes #{$name} {
+			0% {
+				filter: brightness(1);
+			}
+			50% {
+				filter: brightness($value);
+			}
+			100% {
+				filter: brightness(1);
+			}
+		}
+	}
+
+	.medal {
+		width: 200px;
+		height: 200px;
+
+		&.bronze {
+			@include anim(bronze, 1.25, 5);
+		}
+		&.silver {
+			@include anim(silver, 1.5, 5);
+		}
+		&.gold {
+			@include anim(gold, 2, 5);
+		}
 	}
 }
 
@@ -136,4 +179,15 @@
 .width-img {
 	width: 50px;
 	vertical-align: inherit;
+}
+
+.blocker {
+	position: absolute;
+	z-index: 49;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 0;
 }

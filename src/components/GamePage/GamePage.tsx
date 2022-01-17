@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router";
 
 import { BrushTypes } from "../../redux/reducers/BrushReducer";
 import Canvas from "./Canvas/Canvas";
-import { Fireworks } from "fireworks-js/dist/react";
 import { GameTypes } from "../../redux/reducers/GameReducer";
 import { GlobalState } from "../../redux/store";
 import HUD from "./HUD/HUD";
@@ -23,27 +22,6 @@ const GamePage = () => {
 	const brush = useSelector((state: GlobalState) => state.brush);
 	const animals = useSelector((state: GlobalState) => state.animals);
 	const language = useSelector((state: GlobalState) => state.settings.language);
-	const sound_volume = useSelector((state: GlobalState) => state.settings.sound_volume);
-
-	const options = {
-		speed: 5,
-		acceleration: 1.0,
-		friction: 0.95,
-		particles: 500,
-		delay: { min: 10, max: 25 },
-		sound: {
-			enabled: true,
-			files: [
-				"https://fireworks.js.org/sounds/explosion0.mp3",
-				"https://fireworks.js.org/sounds/explosion1.mp3",
-				"https://fireworks.js.org/sounds/explosion2.mp3",
-			],
-			volume: {
-				min: (1 * sound_volume) / 100,
-				max: (2 * sound_volume) / 100,
-			},
-		},
-	};
 
 	useEffect(() => {
 		// Animals are not loaded, go to the selection screen
@@ -85,17 +63,7 @@ const GamePage = () => {
 				bigImageURL={animals[numId].url.big}
 				name={animals[numId].name[language]}
 			/>
-			{/* <Fireworks
-				style={{
-					position: "fixed",
-					top: "0",
-					left: "0",
-					width: "100%",
-					height: "100%",
-					pointerEvents: "none",
-				}}
-				options={options}
-			/> */}
+
 			<HUD />
 		</>
 	);

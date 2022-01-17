@@ -30,6 +30,7 @@ export const strings: JSONStringList = {
 		},
 		misc: {
 			loading: "Loading",
+			congrats: "Congratulations",
 		},
 	},
 	hr: {
@@ -61,6 +62,7 @@ export const strings: JSONStringList = {
 		},
 		misc: {
 			loading: "Učitavanje",
+			congrats: "Čestitamo",
 		},
 	},
 	de: {
@@ -92,6 +94,7 @@ export const strings: JSONStringList = {
 		},
 		misc: {
 			loading: "Wird geladen",
+			congrats: "Glückwunsch",
 		},
 	},
 };
