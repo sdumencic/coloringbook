@@ -13,6 +13,8 @@ import { GlobalState } from "../../../redux/store";
 import { ImUndo2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { strings } from "../../../util/language";
+import FloatingButton from "../../Shared/FloatingButton/FloatingButton";
+import { FcUndo } from "react-icons/fc";
 
 const SMALL_BRUSH = "/images/small.png";
 const MEDIUM_BRUSH = "/images/medium.png";
@@ -204,6 +206,11 @@ const HUD = () => {
 					<h2 className="slim">{strings[language].misc.congrats}</h2>
 					<img className={`medal ${medalStyle}`} src={medalImage}></img>
 				</div>
+				<FloatingButton
+					icon={<FcUndo size={30} className="floating-button-icon" />}
+					style={{ top: "10px", left: "10px" }}
+					onClick={() => setShowMedal(false)}
+				/>
 			</>
 		);
 	};
