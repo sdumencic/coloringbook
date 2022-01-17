@@ -230,17 +230,16 @@ export const compareReal = (originalArray: Uint8ClampedArray, copyArray: Uint8Cl
 	let sum = 0;
 
 	for (let i = 0; i < originalArray.length; i = i + 4) {
-		const R = originalArray[i];
-		const G = originalArray[i + 1];
-		const B = originalArray[i + 2];
-		const A = originalArray[i + 3];
-
-		if (A !== 0) {
-			if (!(R === 0 && G === 0 && B === 0)) {
-				if (!(R === 255 && G === 255 && B === 255)) {
-					if (copyArray[i] === R && copyArray[i + 1] === G && copyArray[i + 2] === B && copyArray[i + 3] === A) {
+		if (originalArray[i + 3] !== 0) {
+			if (!(originalArray[i] === 0 && originalArray[i + 1] === 0 && originalArray[i + 2] === 0)) {
+				if (!(originalArray[i] === 255 && originalArray[i + 1] === 255 && originalArray[i + 2] === 255)) {
+					if (
+						Math.abs(originalArray[i] - copyArray[i]) <= 3 &&
+						Math.abs(originalArray[i + 1] - copyArray[i + 1]) <= 3 &&
+						Math.abs(originalArray[i + 2] - copyArray[i + 2]) <= 3 &&
+						Math.abs(originalArray[i + 3] - copyArray[i + 3]) <= 3
+					)
 						sum++;
-					}
 				}
 			}
 		}
