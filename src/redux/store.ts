@@ -6,9 +6,12 @@ import { GameState, gameReducer } from "./reducers/GameReducer";
 import { SettingsState, settingsReducer } from "./reducers/SettingsReducer";
 import { combineReducers, createStore } from "redux";
 
+import isDevelopment from "../util/isDevelopment";
+
 /**
  * Allows us to gently map enum with types and enum with payloads into action object
  */
+// eslint-disable-next-line
 export type ActionMap<M extends { [index: string]: any }> = {
 	[Key in keyof M]: M[Key] extends undefined
 		? {
@@ -38,11 +41,12 @@ export const rootReducer = combineReducers<GlobalState>({
 	settings: settingsReducer,
 });
 
-export const store = createStore(
-	rootReducer,
-	// TODO: Make this only for the DEV environment not prod
-	// @ts-expect-error Because this is not a typesafe way to include devtools
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+export const store = isDevelopment()
+	? createStore(
+			rootReducer,
+			// @ts-expect-error Because this is not a typesafe way to include devtools
+			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	  )
+	: createStore(rootReducer);
 
 export default store;

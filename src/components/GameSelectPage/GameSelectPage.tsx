@@ -1,9 +1,9 @@
 import "./GameSelectPage.scss";
 
-import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import AnimalGrid from "./AnimalGrid/AnimalGrid";
+import { FcUndo } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../redux/store";

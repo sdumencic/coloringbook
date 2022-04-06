@@ -1,7 +1,5 @@
 import "./HomePage.scss";
 
-import { MouseEvent, useEffect, useRef, useState } from "react";
-
 import Button from "./Button/StartButton";
 import { FiSettings } from "react-icons/fi";
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
@@ -9,6 +7,7 @@ import { GlobalState } from "../../redux/store";
 import { Link } from "react-router-dom";
 import { strings } from "../../util/language";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const IMAGE = "/images/220108background.png";
 const ZECIC = "/images/zecnoleg1.png";

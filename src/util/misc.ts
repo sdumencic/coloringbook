@@ -5,14 +5,16 @@
  */
 export const debounce = (func: TimerHandler, delay: number) => {
 	let timer: number | undefined;
-	return function (event: any) {
+
+	return () => {
 		if (timer) {
 			clearTimeout(timer);
 		}
-		timer = setTimeout(func, delay, event);
+		timer = setTimeout(func, delay);
 	};
 };
 
 export type JSONStringList = {
+	// eslint-disable-next-line
 	[key: string]: any;
 };

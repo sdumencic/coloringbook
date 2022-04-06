@@ -3,7 +3,7 @@ import "normalize.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import React from "react";
+import { StrictMode } from "react";
 import { render } from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
@@ -11,13 +11,13 @@ import store from "./redux/store";
 const rootElement = document.getElementById("root");
 
 render(
-	<React.StrictMode>
+	<StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
 		</Provider>
-	</React.StrictMode>,
+	</StrictMode>,
 	rootElement
 );
 
