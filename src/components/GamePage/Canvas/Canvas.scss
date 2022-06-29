@@ -1,0 +1,34 @@
+button {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	font-size: 32px;
+}
+
+.viewport {
+	canvas {
+		/**
+     * Position absolute provides canvases to be able
+     * to be layered on top of each other
+     * Be sure to remember a z-index!
+     */
+		position: absolute;
+		background-color: transparent;
+		display: block;
+
+		// We have to set this later
+		width: 0px;
+		height: 0px;
+		top: 0px;
+		left: 0px;
+
+		&.background {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.hidden {
+		display: hidden;
+	}
+}

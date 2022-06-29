@@ -1,0 +1,837 @@
+{
+	"animals": [
+		{
+			"id": 0,
+			"name": {
+				"hr": "Pcela",
+				"en": "Bee",
+				"de": "Biene"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFD645", "#FFC4C4"],
+			"category": "wild"
+		},
+		{
+			"id": 1,
+			"name": {
+				"hr": "Bubamara",
+				"en": "Ladybug",
+				"de": "Marienkäfer"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4", "#B91A1A", "#B91A1A"],
+			"category": "wild"
+		},
+		{
+			"id": 2,
+			"name": {
+				"hr": "Bubamara",
+				"en": "Ladybug",
+				"de": "Marienkäfer"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B91A1A"],
+			"category": "wild"
+		},
+		{
+			"id": 3,
+			"name": {
+				"hr": "Deva",
+				"en": "Camel",
+				"de": "Kamel"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B88E5B", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 4,
+			"name": {
+				"hr": "Kameleon",
+				"en": "Chameleon",
+				"de": "Chamäleon"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#74AB2D"],
+			"category": "wild"
+		},
+		{
+			"id": 5,
+			"name": {
+				"hr": "Pile",
+				"en": "Chicken",
+				"de": "Huhn"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFA300"],
+			"category": "domestic"
+		},
+		{
+			"id": 6,
+			"name": {
+				"hr": "Krokodil",
+				"en": "Crocodile",
+				"de": "Krokodil"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#158A28"],
+			"category": "wild"
+		},
+		{
+			"id": 7,
+			"name": {
+				"hr": "Crvena panda",
+				"en": "Red panda",
+				"de": "Roter Panda"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FE9B44", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 8,
+			"name": {
+				"hr": "Dupin",
+				"en": "Dolphin",
+				"de": "Delfin"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#686868"],
+			"category": "wild"
+		},
+		{
+			"id": 9,
+			"name": {
+				"hr": "Koza",
+				"en": "Goat",
+				"de": "Ziege"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFC4C4", "#CECECE", "#473621"],
+			"category": "domestic"
+		},
+		{
+			"id": 10,
+			"name": {
+				"hr": "Hrčak",
+				"en": "Hamster",
+				"de": "Hamster"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#E5C1C1", "#DD7F7F", "#B88E5B"],
+			"category": "domestic"
+		},
+		{
+			"id": 11,
+			"name": {
+				"hr": "Jež",
+				"en": "Hedgehog",
+				"de": "Igel"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B88E5B", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 12,
+			"name": {
+				"hr": "Klokan",
+				"en": "Kangaroo",
+				"de": "Känguru"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 13,
+			"name": {
+				"hr": "Klokan",
+				"en": "Kangaroo",
+				"de": "Känguru"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#E5C1C1", "#DD7F7F", "#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 14,
+			"name": {
+				"hr": "Koala",
+				"en": "Koala",
+				"de": "Koala"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4", "#B88E5B", "#CECECE"],
+			"category": "wild"
+		},
+		{
+			"id": 15,
+			"name": {
+				"hr": "Kokoš",
+				"en": "Hen",
+				"de": "Huhn"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFA300", "#B91A1A"],
+			"category": "domestic"
+		},
+		{
+			"id": 16,
+			"name": {
+				"hr": "Konj",
+				"en": "Horse",
+				"de": "Pferd"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B88E5B", "#6A5336"],
+			"category": "domestic"
+		},
+		{
+			"id": 17,
+			"name": {
+				"hr": "Krava",
+				"en": "Cow",
+				"de": "Kuh"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFC4C4", "#B88E5B"],
+			"category": "domestic"
+		},
+		{
+			"id": 18,
+			"name": {
+				"hr": "Kuna",
+				"en": "Marten",
+				"de": "Baummarder"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFC4C4", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 19,
+			"name": {
+				"hr": "Leptir",
+				"en": "Butterfly",
+				"de": "Schmetterling"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFC4C4", "#DD7F7F"],
+			"category": "wild"
+		},
+		{
+			"id": 20,
+			"name": {
+				"hr": "Lav",
+				"en": "Lion",
+				"de": "Löwe"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#E5C1C1", "#DD7F7F", "#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 21,
+			"name": {
+				"hr": "Lisica",
+				"en": "Fox",
+				"de": "Fuchs"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FE9B44", "#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 22,
+			"name": {
+				"hr": "Mačka",
+				"en": "Cat",
+				"de": "Katze"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#E5C1C1", "#FFBA66", "#DD7F7F"],
+			"category": "domestic"
+		},
+		{
+			"id": 23,
+			"name": {
+				"hr": "Magarac",
+				"en": "Donkey",
+				"de": "Esel"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#CECECE", "#473621", "#686868"],
+			"category": "domestic"
+		},
+		{
+			"id": 24,
+			"name": {
+				"hr": "Medvjed",
+				"en": "Bear",
+				"de": "Bär"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#DD7F7F", "#B88E5B", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 25,
+			"name": {
+				"hr": "Miš",
+				"en": "Mouse",
+				"de": "Maus"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4"],
+			"category": "domestic"
+		},
+		{
+			"id": 26,
+			"name": {
+				"hr": "Majmun",
+				"en": "Monkey",
+				"de": "Affe"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4", "#B88E5B", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 27,
+			"name": {
+				"hr": "Nilski konj",
+				"en": "Hippopotamus",
+				"de": "Nilpferd"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#E5C1C1", "#686868"],
+			"category": "wild"
+		},
+		{
+			"id": 28,
+			"name": {
+				"hr": "Nosorog",
+				"en": "Rhinoceros",
+				"de": "Nashorn"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#CECECE"],
+			"category": "wild"
+		},
+		{
+			"id": 29,
+			"name": {
+				"hr": "Hobotnica",
+				"en": "Octopus",
+				"de": "Krake"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#DD7F7F"],
+			"category": "wild"
+		},
+		{
+			"id": 30,
+			"name": {
+				"hr": "Ovca",
+				"en": "Sheep",
+				"de": "Schaf"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#B88E5B"],
+			"category": "domestic"
+		},
+		{
+			"id": 31,
+			"name": {
+				"hr": "Papiga",
+				"en": "Parrot",
+				"de": "Papagei"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FE9B44", "#74AB2D", "#3D9E4A", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 32,
+			"name": {
+				"hr": "Pas",
+				"en": "Dog",
+				"de": "Hund"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#00CCCC", "#B88E5B", "#6A5336"],
+			"category": "domestic"
+		},
+		{
+			"id": 33,
+			"name": {
+				"hr": "Patka",
+				"en": "Duck",
+				"de": "Ente"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFD645", "#3D9E4A", "#6A5336", "#CECECE"],
+			"category": "domestic"
+		},
+		{
+			"id": 34,
+			"name": {
+				"hr": "Pače",
+				"en": "Duckling",
+				"de": "Entlein"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFD645", "#FFA300"],
+			"category": "domestic"
+		},
+		{
+			"id": 35,
+			"name": {
+				"hr": "Praščić",
+				"en": "Piglet",
+				"de": "Schweinchen"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#E5C1C1", "#DD7F7F"],
+			"category": "domestic"
+		},
+		{
+			"id": 36,
+			"name": {
+				"hr": "Pijetao",
+				"en": "Rooster",
+				"de": "Hahn"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFD645", "#FFA300", "#B91A1A", "#158A28"],
+			"category": "domestic"
+		},
+		{
+			"id": 37,
+			"name": {
+				"hr": "Morski konjic",
+				"en": "Seahorse",
+				"de": "Seepferdchen"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFB738", "#FFA300", "#74AB2D"],
+			"category": "wild"
+		},
+		{
+			"id": 38,
+			"name": {
+				"hr": "Slon",
+				"en": "Elephant",
+				"de": "Elefant"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#DD7F7F", "#CECECE", "#473621"],
+			"category": "wild"
+		},
+		{
+			"id": 39,
+			"name": {
+				"hr": "Puž",
+				"en": "Snail",
+				"de": "Schnecke"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFC4C4", "#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 40,
+			"name": {
+				"hr": "Sova",
+				"en": "Owl",
+				"de": "Eule"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#FFA300", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 41,
+			"name": {
+				"hr": "Vjeverica",
+				"en": "Squirrel",
+				"de": "Eichhörnchen"
+			},
+			"difficulty": 1,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#B88E5B", "#6A5336"],
+			"category": "wild"
+		},
+		{
+			"id": 42,
+			"name": {
+				"hr": "Tuljan",
+				"en": "Seal",
+				"de": "Robbe"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#5E8FA8"],
+			"category": "wild"
+		},
+		{
+			"id": 43,
+			"name": {
+				"hr": "Kornjača",
+				"en": "Turtle",
+				"de": "Schildkröte"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#74AB2D", "#5F3E1D"],
+			"category": "wild"
+		},
+		{
+			"id": 44,
+			"name": {
+				"hr": "Kit",
+				"en": "Whale",
+				"de": "Wal"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFF8B0", "#00DAFF", "#686868"],
+			"category": "wild"
+		},
+		{
+			"id": 45,
+			"name": {
+				"hr": "Žaba",
+				"en": "Frog",
+				"de": "Frosch"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#74AB2D"],
+			"category": "wild"
+		},
+		{
+			"id": 46,
+			"name": {
+				"hr": "Zec",
+				"en": "Rabbit",
+				"de": "Hase"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4", "#B88E5B"],
+			"category": "domestic"
+		},
+		{
+			"id": 47,
+			"name": {
+				"hr": "Žirafa",
+				"en": "Giraffe",
+				"de": "Giraffe"
+			},
+			"difficulty": 2,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFC4C4", "#B88E5B"],
+			"category": "wild"
+		},
+		{
+			"id": 48,
+			"name": {
+				"hr": "Zlatna ribica",
+				"en": "Goldfish",
+				"de": "Goldfisch"
+			},
+			"difficulty": 0,
+			"url": {
+				"big": "...",
+				"small": "...",
+				"outline": "...",
+				"mask": "..."
+			},
+			"colors": ["#FFBA66", "#FFA300"],
+			"category": "domestic"
+		}
+	]
+}

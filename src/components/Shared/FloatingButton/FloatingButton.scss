@@ -1,0 +1,26 @@
+$text: #4357a5;
+$loginSubmit: #3085d6;
+.floating-button {
+	position: absolute;
+	background-color: #3086d63a;
+	border-radius: 25px;
+	z-index: 50;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	border: 3px solid $loginSubmit;
+	color: $text;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.floating-button:hover {
+	background-color: #ffffff9f;
+}
+
+.floating-button-icon {
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 2px;
+}
