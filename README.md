@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+# Coloringbook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web application made for a school for children and teenagers with disabilities.
+The main goal is helping children that have problems with motoric movements by giving them a platform to practice precise movements by coloring animals.
+To change the language to English, go to settings.
+Technologies: TypeScript, React, Redux, SASS, Firebase
 
-## Available Scripts
+[https://coloringbook-e17d9.web.app/](https://coloringbook-e17d9.web.app/)
 
-In the project directory, you can run:
+## Content
+- [Coloringbook](#coloringbook)
+  - [Content](#content)
+  - [Home page](#home-page)
+  - [Select drawing](#select-drawing)
+  - [Coloring page](#coloring-page)
+  - [Colored image](#colored-image)
+  - [Settings](#settings)
+  - [Error page](#error-page)
+  - [Code Quality](#code-quality)
+    - [**Code Quality plugins**](#code-quality-plugins)
+    - [**Code Quality scripts**](#code-quality-scripts)
+    - [**Pre-commit hooks**](#pre-commit-hooks)
 
-### `npm start`
+## Home page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="images/home.jpeg" alt="par-nepar">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Select drawing
 
-### `npm test`
+<img src="images/select.jpeg" alt="par-nepar">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Coloring page
 
-### `npm run build`
+<img src="images/empty.jpeg" alt="par-nepar">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="images/gold.jpeg" alt="par-nepar">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Colored image
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="images/firework.jpeg" alt="par-nepar">
 
-### `npm run eject`
+## Settings
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="images/settings.jpeg" alt="par-nepar">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Error page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="images/error.jpeg" alt="par-nepar">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Code Quality
 
-## Learn More
+Code quality is ensured by using pre-commit hooks with linter and formatter.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **Code Quality plugins**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The following plugins for VS Code should be configured out-of-the-box:
+
+ESLint https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint<br>
+Prettier - Code formatter  https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+### **Code Quality scripts**
+Format the code with Prettier:
+```bash
+npm run format
+```
+
+Run ESLint and report errors and warnings:
+```bash
+npm run lint
+```
+Run ESlint and automatically attempt to fix errors and warnings:
+```bash
+npm run lint-fix
+```
+
+### **Pre-commit hooks**
+
+Pre-commit hooks are installed and run using Husky. By doing an npm install husky should automatically set everything up.
+
+To test if the hook will pass before commiting, you can run the linter and formatter on the staged files by using the following command:
+```bash
+ npx pretty-quick --staged && npx lint-staged
+```
