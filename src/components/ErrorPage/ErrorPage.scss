@@ -1,0 +1,21 @@
+$text: #4357a5;
+
+.loginBackground {
+	height: 100vh;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: left;
+	/* ili repeat i contain ili samo cover */
+
+	.error-page-title {
+		color: $text;
+		position: absolute;
+		right: 20%;
+		font-size: 5rem;
+		margin: 0;
+		top: 50%;
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+		width: 500px;
+	}
+}
