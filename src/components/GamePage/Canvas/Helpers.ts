@@ -15,7 +15,7 @@ export interface MousePosition {
 export const createCanvas = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	width: number,
-	height: number
+	height: number,
 ) => {
 	if (!canvasRef.current) {
 		const Canvas = document.createElement("canvas");
@@ -29,7 +29,7 @@ export const loadRawImageArrayToState = (
 	sourceURL: string,
 	canvasWidth: number,
 	canvasHeight: number,
-	dispatch: React.Dispatch<React.SetStateAction<Uint8ClampedArray | null>>
+	dispatch: React.Dispatch<React.SetStateAction<Uint8ClampedArray | null>>,
 ) => {
 	const canvas = document.createElement("canvas");
 	canvas.width = canvasWidth;
@@ -58,7 +58,7 @@ export const loadRawImageArrayToState = (
 export const loadImageToState = (
 	sourceURL: string,
 	imageState: HTMLImageElement | null,
-	setImageState: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>
+	setImageState: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>,
 ) => {
 	if (!imageState) {
 		const image = new Image();
@@ -108,7 +108,7 @@ export const setBrush = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	color?: string | CanvasGradient | CanvasPattern,
 	width?: number,
-	cap?: CanvasLineCap
+	cap?: CanvasLineCap,
 ) => {
 	if (canvasRef.current) {
 		const Canvas = canvasRef.current;
@@ -132,7 +132,7 @@ export const setBrush = (
 export const getMousePos = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	clientX: number,
-	clientY: number
+	clientY: number,
 ): MousePosition => {
 	const canvas = canvasRef.current;
 

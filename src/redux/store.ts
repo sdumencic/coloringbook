@@ -16,11 +16,11 @@ export type ActionMap<M extends { [index: string]: any }> = {
 	[Key in keyof M]: M[Key] extends undefined
 		? {
 				type: Key;
-		  }
+			}
 		: {
 				type: Key;
 				payload: M[Key];
-		  };
+			};
 };
 
 export type GlobalState = {
@@ -45,8 +45,8 @@ export const store = isDevelopment()
 	? createStore(
 			rootReducer,
 			// @ts-expect-error Because this is not a typesafe way to include devtools
-			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	  )
+			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+		)
 	: createStore(rootReducer);
 
 export default store;

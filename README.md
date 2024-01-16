@@ -79,5 +79,5 @@ Pre-commit hooks are installed and run using Husky. By doing an npm install husk
 
 To test if the hook will pass before commiting, you can run the linter and formatter on the staged files by using the following command:
 ```bash
- npx pretty-quick --staged && npx lint-staged
+npx lint-staged
 ```
