@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 
-import { BrushTypes } from "../../redux/reducers/BrushReducer";
+import { setBrushColor } from "../../redux/slices/BrushSlice";
 import Canvas from "./Canvas/Canvas";
-import { GameTypes } from "../../redux/reducers/GameReducer";
+import { scoreGame, setSelectedGameId } from "../../redux/slices/GameSlice";
 import { GlobalState } from "../../redux/store";
 import HUD from "./HUD/HUD";
 import { useEffect } from "react";
@@ -37,22 +37,13 @@ const GamePage = () => {
 	}
 
 	if (game.selectedId !== numId) {
-		dispatch({
-			type: GameTypes.SelectedId,
-			payload: numId,
-		});
-		dispatch({
-			type: GameTypes.Score,
-			payload: 0,
-		});
+		dispatch(setSelectedGameId(numId));
+		dispatch(scoreGame(0));
 	}
 
 	// Check that brush is ok
 	if (!animals[numId].colors.includes(brush.color)) {
-		dispatch({
-			type: BrushTypes.Color,
-			payload: animals[numId].colors[0],
-		});
+		dispatch(setBrushColor(animals[numId].colors[0]));
 	}
 
 	return (

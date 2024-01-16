@@ -3,18 +3,18 @@ import "./HUD.scss";
 import { CSSProperties, Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ActionsTypes } from "../../../redux/reducers/ActionReducer";
+import { clearCanvas as _clearCanvas, saveImage as _saveImage } from "../../../redux/slices/ActionSlice";
 import { AiOutlineSave } from "react-icons/ai";
-import { BrushTypes } from "../../../redux/reducers/BrushReducer";
+import { setBrushColor, setBrushWidth } from "../../../redux/slices/BrushSlice";
 import { BsTrash } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa";
-import { Fireworks } from "fireworks-js/dist/react";
+import { FcUndo } from "react-icons/fc";
+import { Fireworks } from "@fireworks-js/react";
+import FloatingButton from "../../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../../redux/store";
 import { ImUndo2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { strings } from "../../../util/language";
-import FloatingButton from "../../Shared/FloatingButton/FloatingButton";
-import { FcUndo } from "react-icons/fc";
 
 const SMALL_BRUSH = "/images/small.png";
 const MEDIUM_BRUSH = "/images/medium.png";
@@ -74,10 +74,7 @@ const HUD = () => {
 	 * @param index Index of the brush from the brush pallete
 	 */
 	const setColor = (index: number) => {
-		dispatch({
-			type: BrushTypes.Color,
-			payload: animals[game.selectedId].colors[index],
-		});
+		dispatch(setBrushColor(animals[game.selectedId].colors[index]));
 	};
 
 	/**
@@ -85,22 +82,17 @@ const HUD = () => {
 	 * @param size Careful it must be 0-2
 	 */
 	const setWidth = (size: number) => {
-		dispatch({
-			type: BrushTypes.Width,
-			payload: size,
-		});
+		if (size >= 0 && size <= 2) {
+			dispatch(setBrushWidth(size as 0 | 1 | 2));
+		}
 	};
 
 	const clearCanvas = () => {
-		dispatch({
-			type: ActionsTypes.ClearCanvas,
-		});
+		dispatch(_clearCanvas());
 	};
 
 	const saveImage = () => {
-		dispatch({
-			type: ActionsTypes.SaveImage,
-		});
+		dispatch(_saveImage());
 	};
 
 	const renderColors = () => {

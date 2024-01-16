@@ -1,7 +1,7 @@
 import "./Canvas.scss";
 
 import { CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP, CANVAS_HEIGHT, CANVAS_WIDTH } from "./Constants";
-import { CSSProperties, MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import { CSSProperties, MouseEvent, TouchEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
 	MousePosition,
 	angleBetweenPoints,
@@ -18,7 +18,7 @@ import {
 } from "./Helpers";
 import { useDispatch, useSelector } from "react-redux";
 
-import { GameTypes } from "../../../redux/reducers/GameReducer";
+import { scoreGame } from "../../../redux/slices/GameSlice";
 import { GlobalState } from "../../../redux/store";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
@@ -48,13 +48,13 @@ const Canvas = (props: CanvasProps) => {
 	const [imageBigArray, setImageBigArray] = useState<Uint8ClampedArray | null>(null);
 	const [imageBigPixelCount, setImageBigPixelCount] = useState(0);
 
-	const allImagesLoaded = () => {
+	const allImagesLoaded = useMemo(() => {
 		return imageOutline && imageMask && imageBigArray;
-	};
+	}, [imageOutline, imageMask, imageBigArray]);
 
 	useEffect(() => {
 		// Start the render Loop after the images have been loaded
-		if (allImagesLoaded()) {
+		if (allImagesLoaded) {
 			window.requestAnimationFrame(renderLoop);
 			setImageBigPixelCount(getRealPixelCount(imageBigArray!));
 		}
@@ -68,13 +68,10 @@ const Canvas = (props: CanvasProps) => {
 	// SECTION: Canvas Actions
 	useEffect(() => {
 		clearCanvas(DataCanvasRef);
-		dispatch({
-			type: GameTypes.Score,
-			payload: 0,
-		});
+		dispatch(scoreGame(0));
 	}, [actions.clearCanvas]);
 	useEffect(() => {
-		if (allImagesLoaded()) downloadCanvas(FGCanvasRef, props.name);
+		if (allImagesLoaded) downloadCanvas(FGCanvasRef, props.name);
 	}, [actions.saveImage]);
 
 	// NOTE: Initial Load
@@ -86,19 +83,22 @@ const Canvas = (props: CanvasProps) => {
 		// eslint-disable-next-line
 	}, []);
 
-	const mainCanvasStyle: CSSProperties = {
-		width: client.height > client.width ? "100%" : `${client.height}px`,
-		height: client.height > client.width ? `${client.width}px` : "100%",
-		top: client.height > client.width ? `${(client.height - client.width) / 2}px` : 0,
-		left: client.height > client.width ? 0 : `${(client.width - client.height) / 2}px`,
-	};
+	const mainCanvasStyle: CSSProperties = useMemo(
+		() => ({
+			width: client.height > client.width ? "100%" : `${client.height}px`,
+			height: client.height > client.width ? `${client.width}px` : "100%",
+			top: client.height > client.width ? `${(client.height - client.width) / 2}px` : 0,
+			left: client.height > client.width ? 0 : `${(client.width - client.height) / 2}px`,
+		}),
+		[client.height, client.width],
+	);
 
 	const renderLoop = () => {
 		// Set up the variables
 		const BGCanvas = BGCanvasRef.current;
-		const BGContext = BGCanvasRef.current?.getContext("2d");
+		const BGContext = BGCanvasRef.current?.getContext("2d", { willReadFrequently: true });
 		const FGCanvas = FGCanvasRef.current;
-		const FGContext = FGCanvas?.getContext("2d");
+		const FGContext = FGCanvas?.getContext("2d", { willReadFrequently: true });
 		const DataCanvas = DataCanvasRef.current;
 
 		if (BGCanvas && BGContext && FGCanvas && FGContext && DataCanvas && imageOutline && imageMask) {
@@ -126,12 +126,11 @@ const Canvas = (props: CanvasProps) => {
 	};
 
 	const compareImages = () => {
-		const FGImageData = FGCanvasRef.current?.getContext("2d")?.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+		const FGImageData = FGCanvasRef.current
+			?.getContext("2d", { willReadFrequently: true })
+			?.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 		if (FGImageData && imageBigArray) {
-			dispatch({
-				type: GameTypes.Score,
-				payload: compareReal(imageBigArray, FGImageData.data, imageBigPixelCount),
-			});
+			dispatch(scoreGame(compareReal(imageBigArray, FGImageData.data, imageBigPixelCount)));
 		}
 	};
 
@@ -201,26 +200,32 @@ const Canvas = (props: CanvasProps) => {
 	};
 
 	const drawCircle = (x: number, y: number, correctBrush = true) => {
-		const Context = DataCanvasRef.current?.getContext("2d");
+		const Context = DataCanvasRef.current?.getContext("2d", { willReadFrequently: true });
 		const brushOffset = correctBrush ? ((brush.width + 1) * CANVAS_BASE_WIDTH) / 2 : 0;
-		Context?.beginPath();
-		Context?.arc(x + brushOffset, y + brushOffset, 0, 0, Math.PI * 2, false);
-		Context?.closePath();
-		Context?.fill();
-		Context?.stroke();
-	};
 
-	const renderSpinner = () => {
-		if (allImagesLoaded()) return null;
-		return <LoadingSpinner bgColor={"rgb(220, 255, 254)"} textColor="#4357a5" spinnerColor="#3085d6" />;
+		if (!Context) return;
+
+		Context.beginPath();
+		Context.arc(x + brushOffset, y + brushOffset, 0, 0, Math.PI * 2, false);
+		if (settings.isFirefox) {
+			// NOTE: HACK!!! Despite fill() and stroke() methods calling closePath() internally
+			// Firefox won't draw unless we explicitly close the path with closePath()
+			// HOWEVER Chrome WILL NOT DRAW ANYTHING if we call the closePath() before fill()
+			// or stroke(). Which is why do this Hack based on user agent parsing.
+			Context.closePath();
+		}
+		Context.fill();
+		Context.stroke();
 	};
 
 	// Brush settings
-	setBrush(DataCanvasRef, brush.color, (brush.width + 1) * CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP);
+	useEffect(() => {
+		setBrush(DataCanvasRef, brush.color, (brush.width + 1) * CANVAS_BASE_WIDTH, CANVAS_BRUSH_CAP);
+	}, [DataCanvasRef, brush.color, brush.width]);
 
 	return (
 		<>
-			{renderSpinner()}
+			{!allImagesLoaded && <LoadingSpinner bgColor={"rgb(220, 255, 254)"} textColor="#4357a5" spinnerColor="#3085d6" />}
 			<div className="viewport">
 				<canvas
 					className="background"

@@ -1,9 +1,9 @@
 import "./GameSelectPage.scss";
 
-import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import AnimalGrid from "./AnimalGrid/AnimalGrid";
+import { FcUndo } from "react-icons/fc";
 import { FiSettings } from "react-icons/fi";
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../redux/store";
@@ -26,11 +26,13 @@ const GameSelectPage = () => {
 		// eslint-disable-next-line
 	}, []);
 
-	const filteredAnimals = animals.filter((animal) => {
-		if (category === "all" || animal.category === category) return animal;
-	});
-
-	filteredAnimals.sort((a, b) => (a.difficulty > b.difficulty ? 1 : -1));
+	const filteredAnimals = useMemo(() => {
+		return animals
+			.filter((animal) => {
+				if (category === "all" || animal.category === category) return animal;
+			})
+			.sort((a, b) => a.difficulty - b.difficulty);
+	}, [animals, category]);
 
 	return (
 		<div className="selectBackground">

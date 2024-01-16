@@ -8,7 +8,7 @@ import { ChangeEvent } from "react";
 import FloatingButton from "../Shared/FloatingButton/FloatingButton";
 import { GlobalState } from "../../redux/store";
 import { HiOutlineCursorClick } from "react-icons/hi";
-import { SettingsTypes } from "../../redux/reducers/SettingsReducer";
+import { setLanguage, setDrawMode, setSoundVolume } from "../../redux/slices/SettingsSlice";
 import Switch from "./Switch/Switch";
 import { strings } from "../../util/language";
 import { useNavigate } from "react-router-dom";
@@ -23,18 +23,18 @@ const SettingsPage = () => {
 	const { sound_volume, language, draw_mode } = useSelector((state: GlobalState) => state.settings);
 	const locationCount = useSelector((state: GlobalState) => state.actions.locationCount);
 
-	const flagClicked = (country: string) => {
+	const flagClicked = (country: "en" | "hr" | "de") => {
 		if (country !== language) {
-			dispatch({ type: SettingsTypes.Language, payload: country });
+			dispatch(setLanguage(country));
 		}
 	};
 
 	const volumeChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch({ type: SettingsTypes.SoundVolume, payload: event.target.value });
+		dispatch(setSoundVolume(Number(event.target.value)));
 	};
 
 	const drawModeChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch({ type: SettingsTypes.DrawMode, payload: event.target.checked ? "hold" : "toggle" });
+		dispatch(setDrawMode(event.target.checked ? "hold" : "toggle"));
 	};
 
 	return (

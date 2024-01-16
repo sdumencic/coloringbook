@@ -15,7 +15,7 @@ export interface MousePosition {
 export const createCanvas = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	width: number,
-	height: number
+	height: number,
 ) => {
 	if (!canvasRef.current) {
 		const Canvas = document.createElement("canvas");
@@ -29,7 +29,7 @@ export const loadRawImageArrayToState = (
 	sourceURL: string,
 	canvasWidth: number,
 	canvasHeight: number,
-	dispatch: React.Dispatch<React.SetStateAction<Uint8ClampedArray | null>>
+	dispatch: React.Dispatch<React.SetStateAction<Uint8ClampedArray | null>>,
 ) => {
 	const canvas = document.createElement("canvas");
 	canvas.width = canvasWidth;
@@ -58,7 +58,7 @@ export const loadRawImageArrayToState = (
 export const loadImageToState = (
 	sourceURL: string,
 	imageState: HTMLImageElement | null,
-	setImageState: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>
+	setImageState: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>,
 ) => {
 	if (!imageState) {
 		const image = new Image();
@@ -108,7 +108,7 @@ export const setBrush = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	color?: string | CanvasGradient | CanvasPattern,
 	width?: number,
-	cap?: CanvasLineCap
+	cap?: CanvasLineCap,
 ) => {
 	if (canvasRef.current) {
 		const Canvas = canvasRef.current;
@@ -132,7 +132,7 @@ export const setBrush = (
 export const getMousePos = (
 	canvasRef: React.MutableRefObject<HTMLCanvasElement | null>,
 	clientX: number,
-	clientY: number
+	clientY: number,
 ): MousePosition => {
 	const canvas = canvasRef.current;
 
@@ -230,17 +230,16 @@ export const compareReal = (originalArray: Uint8ClampedArray, copyArray: Uint8Cl
 	let sum = 0;
 
 	for (let i = 0; i < originalArray.length; i = i + 4) {
-		const R = originalArray[i];
-		const G = originalArray[i + 1];
-		const B = originalArray[i + 2];
-		const A = originalArray[i + 3];
-
-		if (A !== 0) {
-			if (!(R === 0 && G === 0 && B === 0)) {
-				if (!(R === 255 && G === 255 && B === 255)) {
-					if (copyArray[i] === R && copyArray[i + 1] === G && copyArray[i + 2] === B && copyArray[i + 3] === A) {
+		if (originalArray[i + 3] !== 0) {
+			if (!(originalArray[i] === 0 && originalArray[i + 1] === 0 && originalArray[i + 2] === 0)) {
+				if (!(originalArray[i] === 255 && originalArray[i + 1] === 255 && originalArray[i + 2] === 255)) {
+					if (
+						Math.abs(originalArray[i] - copyArray[i]) <= 3 &&
+						Math.abs(originalArray[i + 1] - copyArray[i + 1]) <= 3 &&
+						Math.abs(originalArray[i + 2] - copyArray[i + 2]) <= 3 &&
+						Math.abs(originalArray[i + 3] - copyArray[i + 3]) <= 3
+					)
 						sum++;
-					}
 				}
 			}
 		}
