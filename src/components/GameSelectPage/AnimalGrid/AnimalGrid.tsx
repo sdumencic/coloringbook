@@ -1,6 +1,6 @@
 import "./AnimalGrid.scss";
 
-import { Animal } from "../../../redux/reducers/AnimalsReducer";
+import { Animal } from "../../../redux/slices/AnimalsSlice";
 import AnimalCard from "./AnimalCard/AnimalCard";
 import { GlobalState } from "../../../redux/store";
 import { useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import { ActionMap } from "../store";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const MAX_VOLUME = 100;
 const MIN_VOLUME = 0;
@@ -28,22 +28,11 @@ const initialState: SettingsState = {
 	draw_mode: draw_mode,
 };
 
-//? Actions
-export enum SettingsTypes {
-	SoundVolume = "SETTINGS_SOUND_VOLUME",
-	Language = "SETTINGS_LANGUAGE",
-	DrawMode = "SETTINGS_DRAW_MODE",
-}
-type SettingsPayload = {
-	[SettingsTypes.SoundVolume]: number;
-	[SettingsTypes.Language]: "en" | "hr" | "de";
-	[SettingsTypes.DrawMode]: "toggle" | "hold";
-};
-export type SettingsActions = ActionMap<SettingsPayload>[keyof ActionMap<SettingsPayload>];
-
-export const settingsReducer = (state: SettingsState = initialState, action: SettingsActions) => {
-	switch (action.type) {
-		case SettingsTypes.SoundVolume: {
+const settingsSlice = createSlice({
+	name: "settings",
+	initialState,
+	reducers: {
+		setSoundVolume(state, action: PayloadAction<number>) {
 			// NOTE: Ensure that the volume is between 0 and 100
 			const volume = Math.max(Math.min(action.payload, MAX_VOLUME), MIN_VOLUME);
 			localStorage.setItem("sound_volume", String(volume));
@@ -51,16 +40,17 @@ export const settingsReducer = (state: SettingsState = initialState, action: Set
 				...state,
 				sound_volume: volume,
 			};
-		}
-		case SettingsTypes.Language: {
+		},
+		setLanguage(state, action: PayloadAction<"en" | "hr" | "de">) {
 			localStorage.setItem("language", action.payload);
 			return { ...state, language: action.payload };
-		}
-		case SettingsTypes.DrawMode: {
+		},
+		setDrawMode(state, action: PayloadAction<"toggle" | "hold">) {
 			localStorage.setItem("draw_mode", action.payload);
 			return { ...state, draw_mode: action.payload };
-		}
-		default:
-			return state;
-	}
-};
+		},
+	},
+});
+
+export const { setSoundVolume, setLanguage, setDrawMode } = settingsSlice.actions;
+export default settingsSlice.reducer;

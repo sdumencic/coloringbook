@@ -2,8 +2,8 @@ import "./App.scss";
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import { ActionsTypes } from "./redux/reducers/ActionReducer";
-import { ClientTypes } from "./redux/reducers/ClientReducer";
+import { setLocationCount } from "./redux/slices/ActionSlice";
+import { resizeClient } from "./redux/slices/ClientSlice";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import GamePage from "./components/GamePage/GamePage";
 import GameSelectPage from "./components/GameSelectPage/GameSelectPage";
@@ -20,13 +20,12 @@ const App = () => {
 	// On window resize, update the dimensions in global state
 	useEffect(() => {
 		const handleResize = () => {
-			dispatch({
-				type: ClientTypes.Resize,
-				payload: {
+			dispatch(
+				resizeClient({
 					height: window.innerHeight,
 					width: window.innerWidth,
-				},
-			});
+				}),
+			);
 		};
 
 		window.addEventListener("resize", debounce(handleResize, 100));
@@ -39,7 +38,7 @@ const App = () => {
 
 	// Because router v6 does not expose history, we use this hack to track length
 	useEffect(() => {
-		dispatch({ type: ActionsTypes.LocationCount });
+		dispatch(setLocationCount());
 	}, [pathname]);
 
 	return (
