@@ -1,4 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { UAParser } from "ua-parser-js";
+
+const parser = new UAParser(window.navigator.userAgent);
+const parserResults = parser.getResult();
+const isFirefox = parserResults.browser.name === "Firefox";
 
 const MAX_VOLUME = 100;
 const MIN_VOLUME = 0;
@@ -21,11 +26,13 @@ export type SettingsState = {
 	sound_volume: number;
 	language: string;
 	draw_mode: string;
+	isFirefox: boolean;
 };
 const initialState: SettingsState = {
 	sound_volume: sound_volume,
 	language: language,
 	draw_mode: draw_mode,
+	isFirefox: isFirefox,
 };
 
 const settingsSlice = createSlice({

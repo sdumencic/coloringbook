@@ -207,7 +207,13 @@ const Canvas = (props: CanvasProps) => {
 
 		Context.beginPath();
 		Context.arc(x + brushOffset, y + brushOffset, 0, 0, Math.PI * 2, false);
-		Context.closePath();
+		if (settings.isFirefox) {
+			// NOTE: HACK!!! Despite fill() and stroke() methods calling closePath() internally
+			// Firefox won't draw unless we explicitly close the path with closePath()
+			// HOWEVER Chrome WILL NOT DRAW ANYTHING if we call the closePath() before fill()
+			// or stroke(). Which is why do this Hack based on user agent parsing.
+			Context.closePath();
+		}
 		Context.fill();
 		Context.stroke();
 	};

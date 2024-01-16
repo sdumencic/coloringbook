@@ -14,6 +14,7 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
     "react-scripts": "^5.0.1",
+    "ua-parser-js": "^1.0.37",
     "web-vitals": "^3.5.1"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-redux": "^7.1.33",
+    "@types/ua-parser-js": "^0.7.39",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.56.0",
