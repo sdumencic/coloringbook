@@ -1,30 +1,29 @@
-import "./AnimalGrid.scss";
+import type { TAnimal } from '@/store/Animals'
+import { useSettingsStore } from '@/store/Settings'
 
-import { Animal } from "../../../redux/slices/AnimalsSlice";
-import AnimalCard from "./AnimalCard/AnimalCard";
-import { GlobalState } from "../../../redux/store";
-import { useSelector } from "react-redux";
+import AnimalCard from './AnimalCard/AnimalCard'
+import './AnimalGrid.css'
 
-interface AnimalGridProps {
-	animals: Animal[];
+interface IAnimalGridProps {
+  animals: TAnimal[]
 }
 
-const AnimalGrid = (props: AnimalGridProps) => {
-	const { language } = useSelector((state: GlobalState) => state.settings);
+const AnimalGrid = (props: IAnimalGridProps) => {
+  const language = useSettingsStore((s) => s.language)
 
-	return (
-		<div className="card-deck">
-			{props.animals.map((animal, index) => (
-				<AnimalCard
-					id={animal.id}
-					key={`${animal}.${index}`}
-					difficulty={animal.difficulty}
-					name={animal.name[language]}
-					image={animal.url.small}
-				/>
-			))}
-		</div>
-	);
-};
+  return (
+    <div className="card-deck">
+      {props.animals.map((animal, index) => (
+        <AnimalCard
+          id={animal.id}
+          key={`${animal}.${index}`}
+          difficulty={animal.difficulty}
+          name={animal.name[language]}
+          image={animal.url.small}
+        />
+      ))}
+    </div>
+  )
+}
 
-export default AnimalGrid;
+export default AnimalGrid

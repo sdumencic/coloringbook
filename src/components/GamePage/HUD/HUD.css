@@ -1,0 +1,207 @@
+.HUD {
+  position: absolute;
+  background-color: rgba(67, 87, 165, 0.5);
+  top: 10px;
+  border-radius: 25px;
+  z-index: 50;
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+}
+
+.HUD p {
+  padding: 0 15px;
+  color: black;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.HUD h2 {
+  text-align: center;
+}
+
+.HUD h2 .slim {
+  margin: 0px;
+}
+
+.HUD button {
+  position: static;
+  background-color: black;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 10px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 5px 4px 5px;
+  border-radius: 50%;
+  vertical-align: middle;
+  cursor: pointer;
+  /* TODO: Make responsive */
+  /* NOTE: Must fit all translations */
+  min-width: 75px;
+  min-height: 75px;
+}
+
+.HUD button:disabled {
+  background-color: gray;
+  border: 2px solid darkgrey;
+  cursor: default;
+}
+
+.HUD button.selected {
+  border: 1px solid white;
+  filter: drop-shadow(white 0px 0px 10px);
+}
+
+.HUD button.back {
+  background-color: #17a2b8;
+}
+
+.HUD button.delete {
+  background-color: #dc3545;
+}
+
+.HUD button.save {
+  background-color: #28a745;
+}
+
+.HUD button.gold {
+  background-color: #cfb150;
+}
+
+.HUD button.silver {
+  background-color: silver;
+}
+
+.HUD button.bronze {
+  background-color: #cf7340;
+}
+
+.HUD svg {
+  vertical-align: middle;
+}
+
+.HUD .preview {
+  width: 200px;
+  height: 200px;
+}
+
+.HUD .medal {
+  width: 200px;
+  height: 200px;
+}
+
+.HUD .medal.bronze {
+  animation: bronze 5s linear infinite;
+}
+
+.HUD .medal.silver {
+  animation: silver 5s linear infinite;
+}
+
+.HUD .medal.gold {
+  animation: gold 5s linear infinite;
+}
+
+@keyframes bronze {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes silver {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes gold {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.75);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.blocker {
+  position: absolute;
+  z-index: 49;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.blocker button {
+  width: 80px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: all 0.5s;
+}
+
+.blocker button:hover {
+  filter: brightness(2);
+  cursor: pointer;
+}
+
+.blocker svg {
+  vertical-align: text-top;
+}
+
+.blocker .confirm {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  float: left;
+}
+
+.blocker .cancel {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  float: right;
+}
+
+.wood {
+  background-color: #d08632;
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at center center, #37230d, #d08632),
+    repeating-radial-gradient(circle at center center, #37230d, #37230d, 4px, transparent 8px, transparent 4px);
+  background-blend-mode: multiply;
+  border: 2px solid #37230d;
+}
+
+.width-img {
+  width: 50px;
+  vertical-align: inherit;
+}

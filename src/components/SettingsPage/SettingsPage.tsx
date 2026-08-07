@@ -1,94 +1,99 @@
-import "./SettingsPage.scss";
+import type { ChangeEvent } from 'react'
+import { BsBrush } from 'react-icons/bs'
+import { FcSpeaker, FcUndo, FcVoicePresentation } from 'react-icons/fc'
+import { HiOutlineCursorClick } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 
-import { FcSpeaker, FcUndo, FcVoicePresentation } from "react-icons/fc";
-import { useDispatch, useSelector } from "react-redux";
+import { useActionsStore } from '@/store/Actions'
+import { useSettingsStore } from '@/store/Settings'
 
-import { BsBrush } from "react-icons/bs";
-import { ChangeEvent } from "react";
-import FloatingButton from "../Shared/FloatingButton/FloatingButton";
-import { GlobalState } from "../../redux/store";
-import { HiOutlineCursorClick } from "react-icons/hi";
-import { setLanguage, setDrawMode, setSoundVolume } from "../../redux/slices/SettingsSlice";
-import Switch from "./Switch/Switch";
-import { strings } from "../../util/language";
-import { useNavigate } from "react-router-dom";
+import { strings } from '../../util/language'
+import FloatingButton from '../Shared/FloatingButton/FloatingButton'
+import './SettingsPage.css'
+import Switch from './Switch/Switch'
 
-const BritishFlag = "images/BritishFlag.png";
-const CroatianFlag = "images/CroatianFlag.png";
-const GermanFlag = "images/GermanFlag.png";
+const BritishFlag = 'images/BritishFlag.png'
+const CroatianFlag = 'images/CroatianFlag.png'
+const GermanFlag = 'images/GermanFlag.png'
 
 const SettingsPage = () => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const { sound_volume, language, draw_mode } = useSelector((state: GlobalState) => state.settings);
-	const locationCount = useSelector((state: GlobalState) => state.actions.locationCount);
+  const navigate = useNavigate()
 
-	const flagClicked = (country: "en" | "hr" | "de") => {
-		if (country !== language) {
-			dispatch(setLanguage(country));
-		}
-	};
+  const sound_volume = useSettingsStore((s) => s.sound_volume)
+  const language = useSettingsStore((s) => s.language)
+  const draw_mode = useSettingsStore((s) => s.draw_mode)
+  const setLanguage = useSettingsStore((s) => s.setLanguage)
+  const setSoundVolume = useSettingsStore((s) => s.setSoundVolume)
+  const setDrawMode = useSettingsStore((s) => s.setDrawMode)
 
-	const volumeChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch(setSoundVolume(Number(event.target.value)));
-	};
+  const locationCount = useActionsStore((s) => s.locationCount)
 
-	const drawModeChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch(setDrawMode(event.target.checked ? "hold" : "toggle"));
-	};
+  const flagClicked = (country: 'en' | 'hr' | 'de') => {
+    if (country !== language) {
+      setLanguage(country)
+    }
+  }
 
-	return (
-		<div className="settings">
-			<h2>{strings[language].settingsPage.mode}</h2>
-			<Switch
-				checked={draw_mode === "hold"}
-				onChange={drawModeChange}
-				leftIcon={<HiOutlineCursorClick size={30} />}
-				rightIcon={<BsBrush size={30} />}
-			/>
+  const volumeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSoundVolume(Number(event.target.value))
+  }
 
-			<h1>
-				<FcSpeaker size={70} />
-			</h1>
+  const drawModeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setDrawMode(event.target.checked ? 'hold' : 'toggle')
+  }
 
-			<div className="animation">
-				<input
-					type="range"
-					min="0"
-					max="100"
-					step="1"
-					value={sound_volume}
-					className="slider"
-					onChange={volumeChange}
-				/>
-			</div>
+  return (
+    <div className="settings">
+      <h2>{strings[language].settingsPage.mode}</h2>
+      <Switch
+        checked={draw_mode === 'hold'}
+        onChange={drawModeChange}
+        leftIcon={<HiOutlineCursorClick size={30} />}
+        rightIcon={<BsBrush size={30} />}
+      />
 
-			<h1>
-				<FcVoicePresentation size={70} />
-			</h1>
+      <h1>
+        <FcSpeaker size={70} />
+      </h1>
 
-			<div className="flex">
-				<div className={`item ${language !== "hr" ? "" : "active"}`} onClick={() => flagClicked("hr")}>
-					<img src={CroatianFlag} alt={strings[language].settingsPage.hr} />
-					<h2>{strings[language].settingsPage.hr}</h2>
-				</div>
-				<div className={`item ${language !== "en" ? "" : "active"}`} onClick={() => flagClicked("en")}>
-					<img src={BritishFlag} alt={strings[language].settingsPage.en} />
-					<h2>{strings[language].settingsPage.en}</h2>
-				</div>
-				<div className={`item ${language !== "de" ? "" : "active"}`} onClick={() => flagClicked("de")}>
-					<img src={GermanFlag} alt={strings[language].settingsPage.de} />
-					<h2>{strings[language].settingsPage.de}</h2>
-				</div>
-			</div>
+      <div className="animation">
+        <input
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value={sound_volume}
+          className="slider"
+          onChange={volumeChange}
+        />
+      </div>
 
-			<FloatingButton
-				icon={<FcUndo size={30} className="floating-button-icon" />}
-				style={{ top: "10px", left: "10px" }}
-				onClick={() => (locationCount <= 1 ? navigate("/") : navigate(-1))}
-			/>
-		</div>
-	);
-};
+      <h1>
+        <FcVoicePresentation size={70} />
+      </h1>
 
-export default SettingsPage;
+      <div className="flex">
+        <div className={`item ${language !== 'hr' ? '' : 'active'}`} onClick={() => flagClicked('hr')}>
+          <img src={CroatianFlag} alt={strings[language].settingsPage.hr} />
+          <h2>{strings[language].settingsPage.hr}</h2>
+        </div>
+        <div className={`item ${language !== 'en' ? '' : 'active'}`} onClick={() => flagClicked('en')}>
+          <img src={BritishFlag} alt={strings[language].settingsPage.en} />
+          <h2>{strings[language].settingsPage.en}</h2>
+        </div>
+        <div className={`item ${language !== 'de' ? '' : 'active'}`} onClick={() => flagClicked('de')}>
+          <img src={GermanFlag} alt={strings[language].settingsPage.de} />
+          <h2>{strings[language].settingsPage.de}</h2>
+        </div>
+      </div>
+
+      <FloatingButton
+        icon={<FcUndo size={30} className="floating-button-icon" />}
+        style={{ top: '10px', left: '10px' }}
+        onClick={() => (locationCount <= 1 ? navigate('/') : navigate(-1))}
+      />
+    </div>
+  )
+}
+
+export default SettingsPage

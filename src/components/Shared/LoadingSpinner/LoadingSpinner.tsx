@@ -1,44 +1,46 @@
-import "./LoadingSpinner.scss";
+import { ImSpinner9 } from 'react-icons/im'
 
-import { GlobalState } from "../../../redux/store";
-import { ImSpinner9 } from "react-icons/im";
-import { strings } from "../../../util/language";
-import { useSelector } from "react-redux";
+import { useClientStore } from '@/store/Client'
+import { useSettingsStore } from '@/store/Settings'
 
-interface LoadingSpinnerProps {
-	bgColor?: string;
-	textColor?: string;
-	spinnerColor?: string;
+import { strings } from '../../../util/language'
+import './LoadingSpinner.css'
+
+interface ILoadingSpinnerProps {
+  bgColor?: string
+  textColor?: string
+  spinnerColor?: string
 }
 
-const LoadingSpinner = (props: LoadingSpinnerProps) => {
-	const language = useSelector((state: GlobalState) => state.settings.language);
-	const client = useSelector((state: GlobalState) => state.client);
+const LoadingSpinner = (props: ILoadingSpinnerProps) => {
+  const language = useSettingsStore((s) => s.language)
+  const height = useClientStore((s) => s.height)
+  const width = useClientStore((s) => s.width)
 
-	const size = Math.min(client.width, client.height) / 3;
+  const size = Math.min(width, height) / 3
 
-	return (
-		<div className="loading-spinner" style={{ backgroundColor: props.bgColor }}>
-			<ImSpinner9
-				style={{
-					top: `${(client.height - size) / 2}px`,
-					left: `${(client.width - size) / 2}px`,
-					color: `${props.spinnerColor}`,
-				}}
-				size={size}
-			/>
-			<h2
-				style={{
-					width: size,
-					top: `${(client.height + size) / 2}px`,
-					left: `${(client.width - size) / 2}px`,
-					color: `${props.textColor}`,
-				}}
-			>
-				{strings[language].misc.loading}
-			</h2>
-		</div>
-	);
-};
+  return (
+    <div className="loading-spinner" style={{ backgroundColor: props.bgColor }}>
+      <ImSpinner9
+        style={{
+          top: `${(height - size) / 2}px`,
+          left: `${(width - size) / 2}px`,
+          color: `${props.spinnerColor}`
+        }}
+        size={size}
+      />
+      <h2
+        style={{
+          width: size,
+          top: `${(height + size) / 2}px`,
+          left: `${(width - size) / 2}px`,
+          color: `${props.textColor}`
+        }}
+      >
+        {strings[language].misc.loading}
+      </h2>
+    </div>
+  )
+}
 
-export default LoadingSpinner;
+export default LoadingSpinner
