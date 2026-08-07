@@ -4,17 +4,16 @@
  * @param delay How much to delay its start in milliseconds
  */
 export const debounce = (func: TimerHandler, delay: number) => {
-	let timer: number | undefined;
+  let timer: number | undefined
 
-	return () => {
-		if (timer) {
-			clearTimeout(timer);
-		}
-		timer = setTimeout(func, delay);
-	};
-};
+  return () => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(func, delay)
+  }
+}
 
-export type JSONStringList = {
-	// eslint-disable-next-line
-	[key: string]: any;
-};
+export type TJSONStringList = {
+  [key: string]: any
+}

@@ -1,0 +1,837 @@
+{
+	"animals": [
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFD645", "#FFC4C4"],
+			"difficulty": 2,
+			"id": 0,
+			"name": {
+				"de": "Biene",
+				"en": "Bee",
+				"hr": "Pcela"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/bee.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/bee_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/bee_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/bee_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFC4C4", "#B91A1A", "#B88E5B"],
+			"difficulty": 1,
+			"id": 1,
+			"name": {
+				"de": "Marienkäfer",
+				"en": "Ladybug",
+				"hr": "Bubamara"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/bubamara.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/bubamara2_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/bubamara2_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/bubamara_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#B91A1A"],
+			"difficulty": 0,
+			"id": 2,
+			"name": {
+				"de": "Marienkäfer",
+				"en": "Ladybug",
+				"hr": "Bubamara"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/bubamara2.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/bubamara1_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/bubamara1_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/bubamara2_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#B88E5B", "#6A5336"],
+			"difficulty": 1,
+			"id": 3,
+			"name": {
+				"de": "Kamel",
+				"en": "Camel",
+				"hr": "Deva"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/camel.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/camel_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/camel_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/camel_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#74AB2D"],
+			"difficulty": 1,
+			"id": 4,
+			"name": {
+				"de": "Chamäleon",
+				"en": "Chameleon",
+				"hr": "Kameleon"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/cameleon.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/cameleon_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/cameleon_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/cameleon_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#FFA300"],
+			"difficulty": 0,
+			"id": 5,
+			"name": {
+				"de": "Küken",
+				"en": "Chicken",
+				"hr": "Pile"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/chicken.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/chicken_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/chicken_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/chicken_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#158A28"],
+			"difficulty": 1,
+			"id": 6,
+			"name": {
+				"de": "Krokodil",
+				"en": "Crocodile",
+				"hr": "Krokodil"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/crocodile.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/crocodile_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/crocodile_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/crocodile_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FE9B44", "#6A5336"],
+			"difficulty": 2,
+			"id": 7,
+			"name": {
+				"de": "Roter Panda",
+				"en": "Red panda",
+				"hr": "Crvena panda"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/crvena_panda.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/crvena_panda_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/crvena_panda_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/crvena_panda_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#686868"],
+			"difficulty": 1,
+			"id": 8,
+			"name": {
+				"de": "Delfin",
+				"en": "Dolphin",
+				"hr": "Dupin"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/dolphin.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/dolphin_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/dolphin_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/dolphin_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#FFC4C4", "#CECECE", "#473621"],
+			"difficulty": 1,
+			"id": 9,
+			"name": {
+				"de": "Ziege",
+				"en": "Goat",
+				"hr": "Koza"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/goat.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/goat_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/goat_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/goat_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#E5C1C1", "#DD7F7F", "#B88E5B"],
+			"difficulty": 1,
+			"id": 10,
+			"name": {
+				"de": "Hamster",
+				"en": "Hamster",
+				"hr": "Hrčak"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/hrcak.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/hrcak_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/hrcak_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/hrcak_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#B88E5B", "#6A5336"],
+			"difficulty": 1,
+			"id": 11,
+			"name": {
+				"de": "Igel",
+				"en": "Hedgehog",
+				"hr": "Jež"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/jezic.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/jezic_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/jezic_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/jezic_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#B88E5B"],
+			"difficulty": 2,
+			"id": 12,
+			"name": {
+				"de": "Känguru",
+				"en": "Kangaroo",
+				"hr": "Klokan"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/kangaroo1.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/kangaroo1_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/kangaroo1_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/kangaroo1_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#E5C1C1", "#DD7F7F", "#B88E5B"],
+			"difficulty": 2,
+			"id": 13,
+			"name": {
+				"de": "Känguru",
+				"en": "Kangaroo",
+				"hr": "Klokan"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/kangaroo2.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/kangaroo2_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/kangaroo2_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/kangaroo2_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFC4C4", "#B88E5B", "#CECECE"],
+			"difficulty": 0,
+			"id": 14,
+			"name": {
+				"de": "Koala",
+				"en": "Koala",
+				"hr": "Koala"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/koala.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/koala_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/koala_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/koala_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#FFA300", "#B91A1A"],
+			"difficulty": 0,
+			"id": 15,
+			"name": {
+				"de": "Huhn",
+				"en": "Hen",
+				"hr": "Kokoš"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/kokica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/kokica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/kokica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/kokica_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#B88E5B", "#6A5336"],
+			"difficulty": 0,
+			"id": 16,
+			"name": {
+				"de": "Pferd",
+				"en": "Horse",
+				"hr": "Konj"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/konjic.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/konjic_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/konjic_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/konjic_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#FFC4C4", "#b88e5b"],
+			"difficulty": 1,
+			"id": 17,
+			"name": {
+				"de": "Kuh",
+				"en": "Cow",
+				"hr": "Krava"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/kravica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/kravica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/kravica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/kravica_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFC4C4", "#6A5336"],
+			"difficulty": 2,
+			"id": 18,
+			"name": {
+				"de": "Baummarder",
+				"en": "Marten",
+				"hr": "Kuna"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/kuna.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/kuna_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/kuna_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/kuna_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFC4C4", "#DD7F7F"],
+			"difficulty": 0,
+			"id": 19,
+			"name": {
+				"de": "Schmetterling",
+				"en": "Butterfly",
+				"hr": "Leptir"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/leptir2.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/leptir2_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/leptir2_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/leptir2_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#E5C1C1", "#DD7F7F", "#efc05e", "#B88E5B"],
+			"difficulty": 1,
+			"id": 20,
+			"name": {
+				"de": "Löwe",
+				"en": "Lion",
+				"hr": "Lav"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/lion.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/lion_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/lion_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/lion_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FE9B44", "#B88E5B"],
+			"difficulty": 1,
+			"id": 21,
+			"name": {
+				"de": "Fuchs",
+				"en": "Fox",
+				"hr": "Lisica"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/lisica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/lisica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/lisica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/lisica_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#E5C1C1", "#FFBA66", "#DD7F7F"],
+			"difficulty": 0,
+			"id": 22,
+			"name": {
+				"de": "Katze",
+				"en": "Cat",
+				"hr": "Mačka"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/macka.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/macka_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/macka_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/macka_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#CECECE", "#473621", "#686868"],
+			"difficulty": 1,
+			"id": 23,
+			"name": {
+				"de": "Esel",
+				"en": "Donkey",
+				"hr": "Magarac"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/magarac.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/magarac_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/magarac_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/magarac_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#DD7F7F", "#B88E5B", "#6A5336"],
+			"difficulty": 1,
+			"id": 24,
+			"name": {
+				"de": "Bär",
+				"en": "Bear",
+				"hr": "Medvjed"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/medo.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/medo_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/medo_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/medo_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFC4C4", "#CECECE"],
+			"difficulty": 0,
+			"id": 25,
+			"name": {
+				"de": "Maus",
+				"en": "Mouse",
+				"hr": "Miš"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/mis.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/mis_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/mis_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/mis_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFC4C4", "#B88E5B", "#6A5336"],
+			"difficulty": 0,
+			"id": 26,
+			"name": {
+				"de": "Affe",
+				"en": "Monkey",
+				"hr": "Majmun"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/monkey.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/monkey_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/monkey_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/monkey_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#E5C1C1", "#686868"],
+			"difficulty": 0,
+			"id": 27,
+			"name": {
+				"de": "Nilpferd",
+				"en": "Hippopotamus",
+				"hr": "Nilski konj"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/nilski_konj.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/nilski_konj_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/nilski_konj_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/nilski_konj_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#CECECE", "#473621"],
+			"difficulty": 0,
+			"id": 28,
+			"name": {
+				"de": "Nashorn",
+				"en": "Rhinoceros",
+				"hr": "Nosorog"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/nosorog.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/nosorog_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/nosorog_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/nosorog_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#ffc4c4", "#DD7F7F"],
+			"difficulty": 0,
+			"id": 29,
+			"name": {
+				"de": "Krake",
+				"en": "Octopus",
+				"hr": "Hobotnica"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/octopus.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/octopus_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/octopus_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/octopus_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#B88E5B"],
+			"difficulty": 1,
+			"id": 30,
+			"name": {
+				"de": "Schaf",
+				"en": "Sheep",
+				"hr": "Ovca"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/ovcica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/ovcica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/ovcica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/ovcica_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FE9B44", "#74AB2D", "#3D9E4A", "#6A5336"],
+			"difficulty": 1,
+			"id": 31,
+			"name": {
+				"de": "Papagei",
+				"en": "Parrot",
+				"hr": "Papiga"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/papiga.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/papiga_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/papiga_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/papiga_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFF8B0", "#00CCCC", "#B88E5B", "#6A5336"],
+			"difficulty": 2,
+			"id": 32,
+			"name": {
+				"de": "Hund",
+				"en": "Dog",
+				"hr": "Pas"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/pas1.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/pas1_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/pas1_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/pas1_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFD645", "#3D9E4A", "#6A5336", "#CECECE"],
+			"difficulty": 2,
+			"id": 33,
+			"name": {
+				"de": "Ente",
+				"en": "Duck",
+				"hr": "Patka"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/patka.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/patka_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/patka_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/patka_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFD645", "#FFA300"],
+			"difficulty": 0,
+			"id": 34,
+			"name": {
+				"de": "Entlein",
+				"en": "Duckling",
+				"hr": "Pače"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/patkica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/patkica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/patkica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/patkica_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#E5C1C1", "#DD7F7F"],
+			"difficulty": 0,
+			"id": 35,
+			"name": {
+				"de": "Schweinchen",
+				"en": "Piglet",
+				"hr": "Praščić"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/prascic.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/prascic_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/prascic_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/prascic_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFD645", "#FFA300", "#B91A1A", "#158A28"],
+			"difficulty": 2,
+			"id": 36,
+			"name": {
+				"de": "Hahn",
+				"en": "Rooster",
+				"hr": "Pijetao"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/rooster.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/rooster_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/rooster_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/rooster_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFB738", "#FFA300", "#74AB2D"],
+			"difficulty": 1,
+			"id": 37,
+			"name": {
+				"de": "Seepferdchen",
+				"en": "Seahorse",
+				"hr": "Morski konjic"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/sea_horse.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/sea_horse_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/sea_horse_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/sea_horse_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#DD7F7F", "#CECECE", "#473621"],
+			"difficulty": 1,
+			"id": 38,
+			"name": {
+				"de": "Elefant",
+				"en": "Elephant",
+				"hr": "Slon"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/slonic.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/slonic_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/slonic_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/slonic_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFC4C4", "#B88E5B"],
+			"difficulty": 0,
+			"id": 39,
+			"name": {
+				"de": "Schnecke",
+				"en": "Snail",
+				"hr": "Puž"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/snail.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/snail_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/snail_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/snail_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#FFA300", "#6A5336"],
+			"difficulty": 1,
+			"id": 40,
+			"name": {
+				"de": "Eule",
+				"en": "Owl",
+				"hr": "Sova"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/sova.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/sova_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/sova_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/sova_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#B88E5B", "#6A5336"],
+			"difficulty": 1,
+			"id": 41,
+			"name": {
+				"de": "Eichhörnchen",
+				"en": "Squirrel",
+				"hr": "Vjeverica"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/squirrel.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/squirrel_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/squirrel_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/squirrel_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#5E8FA8"],
+			"difficulty": 0,
+			"id": 42,
+			"name": {
+				"de": "Robbe",
+				"en": "Seal",
+				"hr": "Tuljan"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/tuljan.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/tuljan_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/tuljan_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/tuljan_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#74AB2D", "#5F3E1D"],
+			"difficulty": 0,
+			"id": 43,
+			"name": {
+				"de": "Schildkröte",
+				"en": "Turtle",
+				"hr": "Kornjača"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/turtle.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/turtle_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/turtle_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/turtle_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFF8B0", "#00DAFF", "#686868"],
+			"difficulty": 0,
+			"id": 44,
+			"name": {
+				"de": "Wal",
+				"en": "Whale",
+				"hr": "Kit"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/whale.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/whale_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/whale_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/whale_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#74AB2D"],
+			"difficulty": 0,
+			"id": 45,
+			"name": {
+				"de": "Frosch",
+				"en": "Frog",
+				"hr": "Žaba"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/zabica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/zabica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/zabica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/zabica_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFC4C4", "#B88E5B"],
+			"difficulty": 0,
+			"id": 46,
+			"name": {
+				"de": "Hase",
+				"en": "Rabbit",
+				"hr": "Zec"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/zecic.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/zecic_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/zecic_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/zecic_small.png"
+			}
+		},
+		{
+			"category": "wild",
+			"colors": ["#FFD645", "#B88E5B"],
+			"difficulty": 2,
+			"id": 47,
+			"name": {
+				"de": "Giraffe",
+				"en": "Giraffe",
+				"hr": "Žirafa"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/zirafa.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/zirafa_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/zirafa_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/zirafa_small.png"
+			}
+		},
+		{
+			"category": "domestic",
+			"colors": ["#FFBA66", "#FFA300"],
+			"difficulty": 0,
+			"id": 48,
+			"name": {
+				"de": "Goldfisch",
+				"en": "Goldfish",
+				"hr": "Zlatna ribica"
+			},
+			"url": {
+				"big": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/big/zlatna_ribica.png",
+				"mask": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/mask/zlatna_ribica_mask.png",
+				"outline": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/outline/zlatna_ribica_outline.png",
+				"small": "https://raw.githubusercontent.com/sdumencic/coloringbook/68b56952f7be216bf79fe01a2d5ca48685ac5707/images/animals/small/zlatna_ribica_small.png"
+			}
+		}
+	]
+}

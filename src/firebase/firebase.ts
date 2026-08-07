@@ -1,26 +1,26 @@
-import { child, get } from "firebase/database";
+import { child, get } from 'firebase/database'
 
-import { updateAnimals } from "../redux/slices/AnimalsSlice";
-import { projectDatabase } from "./config";
-import store from "../redux/store";
+import { useAnimalsStore } from '@/store/Animals'
+
+import { projectDatabase } from './config'
 
 /** Load the problems from the database */
 export const loadAnimals = async () => {
-	const { animals } = store.getState();
+  const animals = useAnimalsStore.getState().animals
 
-	if (!(Array.isArray(animals) && animals.length)) {
-		// Get data from the Database
-		get(child(projectDatabase, "animals"))
-			.then((snapshot) => {
-				if (snapshot.exists()) {
-					const data = snapshot.val();
-					store.dispatch(updateAnimals(data));
-				} else {
-					console.error("No data available");
-				}
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}
-};
+  if (!(Array.isArray(animals) && animals.length)) {
+    // Get data from the Database
+    get(child(projectDatabase, 'animals'))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val()
+          useAnimalsStore.getState().updateAnimals(data)
+        } else {
+          console.error('No data available')
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+}

@@ -1,63 +1,69 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { setBrushColor } from "../../redux/slices/BrushSlice";
-import Canvas from "./Canvas/Canvas";
-import { scoreGame, setSelectedGameId } from "../../redux/slices/GameSlice";
-import { GlobalState } from "../../redux/store";
-import HUD from "./HUD/HUD";
-import { useEffect } from "react";
+import { useAnimalsStore } from '@/store/Animals'
+import { useBrushStore } from '@/store/Brush'
+import { useGameStore } from '@/store/Game'
+import { useSettingsStore } from '@/store/Settings'
+
+import Canvas from './Canvas/Canvas'
+import HUD from './HUD/HUD'
 
 const GamePage = () => {
-	// Hooks
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
+  // Hooks
+  const navigate = useNavigate()
 
-	// Load information from the parameters
-	const { id } = useParams(); // Fetch the picture id
-	const numId = isNaN(Number(id)) ? 0 : Number(id);
+  // Load information from the parameters
+  const { id } = useParams() // Fetch the picture id
+  const numId = isNaN(Number(id)) ? 0 : Number(id)
 
-	// Load info from the global state
-	const game = useSelector((state: GlobalState) => state.game);
-	const brush = useSelector((state: GlobalState) => state.brush);
-	const animals = useSelector((state: GlobalState) => state.animals);
-	const language = useSelector((state: GlobalState) => state.settings.language);
+  // Load info from the global state
+  const scoreGame = useGameStore((s) => s.scoreGame)
+  const gameSelectedId = useGameStore((s) => s.selectedId)
+  const setSelectedGameId = useGameStore((s) => s.setSelectedGameId)
 
-	useEffect(() => {
-		// Animals are not loaded, go to the selection screen
-		if (numId >= animals.length) {
-			navigate("/game");
-		}
-	}, []);
+  const brushColor = useBrushStore((s) => s.color)
+  const setBrushColor = useBrushStore((s) => s.setBrushColor)
 
-	// NOTE: We need to do this both in useEffect and in render since useEffect is running
-	// while rendering.
-	if (numId >= animals.length) {
-		return null;
-	}
+  const animals = useAnimalsStore((s) => s.animals)
 
-	if (game.selectedId !== numId) {
-		dispatch(setSelectedGameId(numId));
-		dispatch(scoreGame(0));
-	}
+  const language = useSettingsStore((s) => s.language)
 
-	// Check that brush is ok
-	if (!animals[numId].colors.includes(brush.color)) {
-		dispatch(setBrushColor(animals[numId].colors[0]));
-	}
+  useEffect(() => {
+    // Animals are not loaded, go to the selection screen
+    if (numId >= animals.length) {
+      navigate('/game')
+    }
+  }, [])
 
-	return (
-		<>
-			<Canvas
-				maskImageURL={animals[numId].url.mask}
-				outlineImageURL={animals[numId].url.outline}
-				bigImageURL={animals[numId].url.big}
-				name={animals[numId].name[language]}
-			/>
+  // NOTE: We need to do this both in useEffect and in render since useEffect is running
+  // while rendering.
+  if (numId >= animals.length) {
+    return null
+  }
 
-			<HUD />
-		</>
-	);
-};
+  if (gameSelectedId !== numId) {
+    setSelectedGameId(numId)
+    scoreGame(0)
+  }
 
-export default GamePage;
+  // Check that brush is ok
+  if (!animals[numId].colors.includes(brushColor)) {
+    setBrushColor(animals[numId].colors[0])
+  }
+
+  return (
+    <>
+      <Canvas
+        maskImageURL={animals[numId].url.mask}
+        outlineImageURL={animals[numId].url.outline}
+        bigImageURL={animals[numId].url.big}
+        name={animals[numId].name[language]}
+      />
+
+      <HUD />
+    </>
+  )
+}
+
+export default GamePage
