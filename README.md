@@ -64,24 +64,24 @@ Prettier - Code formatter https://marketplace.visualstudio.com/items?itemName=es
 Format the code with Prettier:
 
 ```bash
-npm run format
+pnpm run format
 ```
 
 Run ESLint and report errors and warnings:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 Run ESlint and automatically attempt to fix errors and warnings:
 
 ```bash
-npm run lint-fix
+pnpm run lint:fix
 ```
 
 ### **Pre-commit hooks**
 
-Pre-commit hooks are installed and run using Husky. By doing an npm install husky should automatically set everything up.
+Pre-commit hooks are installed and run using Husky. By doing an npx init husky should automatically set everything up.
 
 To test if the hook will pass before commiting, you can run the linter and formatter on the staged files by using the following command:
 
